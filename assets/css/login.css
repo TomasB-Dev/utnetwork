@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 :root{
-    --bg--color : #282828;
+    --bg--color : #282828; 
     --bg--secundary: #00628D;
     --color-resalt: #BDE4F7;
 }
@@ -17,6 +17,7 @@ body{
     overflow: hidden;
     margin: 0;
 }
+/*main conteiner*/
 #login-container{
     display: flex;
     justify-content: center;
@@ -27,6 +28,7 @@ body{
     box-shadow:3px 3px 7px rgba(0, 0, 0, 0.377);
     border-radius: 5%;
 }
+/*sub conteiner de la img del logo y texto*/
 #logo{
     position: relative;
     margin-top: 0;
@@ -60,7 +62,7 @@ body{
     z-index: 2;
     pointer-events: none;
     transform: translatey(+35%);
-    
+    /*posisiono el texto a la altura de que quiero*/
     
 }
 #logo-img{
@@ -126,6 +128,7 @@ h2{
         color: #ffffff;
     }
 }
+/*registrarse en caso de no tener cuenta*/
 #register-redirect{
     font-family: "Monstserrat";
     font-weight: 500;
