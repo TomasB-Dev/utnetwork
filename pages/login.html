@@ -17,16 +17,17 @@
             
         </div>
         <div id="formulario">
-            <form>
+            <form id="login-form">
                 <h2>INICIAR SESION</h2>
                 <label for="mail">Mail</label>
                 <input id="mail"type="email" placeholder="example@gmail.com" required>
                 <label for="key">Contraseña</label>
                 <input id="key"type="password" placeholder="*********" required>
-                <button id="login-btn">Iniciar Sesion</button>
+                <button id="login-btn" type="submit">Iniciar Sesion</button>
                 <p id="register-redirect">¿Todavia no posees una cuenta? <a href="register.html">registrarse</a></p>
+                <p id="login-msg"></p>
             </form>        
     </main>
-    
+    <script src="../assets/js/login-fake.js"></script>
 </body>
 </html>
