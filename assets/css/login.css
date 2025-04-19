@@ -1,0 +1,30 @@
+:root{
+    --bg--color : #485288;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-color: var(--bg--color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+#login-container{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: red;
+    width: 45%;
+    height: 700px;
+    box-shadow:3px 3px 7px rgba(0, 0, 0, 0.377);
+}
+#logo{
+    background-image: url(../images/logo-provicional.png.png);
+    background-size:contain;
+    height: 300px;
+    width: 75%;
+}
