@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 :root{
     --bg--color : #485288;
 }
@@ -18,15 +19,55 @@ body{
     justify-content: center;
     align-content: center;
     background-color: red;
-    width: 45%;
     height: 700px;
+    width: 75%;
     box-shadow:3px 3px 7px rgba(0, 0, 0, 0.377);
 }
 #logo{
+    margin-top: 0;
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+    padding: 30px;
+    width: 75%;
+    background-color: blueviolet;
+}
+#logo-img{
+    width: 35%;
+    display: block;
+    margin: 0 auto 20px auto;
+}
+#logo h1 {
+    margin: 10px 0 5px;
+    color: black;
+    font-family: "Montserrat" ;
+}
+#logo p {
+    margin: 0;
+    color: black;
+    font-family: "Montserrat";
+}
+#formulario{
     display: flex;
     justify-content: center;
     align-content: center;
-    height: 300px;
-    width: 75%;
-    background-color: blueviolet;
+    background-color: rgb(0, 255, 55);
+    width:25%;
+    height: 100%;
+}
+#formulario form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px;  
+    box-sizing: border-box;
+}
+#formulario label {
+    font-family: "Montserrat";
+    margin-bottom: 5px;
+}
+#formulario input {
+    padding: 5px;
+    font-size: 14px;
+    font-family: "Montserrat";
 }
