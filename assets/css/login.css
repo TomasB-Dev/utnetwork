@@ -2,6 +2,7 @@
 :root{
     --bg--color : #282828;
     --bg--secundary: #00628D;
+    --color-resalt: #BDE4F7;
 }
 *{
     margin: 0;
@@ -123,5 +124,18 @@ h2{
     &:hover{
         background-color: var(--bg--color);
         color: #ffffff;
+    }
+}
+#register-redirect{
+    font-family: "Monstserrat";
+    font-weight: 500;
+    font-size: 1em;
+}
+#register-redirect a{
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 900;
+    &:hover{
+        color: var(--color-resalt);
     }
 }
