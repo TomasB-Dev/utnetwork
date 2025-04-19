@@ -23,8 +23,9 @@ body{
     box-shadow:3px 3px 7px rgba(0, 0, 0, 0.377);
 }
 #logo{
-    background-image: url(../images/logo-provicional.png.png);
-    background-size:contain;
+    display: flex;
+    justify-content: center;
+    align-content: center;
     height: 300px;
     width: 75%;
 }
