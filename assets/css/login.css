@@ -114,8 +114,14 @@ h2{
 #login-btn{
     border-radius: 10%;
     height: 40px;
-    background-color: #485288;
+    background-color: #BDE4F7
+    ;
     font-family: "Montserrat";
     font-weight: 600;
     font-size: 1em;
+    cursor: pointer;
+    &:hover{
+        background-color: var(--bg--color);
+        color: #ffffff;
+    }
 }
