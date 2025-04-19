@@ -91,13 +91,18 @@ body{
 }
 #formulario label {
     font-family: "Montserrat";
-    margin-bottom: 5px;
+    font-weight: 900;
+    margin-bottom: 2px;
+    font-size: 1em;
+    color: #ffffff;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.308);
 }
 #formulario input {
     padding: 5px;
     font-size: 14px;
     font-family: "Montserrat";
-    border-radius: 5%;
+    border-radius: 8%;
+    box-shadow: 2px 2px 8px rgba(128, 128, 128, 0.555);
 }
 h2{
     font-family: "Montserrat";
@@ -105,4 +110,12 @@ h2{
     font-size: 2em;
     color: #ffffff;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.308);
+}
+#login-btn{
+    border-radius: 10%;
+    height: 40px;
+    background-color: #485288;
+    font-family: "Montserrat";
+    font-weight: 600;
+    font-size: 1em;
 }
