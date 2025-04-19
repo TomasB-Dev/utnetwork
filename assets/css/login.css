@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 :root{
-    --bg--color : #485288;
-    --bg--secundary: #C5DDE8;
+    --bg--color : #282828;
+    --bg--secundary: #00628D;
 }
 *{
     margin: 0;
@@ -13,6 +13,7 @@ body{
     justify-content: center;
     align-items: center;
     height: 100vh;
+    overflow: hidden;
     margin: 0;
 }
 #login-container{
@@ -100,6 +101,8 @@ body{
 }
 h2{
     font-family: "Montserrat";
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    font-size: 2em;
+    color: #ffffff;
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.308);
 }
