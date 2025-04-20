@@ -4,3 +4,4 @@
 - [ ] Landing page
 - [ ] Login page
 - [ ] Register page
+- [ ] Resposive
