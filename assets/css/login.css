@@ -151,3 +151,62 @@ h2{
     font-size: 1em;  
     font-weight: 600;
 }
+/*CELULAR VIEW*/
+@media (max-width: 768px) {
+    #login-container {
+        flex-direction: column;
+        width: 90%;
+        height: auto;
+        border-radius: 3%;
+    }
+
+    #logo {
+        width: 100%;
+        padding: 20px;
+        
+    }
+    .txt-sobre-img {
+        transform: translateY(+35%);
+        font-size: 0.6em;
+        text-align: center;
+        padding: 5px;
+    }
+
+    #logo-img {
+        width: 90%;
+        border-radius: 3%;
+        margin: 0;
+    }
+
+    #formulario {
+        width: 100%;
+        padding: 10px;
+        height: auto;
+        border-radius: 0;
+    }
+
+    #formulario form {
+        padding: 10px;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+
+    #formulario input {
+        font-size: 1em;
+        padding: 8px;
+    }
+
+    #login-btn {
+        font-size: 1em;
+        height: 40px;
+    }
+
+    #register-redirect,
+    #login-msg {
+        text-align: center;
+        font-size: 0.95em;
+    }
+
+}
