@@ -151,18 +151,28 @@ h2{
     font-size: 1em;  
     font-weight: 600;
 }
+@media (max-width: 1024px) {
+    #login-container{
+        height: 600px;
+        width: 75%;
+    }
+
+}
 /*CELULAR VIEW*/
 @media (max-width: 768px) {
     #login-container {
         flex-direction: column;
-        width: 90%;
+        width: 85%;
         height: auto;
         border-radius: 3%;
     }
 
     #logo {
-        width: 100%;
+        width: 85%;
         padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         
     }
     .txt-sobre-img {
