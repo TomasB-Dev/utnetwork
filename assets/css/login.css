@@ -144,3 +144,7 @@ h2{
         color: var(--color-resalt);
     }
 }
+#login-msg{
+    font-family: "Monstserrat";
+    
+}

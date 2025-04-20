@@ -5,13 +5,13 @@ document.getElementById('login-form').addEventListener('submit', function (e) {
     const password = document.getElementById('key').value.trim();
     const mensaje = document.getElementById('login-msg');
 
-    if (email && password) {
+    if (email == "mailfake@mail.com" && password =="123456") {
         mensaje.style.color = 'green';
         mensaje.textContent = 'Logeadp';
         
     
     } else {
         mensaje.style.color = 'red';
-        mensaje.textContent = 'Completa todos los campos.';
+        mensaje.textContent = 'datos incorrectos, vuelve a intentarlo.';
     }
 });
