@@ -11,7 +11,7 @@
     padding: 0;
 }
 body{
-    background-color: var(--bg--secundary);
+    background-color: var(--bg--color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -26,8 +26,8 @@ body{
     align-content: center;
     background-color: var(--bg--color);
     height: 700px;
-    width: 50%;
-    box-shadow:3px 3px 7px rgba(0, 0, 0, 0.377);
+    width: 55%;
+    
     border-radius: 5%;
 }
 /*sub conteiner de la img del logo y texto*/
