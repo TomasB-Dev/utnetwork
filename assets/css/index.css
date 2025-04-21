@@ -39,12 +39,26 @@ body {
     }
 
 }
+
+
 .accordion-button{
-    background-color: #282828;
+    background-color: var(--bg--secundary);
+    color: white;
+    font-weight: bold;
+
+
 }
 .accordion-item {
-    background-color: #282828;
-    
+    background-color: var(--bg--secundary);
+    color: white;
+}
+
+
+.accordion-button:not(.collapsed) {
+color: white;
+    /* color: var(--bg--color); */
+    background-color: var(--bg--secundary);
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.125), 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
 }
 
 
