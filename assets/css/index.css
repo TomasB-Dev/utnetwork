@@ -39,6 +39,13 @@ body {
     }
 
 }
+.accordion-button{
+    background-color: #282828;
+}
+.accordion-item {
+    background-color: #282828;
+    
+}
 
 
 footer {
