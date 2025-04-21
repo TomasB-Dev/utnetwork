@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+:root{
+    --bg--color : #282828; 
+    --bg--secundary: #00628D;
+    --color-resalt: #BDE4F7;
+    --color-shadows: rgba(0, 0, 0, 0.377);
+    --color-hover: #009EE0;
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg--color);
+    font-family: "Montserrat";
+
+}
+
+
+
+.frequent_questions_container {
+    color: white;
+    padding: 100px;
+    & h2 {
+        
+        text-align: center;
+        margin-bottom: 20px;
+        font-weight: bold;
+    }
+
+    & .accordion   {
+        background: var(--bg--secundary);
+        & .accordion-header {
+            background-color: var(--bg--color);
+        }
+    }
+
+}
+
+
+footer {
+    background-color: var(--bg--secundary);
+    color: white;
+
+    
+
+
+    & .top_footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 20px 50px;
+        & .contact_info {
+            & div {
+                display: flex;
+                align-items: center;
+                margin-bottom: 10px;
+                 & i {
+                    padding: 20px;
+                    background-color: var(--bg--color);
+                    border-radius: 50%;
+                    margin-right: 10px;
+                    box-shadow: 3px 3px 2px var(--color-shadows);
+                }
+             & p {
+                margin: 0;
+             }
+            }
+        }
+
+        & .abaut_us {
+            width: 50%;
+            
+            h3 {
+                font-size: 24px;
+                margin-bottom: 10px;
+            }
+            & .social_media {
+            
+                
+                display: flex;
+                margin-top: 10px;
+                & a{
+                    text-decoration: none;
+                    color: white;
+                    margin-right: 10px;
+                    font-size: 20px;
+                    padding: 10px;
+                    box-shadow: 2px 2px var(--color-shadows);
+                    background-color: var(--bg--color);
+                
+                }
+            }
+        }
+
+    }
+
+    & .bottom_footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: var(--bg--color);
+        padding: 10px 20px;
+    }
+}
+
+
+
+
