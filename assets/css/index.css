@@ -102,6 +102,10 @@ footer {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        & p {
+            margin: 0
+            ;
+        }
         background-color: var(--bg--color);
         padding: 10px 20px;
     }
