@@ -11,10 +11,10 @@
     padding: 0;
 }
 body{
-    font-family: "Montserrat", sans-serif;
     background-color: var(--bg--color);
     display: flex;
     justify-content: center;
+    font-family: "Monstserrat";
     align-items: center;
     height: 100vh;
     overflow: hidden;
