@@ -24,7 +24,7 @@ body{
     display: flex;
     justify-content: center;
     align-content: center;
-    background-color: var(--bg--color);
+    background-color:transparent;
     height: 700px;
     width: 55%;
     
@@ -150,6 +150,27 @@ h2{
     font-family: "Monstserrat";
     font-size: 1em;  
     font-weight: 600;
+}
+
+#swap-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 0.6rem 1.2rem;
+    background: #ffffff;
+    border: none;
+    border-radius: 2rem;
+    color: var(--bg--color);
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+#swap-btn:hover {
+    background: linear-gradient(135deg, #388e3c, #66bb6a);
+    transform: scale(1.05);
 }
 @media (max-width: 1024px) {
     #login-container{
