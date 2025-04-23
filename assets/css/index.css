@@ -19,11 +19,12 @@ body {
 
 }
 
-
+.container_middle {
+    padding: 10% 20vh;
+}
 
 .frequent_questions_container {
     color: white;
-    padding: 100px;
     & h2 {
         
         text-align: center;
@@ -109,10 +110,14 @@ footer {
                     color: white;
                     margin-right: 10px;
                     font-size: 20px;
-                    padding: 10px;
+                    padding: 14px;
                     box-shadow: 2px 2px var(--color-shadows);
                     background-color: var(--bg--color);
-                
+                    transition: .5s all;
+                    &:hover {
+                        background-color: rgb(75, 75, 75);
+                        color: var(--bg--secundary);
+                    }
                 }
             }
         }
