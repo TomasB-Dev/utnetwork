@@ -168,10 +168,7 @@ h2{
     z-index: 999;
 }
 
-#swap-btn:hover {
-    background: linear-gradient(135deg, #388e3c, #66bb6a);
-    transform: scale(1.05);
-}
+
 @media (max-width: 1024px) {
     #login-container{
         height: 600px;

@@ -16,6 +16,5 @@ function changue_BG() {
         localStorage.setItem("modo", "claro"); 
     }
 
-    
 
 }
