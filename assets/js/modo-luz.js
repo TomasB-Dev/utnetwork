@@ -28,6 +28,10 @@ if (modo == 'claro'){
         element.style.color = 'white';
     }
 }
+/* Lo de arriba tiene un problema y es que queda 'pegado' el modo, una vez presionado no se puede cambiar si alguien lo fixea antes de que lo solucione avise <3 */
+
+
+
 function changue_BG() {
     cant_textos = formulario.length;
     if (modo != 'claro') {
