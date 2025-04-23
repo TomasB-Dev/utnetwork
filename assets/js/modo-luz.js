@@ -6,7 +6,7 @@ function changue_BG() {
     cant_textos = formulario.length
     if (modo != 'oscuro') {
         btn.style.backgroundColor = '#282828';
-        fondo.style.background = 'white';   
+        fondo.style.background = '#f8f8ff';   
         localStorage.setItem("modo", "oscuro"); 
         btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 0111.21 3a7 7 0 100 14A9 9 0 0021 12.79z" fill="currentColor"/></svg>';
         btn.style.color = 'white'
@@ -22,7 +22,6 @@ function changue_BG() {
         for(const element of txt) { 
             element.style.color = 'white';
         }
-
         localStorage.setItem("modo", "claro"); 
     }
 
