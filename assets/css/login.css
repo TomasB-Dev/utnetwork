@@ -14,7 +14,7 @@ body{
     background-color: var(--bg--color);
     display: flex;
     justify-content: center;
-
+    font-family: "Monstserrat";
     align-items: center;
     height: 100vh;
     overflow: hidden;
@@ -57,7 +57,6 @@ body{
     justify-content: center;
     align-items: center;
     color: white;
-    font-family: "Montserrat";
     text-align:center;
     text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
     padding: 10px;
@@ -97,33 +96,26 @@ body{
     justify-content: center;
 }
 #formulario label {
-    font-family: "Montserrat";
     font-weight: 900;
     margin-bottom: 2px;
     font-size: 1em;
-    
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.308);
 }
 #formulario input {
     padding: 5px;
     font-size: 14px;
-    font-family: "Montserrat";
     border-radius: 8%;
     box-shadow: 2px 2px 3px rgba(128, 128, 128, 0.425);
 }
 h2{
-    font-family: "Montserrat";
     margin-bottom: 10px;
     font-size: 2em;
-    
     text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.308);
 }
 #login-btn{
     border-radius: 7%;
     height: 40px;
-    background-color: var(--bg--secundary)
-    ;
-    font-family: "Montserrat";
+    background-color: var(--bg--secundary);
     font-weight: 600;
     font-size: 1em;
     cursor: pointer;
@@ -135,7 +127,7 @@ h2{
 }
 /*registrarse en caso de no tener cuenta*/
 #register-redirect{
-    font-family: "Monstserrat";
+    
     font-weight: 500;
     font-size: 1em;
 }
@@ -148,7 +140,6 @@ h2{
     }
 }
 #login-msg{
-    font-family: "Monstserrat";
     font-size: 1em;  
     font-weight: 600;
 }
