@@ -19,6 +19,23 @@ body {
 
 }
 
+
+.container_characteristics {
+    color: white;
+    & h5 {
+        text-align: center;
+    }
+    & .card_container_characteristics {
+        display: flex;
+    }
+    & .card_characteristics {
+        display:flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+
 .container_middle {
     padding: 10% 20vh;
 }
