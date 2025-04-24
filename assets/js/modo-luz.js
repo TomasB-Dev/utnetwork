@@ -27,9 +27,6 @@ if (modo == 'claro'){
     }
 }
 
-
-
-
 function changue_BG() {
     /* lo tuve que traer localmente para que funcionara el cambio cada vez que se ejecutaba la funcion, en caso de no hacerlo no cambiaba el valor de modo*/
     let modo_local = localStorage.getItem('modo');
@@ -43,7 +40,6 @@ function changue_BG() {
             for(const element of txt) {
                 element.style.color = 'black';
             }
-            console.log('entro claro')
             } catch (error) {
                 console.log(error)
             }       
@@ -58,7 +54,6 @@ function changue_BG() {
             
                 element.style.color = 'white';
             }
-            console.log('entro oscuro ')
         } catch (error) {
 
             console.log(error)
