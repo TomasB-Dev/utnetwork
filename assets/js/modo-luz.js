@@ -26,12 +26,14 @@ if (modo == 'claro'){
         element.style.color = 'white';
     }
 }
-/* Lo de arriba tiene un problema y es que queda 'pegado' el modo, una vez presionado no se puede cambiar si alguien lo fixea antes de que lo solucione avise <3 */
+
 
 
 
 function changue_BG() {
-    if (modo != 'claro') {
+    /* lo tuve que traer localmente para que funcionara el cambio cada vez que se ejecutaba la funcion, en caso de no hacerlo no cambiaba el valor de modo*/
+    let modo_local = localStorage.getItem('modo');
+    if (modo_local != 'claro') {
         try {
             btn.style.backgroundColor = '#282828';
             fondo.style.background = '#f8f8ff';   
@@ -51,11 +53,12 @@ function changue_BG() {
             btn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5" fill="currentColor"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
             btn.style.color = "#282828"
             fondo.style.background = '#282828';   
+            localStorage.setItem("modo", "oscuro");
             for(const element of txt) { 
+            
                 element.style.color = 'white';
             }
             console.log('entro oscuro ')
-            localStorage.setItem("modo", "oscuro"); 
         } catch (error) {
 
             console.log(error)
