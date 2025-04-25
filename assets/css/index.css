@@ -243,6 +243,8 @@ body {
 .accordion-item {
     background-color: var(--bg--secundary);
     color: white;
+    margin: 20px 0px;
+    padding: 5px;
 }
 
 
