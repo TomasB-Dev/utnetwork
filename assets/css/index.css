@@ -381,7 +381,21 @@ footer {
     }
 }
 
-
+#swap-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 0.6rem 1.2rem;
+    background: #ffffff;
+    border: none;
+    border-radius: 2rem;
+    color: var(--bg--color);
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    z-index: 999;
+}
 
 @media (max-width: 1290px) {
 
