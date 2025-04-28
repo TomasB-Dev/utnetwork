@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../assets/images/logo-provisorio.png" />
+    <link rel="stylesheet" href="../assets/css/login.css" >
+    <title>UTNetwork</title>
+</head>
+<body id="body">
+    <button id="swap-btn" onclick="changue_BG()"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="12" cy="12" r="5" fill="currentColor"/>
+        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    </button>
+    <main id="login-container">
+        <div id="logo">
+            <div class="txt-sobre-img">
+                <h1>UTNetwork</h1>
+                <p>La red social elegida por futuros ingenieros y tecnicos.</p>
+            </div>
+            <img src="../assets/images/logo.jpg" alt="Logo de UTNetwork" id="logo-img">
+            
+        </div>
+        <div id="formulario">
+            <form id="login-form">
+                <h2 class="txt">REGISTRO</h2>
+                <label class="txt" for="nombre">Nombre</label>
+                <input id="nombre"type="text" placeholder="Alan Demartini" required>
+                <label class="txt" for="mail">Mail</label>
+                <input id="mail"type="email" placeholder="example@ejemplo.com" required>
+                <label class="txt" for="key1">Contraseña</label>
+                <input id="key1"type="password" placeholder="*********" required>
+                <label  class="txt"for="key2">Repite la Contraseña</label>
+                <input id="key2"type="password" placeholder="*********" required>
+                <button id="login-btn" type="submit">Registrarse</button>
+                <p  class="txt" id="register-redirect">¿Ya posees una cuenta? <a  class="txt" href="login.html">Ingresa</a></p>
+                <p id="register-msg"></p>
+            </form>
+    </main>
+    
+    <script src="../assets/js/modo-luz.js" defer></script>
+</body>
+</html>
