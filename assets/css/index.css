@@ -238,7 +238,9 @@ body {
         /* object-fit: cover; */
         & h5 {
             margin: 20px 0px;
+            
             font-weight: bold;
+            
         }
 
         & i {
@@ -271,7 +273,7 @@ body {
         
         text-align: center;
         margin-bottom: 10px;
-        font-weight: bold;
+        font-weight: bold;  
     }
 
     & .accordion   {
@@ -286,10 +288,15 @@ body {
 
 .accordion-button{
     background-color: var(--bg--secundary);
-    color: white;
+    color: white !important;
     font-weight: bold;
+   
 
 
+}
+
+.accordion-body {
+    color: white !important;
 }
 .accordion-item {
     background-color: var(--bg--secundary);
@@ -309,7 +316,7 @@ color: white;
 
 footer {
     background-color: var(--bg--secundary);
-    color: white;
+    /* color: white; */
 
     
 
@@ -328,11 +335,13 @@ footer {
                     padding: 20px;
                     background-color: var(--bg--color);
                     border-radius: 50%;
+                    color: white !important;
                     margin-right: 10px;
                     box-shadow: 3px 3px 2px var(--color-shadows);
                 }
              & p {
                 margin: 0;
+                color: white !important;
              }
             }
         }
@@ -342,7 +351,12 @@ footer {
             
             h3 {
                 font-size: 24px;
+                color: white !important;
                 margin-bottom: 10px;
+            }
+
+            & p {
+                color: white !important;
             }
             & .social_media {
             
