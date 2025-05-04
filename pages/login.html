@@ -1,41 +1,49 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../assets/images/logo-provisorio.png" />
-    <link rel="stylesheet" href="../assets/css/login.css" >
-    <title>UTNetwork</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../assets/css/login2.css">
+
+    <title>Login</title>
 </head>
-<body id="body">
-    <button id="swap-btn" onclick="changue_BG()"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="12" cy="12" r="5" fill="currentColor"/>
-        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-    </svg>
-    </button>
-    <main id="login-container">
-        <div id="logo">
-            <div class="txt-sobre-img">
-                <h1>UTNetwork</h1>
+
+<body>
+    <main>
+        <section class="container_login">
+
+        <div>
+            <div class="container_image_text">
+                <div class="txt_img">
+                <h2>UTNetwork</h2>
                 <p>La red social elegida por futuros ingenieros y tecnicos.</p>
             </div>
-            <img src="../assets/images/logo.jpg" alt="Logo de UTNetwork" id="logo-img">
-            
-        </div>
-        <div id="formulario">
-            <form id="login-form">
-                <h2 class="txt">INICIAR SESION</h2>
-                <label class="txt" for="mail">Mail</label>
-                <input id="mail"type="email" placeholder="example@ejemplo.com" required>
-                <label  class="txt"for="key">Contraseña</label>
-                <input id="key"type="password" placeholder="*********" required>
-                <button id="login-btn" type="submit">Iniciar Sesion</button>
-                <p  class="txt" id="register-redirect">¿Todavia no posees una cuenta? <a  class="txt" href="register.html">registrarse</a></p>
-                <p id="login-msg"></p>
-            </form>
+
             </div>
+        </div>
+        <div class="container_form_login">
+            <h1>Bienvenido</h1>
+            <!-- <span>¡Nos alegra tenerte acá! En esta red podés conocer compañeros de otras carreras, enterarte de eventos y compartir tus experiencias como estudiante de la UTN.</span> -->
+            <form action="">
+                <!-- <h2 class="txt">INICIAR SESION</h2> -->
+                <label class="txt" for="mail" >Email</label>
+                <input type="text" name="" id="" placeholder="Ingresa tu email" required>
+                <label for="password">Contraseña</label>
+                <input type="password" name="" id="" placeholder="*********" required>
+                <!-- <input type="checkbox" name="" id=""> -->
+                 
+                <button  class="btn " type="submit">Iniciar Sesion</button>
+            </form>
+        <div class="container_link_register">
+            <p>No posee una cuenta?</p>
+            <a href="../pages/register.html">Registrarse</a>
+        </div>
+        </div>
+    </section>
+
     </main>
-    <script src="../assets/js/login-fake.js"></script>
-    <script src="../assets/js/modo-luz.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>    
 </body>
 </html>

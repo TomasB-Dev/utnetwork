@@ -180,7 +180,7 @@ body {
         
         & canvas {
             width: 300px;
-            height: 300px;
+            height: 300px;;
             max-width: 100%;
             max-height: 100%;
         }  
@@ -203,6 +203,11 @@ body {
 
     }
     
+}
+
+
+#chart_1 #chart_2 #chart_3{
+    color: white;
 }
 
 

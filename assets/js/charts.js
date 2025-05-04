@@ -5,6 +5,8 @@ const chart_3 = document.getElementById("chart_3").getContext("2d");
 
 new Chart(chart_1, {
     type: "line",
+    
+
     data: {
         labels: ["Noviembre", "Diciembre", "Enero", "Febrero", "Marzo", "Abril"],
         datasets: [
@@ -45,7 +47,6 @@ new Chart(chart_2, {
                     "#00628D",
                     "#FFCE56",
                 ],
-
             }
         ]
     },
