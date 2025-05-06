@@ -24,18 +24,18 @@ new Chart(chart_1, {
         maintainAspectRatio: false,
         legend: {
             labels: {
-                fontColor: "white";
+                fontColor: "white"
             }
         },
         scales: {
             xAxes: [{
                 ticks: {
-                    fontColor: "white";
+                    fontColor: "white"
                 }
             }],
             yAxes: [{
                 ticks: {
-                    fontColor: "white";
+                    fontColor: "white"
                 }
             }]
         }
