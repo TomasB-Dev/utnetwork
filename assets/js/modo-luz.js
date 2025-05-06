@@ -2,6 +2,9 @@ const modo = localStorage.getItem('modo');
 const fondo = document.getElementById('body');
 const btn = document.getElementById('swap-btn');
 const txt = document.getElementsByClassName('txt');
+
+
+
 /*
 esto mantiene el modo atraves de paginas
 claramente queda implimentar para el color y los textos queden bien

@@ -1,8 +1,11 @@
 const chart_1 = document.getElementById("chart_1").getContext("2d");
 const chart_2 = document.getElementById("chart_2").getContext("2d");
 const chart_3 = document.getElementById("chart_3").getContext("2d");
-
-Chart.defaults.color="white"
+const modo_color = localStorage.getItem('modo');
+if (modo_color == 'claro'){
+    Chart.defaults.color='black'
+}else{
+Chart.defaults.color='white'}
 new Chart(chart_1, {
     type: "line",
     
@@ -24,6 +27,7 @@ new Chart(chart_1, {
         maintainAspectRatio: false,
         legend: {
             labels: {
+
                 fontColor: "white" // color de las letras de la leyenda
             }
         },
@@ -99,3 +103,12 @@ new Chart(chart_3, {
 
 
 });
+function letras() {
+    Chart.defaults.color='red'
+    let luz = localStorage.getItem('modo');
+    if (luz == 'claro'){
+        Chart.defaults.color='black'
+    }else{
+        Chart.defaults.color='white'
+    }
+}
