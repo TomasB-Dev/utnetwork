@@ -100,4 +100,5 @@ function letras() {
     }else{
         Chart.defaults.color='white'
     }
+    location.reload(true)
 }
