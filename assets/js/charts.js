@@ -22,16 +22,24 @@ new Chart(chart_1, {
     options: {
         responsive: true,
         maintainAspectRatio: false,
-        plugins: {
-            legend: {
-                display: true,
-                labels: {
-                    color: "white", // Cambia color de texto de la leyenda
-                },
-            },
+        legend: {
+            labels: {
+                fontColor: "white";
+            }
         },
-    },
-
+        scales: {
+            xAxes: [{
+                ticks: {
+                    fontColor: "white";
+                }
+            }],
+            yAxes: [{
+                ticks: {
+                    fontColor: "white";
+                }
+            }]
+        }
+    }
 
 })
 
@@ -50,6 +58,7 @@ new Chart(chart_2, {
                     "#00628D",
                     "#FFCE56",
                 ],
+                
             }
         ]
     },
