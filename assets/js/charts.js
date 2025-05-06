@@ -2,7 +2,7 @@ const chart_1 = document.getElementById("chart_1").getContext("2d");
 const chart_2 = document.getElementById("chart_2").getContext("2d");
 const chart_3 = document.getElementById("chart_3").getContext("2d");
 
-
+Chart.defaults.color="white"
 new Chart(chart_1, {
     type: "line",
     
