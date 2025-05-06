@@ -22,12 +22,24 @@ new Chart(chart_1, {
     options: {
         responsive: true,
         maintainAspectRatio: false,
-        plugins: {
-            legend: {
-                display: true,
-            },
+        legend: {
+            labels: {
+                fontColor: "white" // color de las letras de la leyenda
+            }
         },
-    },
+        scales: {
+            xAxes: [{
+                ticks: {
+                    fontColor: "white" // color de etiquetas eje X
+                }
+            }],
+            yAxes: [{
+                ticks: {
+                    fontColor: "white" // color de etiquetas eje Y
+                }
+            }]
+        }
+    }
 
 
 })
