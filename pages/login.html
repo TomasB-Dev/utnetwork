@@ -10,8 +10,13 @@
     <title>Login</title>
 </head>
 
-<body>
+<body id="body">
     <main>
+        <button id="swap-btn" onclick="changue_BG()"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="12" cy="12" r="5" fill="currentColor"/>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        </button>
         <section class="container_login">
 
         <div>
@@ -24,26 +29,27 @@
             </div>
         </div>
         <div class="container_form_login">
-            <h1>Bienvenido</h1>
+            <h1 class="txt">Bienvenido</h1>
             <!-- <span>¡Nos alegra tenerte acá! En esta red podés conocer compañeros de otras carreras, enterarte de eventos y compartir tus experiencias como estudiante de la UTN.</span> -->
             <form action="">
                 <!-- <h2 class="txt">INICIAR SESION</h2> -->
                 <label class="txt" for="mail" >Email</label>
                 <input type="text" name="" id="" placeholder="Ingresa tu email" required>
-                <label for="password">Contraseña</label>
+                <label class="txt" for="password">Contraseña</label>
                 <input type="password" name="" id="" placeholder="*********" required>
                 <!-- <input type="checkbox" name="" id=""> -->
                  
                 <button  class="btn " type="submit">Iniciar Sesion</button>
             </form>
         <div class="container_link_register">
-            <p>No posee una cuenta?</p>
+            <p class="txt">No posee una cuenta?</p>
             <a href="../pages/register.html">Registrarse</a>
         </div>
         </div>
     </section>
 
     </main>
+    <script src="../assets/js/modo-luz.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>    
 </body>
 </html>
