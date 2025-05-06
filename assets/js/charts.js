@@ -25,9 +25,6 @@ new Chart(chart_1, {
         plugins: {
             legend: {
                 display: true,
-                labels: {
-                    color: "white", // Cambia color de texto de la leyenda
-                },
             },
         },
     },
@@ -72,12 +69,11 @@ new Chart(chart_3, {
         datasets:[
             {
                 label: "Más de 10,000 estudiantes conectados en el ultimo mes",
-                backgroundColor: "#00628D",                
+                backgroundColor: "#00628D",
                 borderColor: "#00628D",
                 data: [500, 2000, 5000, 10000],
             }
         ]
-
     },
     options: {
         responsive: true,
@@ -85,7 +81,6 @@ new Chart(chart_3, {
         plugins: {
             legend: {
                 display: true,
-                color: "#00628D",
             },
         },
     },
