@@ -28,21 +28,10 @@ new Chart(chart_1, {
         legend: {
             labels: {
 
-                fontColor: "white" // color de las letras de la leyenda
+                fontColor: "white" 
             }
         },
-        scales: {
-            xAxes: [{
-                ticks: {
-                    fontColor: "white" // color de etiquetas eje X
-                }
-            }],
-            yAxes: [{
-                ticks: {
-                    fontColor: "white" // color de etiquetas eje Y
-                }
-            }]
-        }
+
     }
 
 
