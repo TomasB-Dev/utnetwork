@@ -2,6 +2,7 @@ const chart_1 = document.getElementById("chart_1").getContext("2d");
 const chart_2 = document.getElementById("chart_2").getContext("2d");
 const chart_3 = document.getElementById("chart_3").getContext("2d");
 const modo_color = localStorage.getItem('modo');
+
 if (modo_color == 'claro'){
     Chart.defaults.color='black'
 }else{
@@ -93,12 +94,12 @@ new Chart(chart_3, {
 
 });
 function letras() {
-    Chart.defaults.color='red'
+    console.log("asdsad")
     let luz = localStorage.getItem('modo');
     if (luz == 'claro'){
         Chart.defaults.color='black'
     }else{
         Chart.defaults.color='white'
     }
-    location.reload(true)
+    location.reload()
 }
