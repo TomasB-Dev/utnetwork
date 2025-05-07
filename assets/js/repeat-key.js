@@ -4,7 +4,8 @@ const estado = document.getElementById('igual')
 
 key2.addEventListener("input",check)
 function check() {
-    if( key2===key1){
+    if( key2.value === key1.value){
+
         estado.textContent = "✅"
     }
     else{
