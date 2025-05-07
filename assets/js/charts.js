@@ -3,11 +3,38 @@ const chart_2 = document.getElementById("chart_2").getContext("2d");
 const chart_3 = document.getElementById("chart_3").getContext("2d");
 const modo_color = localStorage.getItem('modo');
 
-if (modo_color == 'claro'){
-    Chart.defaults.color='black'
-}else{
-Chart.defaults.color='white'}
-new Chart(chart_1, {
+
+
+let char1 , chart2, chart3;
+
+
+
+
+// if (modo_color == 'claro'){
+//     Chart.defaults.color='black'
+// }else{
+// Chart.defaults.color='white'}
+
+
+function letras() {
+
+    if(char1 || chart2 || chart3) {
+        char1.destroy();
+        chart2.destroy();
+        chart3.destroy();
+
+    }
+
+
+    let luz = localStorage.getItem('modo');
+    if (luz == 'claro'){
+        Chart.defaults.color='black'
+    }else{
+        Chart.defaults.color='white'
+    }
+
+
+char1 = new Chart(chart_1, {
     type: "line",
     
 
@@ -40,7 +67,7 @@ new Chart(chart_1, {
 
 
 
-new Chart(chart_2, {
+chart2 = new Chart(chart_2, {
     type: "doughnut",
     data: {
         labels: ["Laboratorio", "Publicaciones", "Interaccion"],
@@ -68,7 +95,7 @@ new Chart(chart_2, {
 });
 
 
-new Chart(chart_3, {
+chart3 = new Chart(chart_3, {
     type: "line",
     data: {
         labels: ["Enero", "Febrero", "Marzo", "Abril"],
@@ -93,13 +120,5 @@ new Chart(chart_3, {
 
 
 });
-function letras() {
-    console.log("asdsad")
-    let luz = localStorage.getItem('modo');
-    if (luz == 'claro'){
-        Chart.defaults.color='black'
-    }else{
-        Chart.defaults.color='white'
-    }
-    location.reload()
+
 }
