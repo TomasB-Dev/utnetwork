@@ -6,9 +6,11 @@ key2.addEventListener("input",check)
 function check() {
     if( key2.value === key1.value){
 
-        estado.textContent = "✅"
+        estado.textContent = "Las contraseñas coinciden."
+        estado.style.color = "green"
     }
     else{
-        estado.textContent ="❌"
+        estado.textContent ="Las contraseñas deben coincidir."
+        estado.style.color= "red"
     }
 }
