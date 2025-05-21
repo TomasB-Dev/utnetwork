@@ -1,0 +1,360 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+:root{
+    --bg--color : #282828; 
+    --bg--secundary: #00628D;
+    --color-resalt: #BDE4F7;
+    --color-shadows: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    --color-hover: #009EE0;
+    --bg-cards: #363636;
+
+
+}
+body {
+    background-color: var(--bg--color);
+    font-family: "Montserrat";
+
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family:"Montserrat";
+}
+
+
+.container_login {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 0;
+    background-color: transparent;
+
+}
+#swap-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 0.6rem 1.2rem;
+    background: #ffffff;
+    border: none;
+    border-radius: 2rem;
+    color: var(--bg--color);
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.container_image_text {
+    width: 100vh;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center; 
+    color: white;   
+    align-items: center;
+    background-color: transparent;
+    /* background: url("https://images.unsplash.com/photo-1604964432806-254d07c11f32?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") ; */
+    background-size: cover;
+    background: url('../images/Estudiantes\ en\ sala\ de\ computación.png');
+    background-position: center;
+    /* filter: blur(2px); */
+    background-repeat: no-repeat;
+    position: relative;
+    & .txt_img {
+        z-index: 10000;
+        text-align: center;
+        & h2 {
+            /* text-align: center; */
+            font-size: 5rem;
+            font-weight: bold;
+        }
+
+        & p {
+            font-size: 2rem;
+            font-weight: 400;
+            margin-top: 20px;
+        }
+        position: absolute;
+        text-align: center;
+        /* top: 0rem; */
+        left: 50;
+        bottom: 50;
+        /* width: 100%; */
+        /* height: 100%; */
+        /* display: flex; */
+        /* flex-direction: column;
+        justify-content: center;
+        align-items: center; */
+    }
+}
+
+.container_image_text::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #00638d86; /* Fondo oscuro con opacidad del 50% */
+    z-index: 1; /* Asegura que la capa esté por encima de la imagen */
+}
+
+.container_form_login {
+    color: white;
+    width: 100%;
+    /* justify-content: center; */
+    /* display: flex; */
+    padding: 0px 25vh;
+
+
+    & h1 {
+        margin: auto;
+        /* text-align: center; */
+        font-size: 50px;
+        font-weight: 600;
+        /* color: var(--color-resalt); */
+        text-shadow: 0px 0px 10px var(--color-shadows);
+        margin-bottom: 40px;
+    }
+
+/* & p {
+    margin-bottom:  50px;
+} */
+
+    & form {
+        display: flex;
+        background: none;
+        flex-direction: column;
+        justify-content: center;
+        /* padding: 0 20vh; */
+        & input {
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            border: none;
+            background: var(--bg-cards);
+            color: white;
+            /* background: none; */
+            
+            border: 1px solid var(--bg-cards);
+            /* box-shadow: var(--color-shadows); */
+        }
+
+        & label {
+            margin: 3px 0;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        & p {
+            margin: 10px 0px;
+
+            & a {
+                margin: 0px 10px;
+            }
+        }
+
+        & button {
+            /* margin: 10px 0; */
+            padding: 15px;
+            border-radius: 5px;
+            border: none;
+            margin: 10px 0px;
+            width: 100%;
+            outline: none;
+            font-weight: bold;
+            /* text-align: center; */
+            background-color: var(--bg--secundary);
+            color: white;
+            cursor: pointer;
+            font-size: 20px;
+            /* box-shadow: var(--color-shadows); */
+            transition: all 0.3s ease-in-out;
+            &:hover {
+                background-color: var(--color-hover);
+                color: var(--bg--color);
+                box-shadow: 0px 0px 10px var(--color-shadows);
+            }
+
+            & :active {
+                outline: none;
+            }
+        }
+    }
+}
+
+
+
+.error {
+    color: #ff4d4f;         /* Rojo para errores */
+    font-size: 0.95rem;
+    margin-top: 4px;
+    /* display: none; */
+    margin-bottom: 8px;
+    min-height: 18px;       /* Reserva espacio aunque no haya error */
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.error_input {
+    border: 1px solid #ff4d4f;
+    background-color: #ffcccc; /* Fondo rojo claro */
+    color: #ff4d4f; /* Texto rojo */
+    box-shadow: rgba(255, 77, 79, 0.25) 0px 6px 12px -2px, rgba(255, 77, 79, 0.3) 0px 3px 7px -3px;
+}
+
+#success_message {
+    display: none;
+    
+}
+
+
+
+.container_check {
+    display: flex;
+    align-items: stretch;
+    /* font-size: 15px; */
+    & span {
+        font-size: 20px;
+        font-weight: 0;
+        margin-right: 5px;
+    }
+
+}
+
+.container_link_register {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    margin-top: 20px;
+    & p {
+        margin: 0px 10px;
+    } 
+    & a {
+        color: var(--bg--secundary);
+        font-weight: 600;
+        text-decoration: none;
+    }
+}
+
+@media (max-width: 1600px) {
+    .container_form_login {
+        padding: 0px 9vh;
+    }
+    .container_image_text {
+        width: 100vh;
+
+        & .txt_img {
+            font-size: 3rem;
+            & h2 {
+                font-size: 4rem;
+            }
+            & p {
+                font-size: 1.5rem;
+            }
+        }
+    }
+}
+
+
+
+
+@media (max-width: 1200px) {
+    .container_form_login {
+        padding: 0px 5vh;
+    }
+
+    .container_image_text {
+        width: 60vh;
+        & .txt_img {
+            font-size: 2rem;
+            & h2 {
+                font-size: 3rem;
+            }
+            & p {
+                font-size: 1.5rem;
+            }
+        }
+    }
+}
+
+
+@media (max-width: 1000px) {
+
+.container_login {
+    padding: 0 69px;
+    background-color: transparent;
+    width: 100%;
+    display: flex;
+    height: 100vh;
+    align-items: center;
+}
+
+    .container_image_text {
+        display: none;
+    }
+    .container_form_login {
+        width: 100%;
+        display: flex;
+        padding: 2em;
+        flex-direction: column;
+        align-items: center;
+        border: 0.5px gray solid;
+        border-radius: 5px;
+        box-shadow: 3px 3px 5px black;
+
+        & form {
+            display: flex;
+            /* flex-direction: column; */
+            width: 100%;
+            /* padding: 0 5rem; */
+
+            & input {
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+            }
+        }
+    }
+
+   
+    
+}
+
+@media (max-width: 600px) {
+    .container_login {
+        padding: 0 20px;
+        background-color: transparent;
+        width: 100%;
+        display: flex;
+        height: 100vh;
+        align-items: center;
+    }
+
+    .container_form_login {
+        width: 100%;
+        display: flex;
+        padding: 2em;
+        flex-direction: column;
+        align-items: center;
+        border: 0.5px gray solid;
+        border-radius: 5px;
+        box-shadow: 3px 3px 5px black;
+
+        & form {
+            display: flex;
+            /* flex-direction: column; */
+            width: 100%;
+            /* padding: 0 5rem; */
+
+            & input {
+                box-shadow: rgba(0, 0, 0, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+            }
+        }
+    }
+
+}
+
+
