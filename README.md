@@ -1,6 +1,6 @@
 # UTNetwork - Red Social Universitaria
 UTNetwork es la red social donde estudiantes, ingenieros, técnicos y docentes se conectan para aprender, compartir y crecer juntos.
-> Proyecto desarrollado para la asignatura **Programacion II**, impartida por **Prof. Miguel Cabrera , Prof. Sebastian Bruselario,**.
+> Proyecto desarrollado para la asignatura **Programacion II**, impartida por **Prof. Miguel Cabrera , Prof. Sebastian Bruselario, Prof. Ricardo Tabacman**.
 
 ---
 
