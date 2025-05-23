@@ -48,5 +48,6 @@ UTNetwork es la red social donde estudiantes, ingenieros, técnicos y docentes s
 
 ## 🔒 Seguridad
 - Encriptacion de contraseñas mediante hashing con SHA-256
+- Mensajes Encriptados.
 
 ---
