@@ -18,7 +18,7 @@ UTNetwork es la red social donde estudiantes, ingenieros, técnicos y docentes s
 
 ---
 
-## Capturas de Pantallas
+## 📷Capturas de Pantallas
 <img src="https://github.com/TomasB-Dev/utnetwork/blob/main/md_static/inicio.png" alt="Imagen muestra de lading page" />
 <img src="https://github.com/TomasB-Dev/utnetwork/blob/main/md_static/inicio2.png" alt="Imagen about us" />
 <img src="https://github.com/TomasB-Dev/utnetwork/blob/main/md_static/inicio3.png" alt="Imagen estadisticas" />
@@ -26,10 +26,23 @@ UTNetwork es la red social donde estudiantes, ingenieros, técnicos y docentes s
 <img src="https://github.com/TomasB-Dev/utnetwork/blob/main/md_static/login.png" alt="Imagen login" />
 <img src="https://github.com/TomasB-Dev/utnetwork/blob/main/md_static/register.png" alt="Imagen Register" />
 
-## progress list
-- [X] Create repo
-- [x] Landing page
-- [X] Login page
-- [ ] Register page
-- [ ] Persona iniciada view
-- [ ] Responsive
+---
+
+## 📋 Funcionalidades Principales
+- ✅ Registro e inicio de sesión con validacion.
+- ✅ Publicacion en tiempo real.
+- ✅ Modo oscuro / claro.
+- ✅ Responsive.
+
+---
+
+## 📌 Funcionalidades previstas
+
+- [ ] Laboratorio.
+- [ ] Chat en tiempo real.
+- [ ] Juegos.
+- [ ] Retos.
+- [ ] otros.
+
+## 🔒 Seguridad
+- Encriptacion de contraseñas mediante hashing con SHA-256
