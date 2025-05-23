@@ -19,6 +19,7 @@ UTNetwork es la red social donde estudiantes, ingenieros, técnicos y docentes s
 ---
 
 ## Capturas de Pantallas
+[Lading Page](https://github.com/TomasB-Dev/utnetwork/blob/main/md_static/inicio.png)
 
 ## progress list
 - [X] Create repo
