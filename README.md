@@ -1,4 +1,22 @@
-# utnetwork
+# UTNetwork - Red Social Universitaria
+UTNetwork es la red social donde estudiantes, ingenieros, técnicos y docentes se conectan para aprender, compartir y crecer juntos.
+> Proyecto desarrollado para la asignatura **Programacion II**, impartida por **Prof. Miguel Cabrera , Prof. Sebastian Bruselario,**.
+
+---
+
+## 👥 Autores
+- 👩‍💻 - Sosa Agustin.
+- 👩‍💻 - Barthelemy Tomás
+
+---
+
+## ⚙️ Tecnologias Utilizadas
+
+- **Frontend:** Bootstrap, CSS, JS
+- **Backend:** Flask
+- **Otras herramientas:** Figma, GitHub
+
+## Capturas de Pantallas
 ## progress list
 - [X] Create repo
 - [x] Landing page
