@@ -18,7 +18,7 @@ UTNetwork es la red social donde estudiantes, ingenieros, técnicos y docentes s
 
 ---
 
-## 📷Capturas de Pantallas
+## 📷 Capturas de Pantallas
 <img src="https://github.com/TomasB-Dev/utnetwork/blob/main/md_static/inicio.png" alt="Imagen muestra de lading page" />
 <img src="https://github.com/TomasB-Dev/utnetwork/blob/main/md_static/inicio2.png" alt="Imagen about us" />
 <img src="https://github.com/TomasB-Dev/utnetwork/blob/main/md_static/inicio3.png" alt="Imagen estadisticas" />
