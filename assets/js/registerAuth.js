@@ -139,7 +139,6 @@ const validateForm = (e)=> {
     
     if(term && name && email && password && confirm_password){
         successMessage();
-        console.log('Formulario enviado con exito');
     } else {
         return 
     }
