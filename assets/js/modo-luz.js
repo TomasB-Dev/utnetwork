@@ -106,7 +106,6 @@ function changue_BG() {
                 element.style.color = 'white';
             }
         } catch (error) {
-
             console.log(error)
         }
         

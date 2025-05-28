@@ -11,7 +11,7 @@ const validateTerm =()=> {
 
     if(!value.checked) {
         error_message.style.display = 'block'
-        error_message.textContent= 'Debes aceptar los terminos y condiciones'
+        error_message.textContent= 'Debes aceptar los terminos y condiciones.'
 
 
         return false
@@ -37,7 +37,7 @@ const validateName = ()=> {
 
 
     if(value.length <3 || !verify) {
-        error_message.textContent= 'El nombre debe tener al menos 3 caracteres y solo letras'
+        error_message.textContent= 'Debe tener al menos 3 caracteres, solo se admiten letras.'
         error_message.style.display = 'block'
         input.classList.add('error_input')
         return false
@@ -60,7 +60,7 @@ const validateEmail = ()=> {
 
     if(!verify) {
         error_message.style.display = 'block'
-        error_message.textContent= 'El correo no es valido'
+        error_message.textContent= 'El correo no es valido.'
         input.classList.add('error_input')
         return false
     } else {
@@ -82,7 +82,7 @@ const validatePassword = ()=> {
 
     let verify = regex.test(value);
     if(value.length < 8 || !verify) {
-        error_message.textContent= 'La contraseña debe tener al menos 8 caracteres, una letra y un numero'
+        error_message.textContent= 'Debe tener al menos 8 caracteres, una letra y un numero.'
         error_message.style.display = 'block'
         input.classList.add('error_input')
         return false;
@@ -106,7 +106,7 @@ const validateConfirmPassword = ()=> {
     if(value !== password) {
         error_message.style.display = 'block'
 
-        error_message.textContent= 'Las contraseñas no coinciden'
+        error_message.textContent= 'Las contraseñas deben coincidir.'
         input.classList.add('error_input')
         return false
     } else {
@@ -119,12 +119,11 @@ const validateConfirmPassword = ()=> {
 
 }
 
-
 const successMessage = ()=> {
     const message = document.getElementById('success_message');
     message.style.display = 'block';
-    message.textContent = 'Formulario enviado con exito';
-    console.log('Formulario enviado con exito');
+    message.textContent = 'Usted se registró con exito.';
+
 }
 
 
