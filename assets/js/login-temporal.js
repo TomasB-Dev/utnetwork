@@ -7,16 +7,18 @@ document.getElementById('login-form').addEventListener('submit', function (e) {
 
     if (!validarmail(email)) {
         mensaje.style.color = 'red';
-        mensaje.textContent = 'correo invalido.'
+        mensaje.textContent = 'El correo es invalido.'
         return;
     }
-
+    // Este login es fake hasta que implementemos el backend y poder obtener los datos
+    // de una DB real.
     if (email == "mailfake@mail.com" && password == "123456") {
+        
         mensaje.style.color = 'green'
-        mensaje.textContent = 'Logeado'
+        mensaje.textContent = 'Ingreso correctamente.'
     } else {
         mensaje.style.color = 'red'
-        mensaje.textContent = 'datos incorrectos, vuelve a intentarlo.'
+        mensaje.textContent = 'Los datos son incorrectos, vuelve a intentarlo.'
     }
 });
 
