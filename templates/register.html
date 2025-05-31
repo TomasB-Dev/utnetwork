@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <link rel="shortcut icon" href="../assets/images/logo.ico" />
+    <link rel="shortcut icon" href="{{url_for('static',filename='images/logo.ico')}}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
 
@@ -49,7 +49,7 @@
                 <div class="error" id="error_confirm_password"></div>
 
                 <div class="container_check">
-                <span class="txt" for="check">Acepto los <a href="terminos.html" target="_blank">terminos y condiciones</a></span>
+                <span class="txt" for="check">Acepto los <a href="{{url_for('terminos')}}" target="_blank">terminos y condiciones</a></span>
                 <input type="checkbox" id="check">
                 <div class="error" id="error_term"></div>
                 </div>
@@ -60,14 +60,14 @@
             </form>
         <div class="container_link_register">
             <p class="txt">Ya posee una cuenta?</p>
-            <a href="../pages/login.html">Iniciar Sesion</a>
+            <a href="{{url_for('login')}}">Iniciar Sesion</a>
         </div>
         </div>
     </section>
 
     </main>
-    <script src="../assets/js/modo-luz.js"></script>
-    <script src="../assets/js/registerAuth.js"></script>
+    <script src="{{url_for('static',filename='js/modo-luz.js')}}"></script>
+    <script src="{{url_for('static',filename='js/registerAuth.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>    
 </body>
 </html>

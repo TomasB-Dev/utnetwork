@@ -12,7 +12,7 @@ def login():
 def register():
     return render_template('register.html')
 @app.route('/terminos')
-def terms():
+def terminos():
     return render_template('terminos.html')
 
 if __name__ == "__main__":
