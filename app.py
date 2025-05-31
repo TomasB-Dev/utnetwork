@@ -25,7 +25,7 @@ def registrar():
     usuario.hashear()
     usuario.registrar()
     time.sleep(1)#momentaneo, hablar con agus para ver que opina
-    return redirect(url_for('index'))
+    return redirect(url_for('index'))# aca agregar la confirmacion por el mail
 
 if __name__ == "__main__":
     app.run(debug=True)

@@ -1,2 +1,5 @@
 modificar footer
 color de stats
+
+SE INSTALAN LOS REQUEST ASI:
+pip install -r requirements.txt

@@ -8,7 +8,7 @@ class Registro:
         """
         Utilizar antes de regirar para hashear la contraseña
         """
-        self.key  = hashlib.sha256(self.key.encode()).hexdigest()
+        self.key  = hashlib.sha256(self.key.encode()).hexdigest() #se supone que flask viene con una funcion para hacer esto piola
 
 
     def registrar(self):
