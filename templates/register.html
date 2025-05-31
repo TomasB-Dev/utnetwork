@@ -32,17 +32,17 @@
         <div class="container_form_login">
             <h1 class="txt">Bienvenido</h1>
             <!-- <span>¡Nos alegra tenerte acá! En esta red podés conocer compañeros de otras carreras, enterarte de eventos y compartir tus experiencias como estudiante de la UTN.</span> -->
-            <form action="" id="form">
+            <form action="{{ url_for('registrar') }}" id="form"  method="POST">
                 <!-- <h2 class="txt">INICIAR SESION</h2> -->
                 <label class="txt" for="name" >Nombre</label>
-                <input type="text" name="" id="name" placeholder="Ingresa tu nombre" required>
+                <input type="text" name="name" id="name" placeholder="Ingresa tu nombre" required>
                 <div class="error" id="error_name"></div>
         
                 <label class="txt" for="mail" >Email</label>
-                <input type="text" name="" id="email" placeholder="Ingresa tu email" required>
+                <input type="text" name="email" id="email" placeholder="Ingresa tu email" required>
                 <div class="error" id="error_email"></div>
                 <label class="txt"for="password">Contraseña</label>
-                <input type="password" name="" id="password" placeholder="*********" required>
+                <input type="password" name="password" id="password" placeholder="*********" required>
                 <div class="error" id="error_password"></div>
                 <label class="txt" for="confirm_password">Repite La Contraseña</label>
                 <input type="password" name="" id="confirm_password" placeholder="*********" required>
