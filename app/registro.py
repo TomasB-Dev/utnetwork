@@ -1,4 +1,14 @@
 import hashlib
+from app.Data_Base import DataBase
+from dotenv import load_dotenv
+import os
+load_dotenv(dotenv_path='../.env')
+
+DB_NAME = os.getenv('DB_NAME')
+DB_KEY = os.getenv('DB_KEY')
+HOST = os.getenv('HOST')
+USER= os.getenv('USER')
+db_user = DataBase(HOST,USER,DB_KEY,DB_NAME)
 class Registro:
     def __init__(self,nombre,mail,key):
         self.nombre = nombre
@@ -13,11 +23,14 @@ class Registro:
 
     def registrar(self):
         """
-        Carga los datos hasheados a la base de datos
+        carga los datos hasheados a la base de datos
         """
         self.__hashear()
         if self.key:
             print('Registrado')
+            db_user.conectar()
+            db_user.consulta("INSERT INTO usuarios (nombre, mail,contrasena) VALUES (%s, %s,%s)", (self.nombre,self.mail,self.key))
+            db_user.cerrar()
         else:
             print('no registrado')
     def __str__(self):

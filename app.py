@@ -2,7 +2,9 @@ from flask import Flask, render_template, url_for, request,  redirect
 from app.registro import Registro
 import time
 
+
 app =  Flask(__name__)
+
 
 @app.route('/')
 def index():
