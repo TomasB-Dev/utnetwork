@@ -4,9 +4,9 @@ class Registro:
         self.nombre = nombre
         self.mail = mail
         self.key = key
-    def hashear(self):#podria incluir esta en registrar directamente pero prefiero manejarlo de manera separada
+    def __hashear(self):#podria incluir esta en registrar directamente pero prefiero manejarlo de manera separada
         """
-        Utilizar antes de regirar para hashear la contraseña
+        Hashea la contraseña
         """
         self.key  = hashlib.sha256(self.key.encode()).hexdigest() #se supone que flask viene con una funcion para hacer esto piola
 
@@ -15,6 +15,7 @@ class Registro:
         """
         Carga los datos hasheados a la base de datos
         """
+        self.__hashear()
         if self.key:
             print('Registrado')
         else:

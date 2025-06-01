@@ -22,7 +22,6 @@ def registrar():
     key = request.form['password']
     mail = request.form['email']
     usuario = Registro(username, mail,key )
-    usuario.hashear()
     usuario.registrar()
     time.sleep(1)#momentaneo, hablar con agus para ver que opina
     return redirect(url_for('index'))# aca agregar la confirmacion por el mail
