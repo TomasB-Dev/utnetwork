@@ -31,7 +31,7 @@ class DataBase:
         if self.conexion and self.conexion.is_connected():
             self.conexion.close()
             
-    def consulta(self, query, parametros=None):
+    def consulta(self, query, parametros=None,fetchone=False):
         """
         realiza consultas a la base de datos
         """
