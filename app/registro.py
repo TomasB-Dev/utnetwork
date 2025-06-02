@@ -4,11 +4,7 @@ from dotenv import load_dotenv
 import os
 load_dotenv(dotenv_path='../.env')
 
-DB_NAME = os.getenv('DB_NAME')
-DB_KEY = os.getenv('DB_KEY')
-HOST = os.getenv('HOST')
-USER = os.getenv('USER')
-db_user = DataBase(HOST, USER, DB_KEY, DB_NAME)
+
 
 
 class Registro:
@@ -28,6 +24,11 @@ class Registro:
         """
         carga los datos hasheados a la base de datos
         """
+        DB_NAME = os.getenv('DB_NAME')
+        DB_KEY = os.getenv('DB_KEY')
+        HOST = os.getenv('HOST')
+        USER = os.getenv('USER')
+        db_user = DataBase(HOST, USER, DB_KEY, DB_NAME)
         self.__hashear()
         if self.key:
             print('Registrado')
