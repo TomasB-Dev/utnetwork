@@ -36,7 +36,7 @@ def log():
     mail = request.form['mail']
     user = Login(mail,key)
     loged =user.loguear()
-    if user == True:
+    if loged == True:
         return redirect(url_for('index'))
     else:
         pass

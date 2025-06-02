@@ -10,3 +10,5 @@ __pycache__/
 # archivos de configuracion de entorno local
 *.env
 .env.*
+
+ideas.txt
