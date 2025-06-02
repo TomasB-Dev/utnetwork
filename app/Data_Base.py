@@ -1,12 +1,14 @@
 import mysql.connector
 from mysql.connector import Error
 
+
 class DataBase:
-    def __init__(self,host,nombre,key,db):
+    def __init__(self, host, nombre, key, db):
         self.host = host
         self.nombre = nombre
         self.key = key
         self.db = db
+
     def conectar(self):
         """
         establece la conexion con la base de datos
@@ -30,14 +32,14 @@ class DataBase:
             self.cursor.close()
         if self.conexion and self.conexion.is_connected():
             self.conexion.close()
-            
-    def consulta(self, query, parametros=None,fetchone=False):
+
+    def consulta(self, query, parametros=None, fetchone=False):
         """
         realiza consultas a la base de datos
         """
         try:
             self.cursor.execute(query, parametros or ())
-            if query.strip().lower().startswith("select"): # aca verifico si es un select
+            if query.strip().lower().startswith("select"):  # aca verifico si es un select
                 return self.cursor.fetchall()
             else:
                 self.conexion.commit()
