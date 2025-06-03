@@ -2,6 +2,7 @@ import hashlib
 from app.Data_Base import DataBase
 from dotenv import load_dotenv
 import os
+from mysql.connector import Error
 load_dotenv(dotenv_path='../.env')
 
 
