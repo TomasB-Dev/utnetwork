@@ -36,10 +36,13 @@ def registrar():
     key = request.form['password']
     mail = request.form['email']
     usuario = Registro(username, mail, key)
-    usuario.registrar()
+    registro = usuario.registrar()
     time.sleep(1)  # momentaneo, hablar con agus para ver que opina
     # aca agregar la confirmacion por el mail
-    return redirect(url_for('index'))
+    if registro:
+        return redirect(url_for('login'))
+    else:
+        return redirect(url_for('index'))
 
 
 @app.route('/app/Loguear', methods=['POST'])
