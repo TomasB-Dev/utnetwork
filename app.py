@@ -43,7 +43,7 @@ def registrar():
     # aca agregar la confirmacion por el mail
     if registro:
         return redirect(url_for('login'))
-
+#daleagua
 
 @app.route('/app/Loguear', methods=['POST'])
 def log():
