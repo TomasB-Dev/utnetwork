@@ -38,6 +38,8 @@ class Registro:
             db_user.cerrar()
         else:
             print('no registrado')
+    
+    
 
     def __str__(self):
         return f'nombre: {self.nombre} mail: {self.mail} key:{self.key}'

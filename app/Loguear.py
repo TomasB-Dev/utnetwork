@@ -15,6 +15,9 @@ class Login:
         self.mail = mail
         self.key = key
 
+
+        print(f"usuario: {self.key}, mail: {self.mail}")
+
     def __hashear(self):
         self.key = hashlib.sha256(self.key.encode()).hexdigest()
 
@@ -24,6 +27,8 @@ class Login:
         resultados = db_user.consulta(
             "SELECT * FROM usuarios WHERE mail = %s AND contrasena = %s", (self.mail, self.key))
         db_user.cerrar()
+        
+        print("resultads", resultados)
         if len(resultados) > 0:
             return False
         else:

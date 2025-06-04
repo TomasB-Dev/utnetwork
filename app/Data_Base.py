@@ -8,11 +8,9 @@ class DataBase:
         self.nombre = nombre
         self.key = key
         self.db = db
-
+        self.conectar()
     def conectar(self):
-        """
-        establece la conexion con la base de datos
-        """
+        
         try:
             self.conexion = mysql.connector.connect(
                 host=self.host,
@@ -20,9 +18,13 @@ class DataBase:
                 password=self.key,
                 database=self.db
             )
+            if self.conexion.is_connected():
+                print(" Conexion exitosa")
             self.cursor = self.conexion.cursor(dictionary=True)
+
         except Error as e:
-            print(f"error al conectar: {e}")
+            print(f"Error al conectar: {e}")
+
 
     def cerrar(self):
         """
@@ -37,7 +39,9 @@ class DataBase:
         """
         realiza consultas a la base de datos
         """
+
         try:
+
             self.cursor.execute(query, parametros or ())
             if query.strip().lower().startswith("select"):  # aca verifico si es un select
                 return self.cursor.fetchall()
