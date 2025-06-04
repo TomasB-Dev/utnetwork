@@ -2,26 +2,38 @@ from flask import Flask, render_template, url_for, request,  redirect
 from app.registro import Registro
 from app.Loguear import Login
 import time
+import os
 
+app = Flask(__name__)
 
-app =  Flask(__name__)
+FIRMA = os.getenv('FIRMA')  # firmar la cokiee
+app.secret_key = FIRMA
 
 
 @app.route('/')
 def index():
     return render_template('index.html')
-@app.route('/login', methods=['GET'])
+
+
+@app.route('/login')
 def login():
     return render_template('login.html')
+
+
 @app.route('/register')
 def register():
     return render_template('register.html')
+
+
 @app.route('/terminos')
 def terminos():
     return render_template('terminos.html')
+
+
 @app.route('/app/registrar', methods=['POST'])
 def registrar():
 
+    
     username = request.form['name']
     key = request.form['password']
     mail = request.form['email']
@@ -31,20 +43,18 @@ def registrar():
     # aca agregar la confirmacion por el mail
     if registro:
         return redirect(url_for('login'))
-        
-    else:
-        return redirect(url_for('register'))
 
-@app.route('/app/login', methods=['POST'])
-def login():
-    mail = request.form['email']
+
+@app.route('/app/Loguear', methods=['POST'])
+def log():
     key = request.form['password']
-    usuario = Login(mail, key)
-    usuario.loguear()
-    time.sleep(1)
-    return redirect(url_for('home'))
-
-
+    mail = request.form['mail']
+    user = Login(mail, key)
+    loged = user.loguear()
+    if loged == True:
+        return redirect(url_for('index'))
+    else:
+        pass
 
 
 if __name__ == "__main__":
