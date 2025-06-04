@@ -4,7 +4,6 @@ const authForm= document.getElementById('form');
 
 
 
-
 const validateTerm =()=> {
     const error_message = document.getElementById('error_term')
     const value = document.getElementById('check')
@@ -139,7 +138,9 @@ const validateForm = (e)=> {
     if(term && name && email && password && confirm_password){
         successMessage();
         authForm.submit();
+    
     } else {
+
         return 
     }
     

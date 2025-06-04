@@ -32,6 +32,7 @@ def terminos():
 
 @app.route('/app/registrar', methods=['POST'])
 def registrar():
+
     username = request.form['name']
     key = request.form['password']
     mail = request.form['email']
@@ -41,8 +42,9 @@ def registrar():
     # aca agregar la confirmacion por el mail
     if registro:
         return redirect(url_for('login'))
+        
     else:
-        return redirect(url_for('index'))
+        return redirect(url_for('register'))
 
 
 @app.route('/app/Loguear', methods=['POST'])
