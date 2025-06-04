@@ -59,17 +59,14 @@ class Registro:
         else:
             self.__hashear()
             if self.key:
-                try:
-                    db_user.conectar()
-                    db_user.consulta(
-                        "INSERT INTO usuarios (nombre, mail,contrasena) VALUES (%s, %s,%s)", (self.nombre, self.mail, self.key))
-                    db_user.cerrar()
-                    # Manejar errores en caso de
-                    print('Registro')
-                    return True
-                except Error as e:
-                    print(f'El error es: {e}')
-                    return False
+                db_user.conectar()
+                db_user.consulta(
+                    "INSERT INTO usuarios (nombre, mail,contrasena) VALUES (%s, %s,%s)", (self.nombre, self.mail, self.key))
+                db_user.cerrar()
+                # Manejar errores en caso de
+                print('Registro')
+                return True
+
             else:
                 print('no registrado')
                 return False
