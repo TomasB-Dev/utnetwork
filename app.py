@@ -21,13 +21,26 @@ def terminos():
     return render_template('terminos.html')
 @app.route('/app/registrar', methods=['POST'])
 def registrar():
+
     username = request.form['name']
     key = request.form['password']
     mail = request.form['email']
+<<<<<<< HEAD
     usuario = Registro(username, mail,key )
     usuario.registrar()
     time.sleep(1)#momentaneo, hablar con agus para ver que opina 
     return redirect(url_for('index'))# aca agregar la confirmacion por el mail
+=======
+    usuario = Registro(username, mail, key)
+    registro = usuario.registrar()
+    time.sleep(1)  # momentaneo, hablar con agus para ver que opina
+    # aca agregar la confirmacion por el mail
+    if registro:
+        return redirect(url_for('login'))
+        
+    else:
+        return redirect(url_for('register'))
+>>>>>>> be9189dab2338a10542da4ec6c21c6e5b474f76a
 
 @app.route('/app/login', methods=['POST'])
 def login():

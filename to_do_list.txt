@@ -1,6 +1,6 @@
 fixear register login
 implementar authenticador de mail
-
+notificar si mail ya existe
 
 
 
