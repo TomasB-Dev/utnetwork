@@ -59,11 +59,6 @@ class Registro:
             print('el mail ya esta registrado')
             return False
         else:
-<<<<<<< HEAD
-            print('no registrado')
-    
-    
-=======
             self.__hashear()
             if self.key:
                 db_user.conectar()
@@ -77,7 +72,6 @@ class Registro:
             else:
                 print('no registrado')
                 return False
->>>>>>> be9189dab2338a10542da4ec6c21c6e5b474f76a
 
     def __str__(self):
         return f'nombre: {self.nombre} mail: {self.mail} key:{self.key}'
