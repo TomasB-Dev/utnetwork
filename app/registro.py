@@ -12,8 +12,10 @@ DB_KEY = os.getenv('DB_KEY')
 HOST = os.getenv('HOST')
 USER = os.getenv('USER')
 db_user = DataBase(HOST, USER, DB_KEY, DB_NAME)
+
+
 class Registro:
-   
+
     def __init__(self, nombre, mail, key):
         self.nombre = nombre
         self.mail = mail
