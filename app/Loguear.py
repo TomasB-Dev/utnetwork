@@ -1,4 +1,5 @@
 import hashlib
+import secrets
 from app.Data_Base import DataBase
 from dotenv import load_dotenv
 import os
@@ -21,6 +22,16 @@ class Login:
     def __hashear(self):
         self.key = hashlib.sha256(self.key.encode()).hexdigest()
 
+    def __generarToken(self):
+        token = secrets.token_bytes(16)  
+        token_hex = token.hex() 
+        db_user.conectar()
+        db_user.consulta(
+            "UPDATE usuarios SET token = %s WHERE mail = %s",(token_hex,self.mail)
+        )
+        token2 = hashlib.sha256(token_hex.encode()).hexdigest()
+        return  {"token": token2}
+    
     def loguear(self):
         self.__hashear()
         db_user.conectar()
@@ -30,6 +41,7 @@ class Login:
         
         print("resultads", resultados)
         if len(resultados) > 0:
-            return False
+            token = self.__generarToken()
+            return token
         else:
-            return True
+            return 0

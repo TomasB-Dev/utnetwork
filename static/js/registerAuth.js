@@ -122,6 +122,7 @@ const successMessage = ()=> {
     const message = document.getElementById('success_message');
     message.style.display = 'block';
     message.textContent = 'Usted se registró con exito.';
+    
 
 }
 

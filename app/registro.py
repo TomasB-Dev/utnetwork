@@ -63,7 +63,7 @@ class Registro:
             if self.key:
                 db_user.conectar()
                 db_user.consulta(
-                    "INSERT INTO usuarios (nombre, mail,contrasena) VALUES (%s, %s,%s)", (self.nombre, self.mail, self.key))
+                    "INSERT INTO usuarios (nombre, mail,contrasena,state,token) VALUES (%s, %s,%s,%s,%s)", (self.nombre, self.mail, self.key,True,0))
                 db_user.cerrar()
                 # Manejar errores en caso de
                 print('Registro')
@@ -72,6 +72,7 @@ class Registro:
             else:
                 print('no registrado')
                 return False
+
 
     def __str__(self):
         return f'nombre: {self.nombre} mail: {self.mail} key:{self.key}'

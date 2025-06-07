@@ -12,7 +12,7 @@ formulario.addEventListener('submit', function (e) {
         return;
     }
     formulario.submit();
-    console.log('lo tomo bien')
+    
     
     // Este login es fake hasta que implementemos el backend y poder obtener los datos
     // de una DB real.
