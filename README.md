@@ -10,7 +10,7 @@ UTNetwork es la red social donde estudiantes, ingenieros, técnicos y docentes s
 
 ---
 
-[![Readme Card](https://github-readme-stats.vercel.app/api/pin/?username=TomasB-Dev&repo=utnetwork)](https://github.com/TomasB-Dev/utnetwork)
+![Repo Size](https://img.shields.io/github/repo-size/TomasB-Dev/utnetwork)
 ## ⚙️ Tecnologias Utilizadas
 
 - **Frontend:** Bootstrap, CSS, JS
