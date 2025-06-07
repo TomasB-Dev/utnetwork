@@ -61,7 +61,10 @@ mysql-connector-python==9.3.0
 ---
 
 ## ℹ️Información Extra
-![Last Commit](https://img.shields.io/github/last-commit/TomasB-Dev/utnetwork)
+
 ![Repo Size](https://img.shields.io/github/repo-size/TomasB-Dev/utnetwork)
+
+![Last Commit](https://img.shields.io/github/last-commit/TomasB-Dev/utnetwork)
+
 
 ---
