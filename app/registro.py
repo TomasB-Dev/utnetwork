@@ -64,6 +64,7 @@ class Registro:
                 db_user.conectar()
                 db_user.consulta(
                     "INSERT INTO usuarios (nombre, mail,contrasena,state,token) VALUES (%s, %s,%s,%s,%s)", (self.nombre, self.mail, self.key,True,0))
+                #inicializa el token en 0 para comparar despues y el state de la cuenta esta en true solo por ahora hasta implementar la validacion por mail
                 db_user.cerrar()
                 # Manejar errores en caso de
                 print('Registro')

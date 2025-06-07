@@ -17,8 +17,6 @@ class Login:
         self.key = key
 
 
-        print(f"usuario: {self.key}, mail: {self.mail}")
-
     def __hashear(self):
         self.key = hashlib.sha256(self.key.encode()).hexdigest()
 
@@ -39,9 +37,8 @@ class Login:
             "SELECT * FROM usuarios WHERE mail = %s AND contrasena = %s", (self.mail, self.key))
         db_user.cerrar()
         
-        print("resultads", resultados)
         if len(resultados) > 0:
-            token = self.__generarToken()
+            token = self.__generarToken() # cada vez que loguea genera un token que sirve durante la session
             return token
         else:
-            return 0
+            return 0 #retorna 0 como paramatero para comparar en la raiz

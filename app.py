@@ -49,11 +49,10 @@ def registrar():
 def log():
     key = request.form['password']
     mail = request.form['mail']
-    print('entro loguear')
     user = Login(mail, key)
     check = user.loguear()
     if check == 0:
-        print(check)
+        redirect(url_for('login'))
     else:
         return jsonify(check)
 
