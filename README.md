@@ -23,6 +23,12 @@ requests==2.32.3
 mysql-connector-python==9.3.0
 
 ```
+Puedes instalarlas atraves de 
+
+```
+pip install -r requirements.txt
+
+```
 
 ---
 
