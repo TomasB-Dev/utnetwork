@@ -27,7 +27,6 @@ Puedes instalarlas atraves de
 
 ```
 pip install -r requirements.txt
-
 ```
 
 ---
