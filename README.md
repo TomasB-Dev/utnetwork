@@ -15,6 +15,14 @@ UTNetwork es la red social donde estudiantes, ingenieros, técnicos y docentes s
 - **Frontend:** Bootstrap, CSS, JS
 - **Backend:** Flask
 - **Otras herramientas:** Figma, GitHub
+### Dependencias
+```
+Flask==3.1.1
+python-dotenv==1.1.0
+requests==2.32.3
+mysql-connector-python==9.3.0
+
+```
 
 ---
 
