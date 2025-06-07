@@ -9,8 +9,7 @@ UTNetwork es la red social donde estudiantes, ingenieros, técnicos y docentes s
 - 👩‍💻 - Barthelemy Tomás.
 
 ---
-![Last Commit](https://img.shields.io/github/last-commit/TomasB-Dev/utnetwork)
-![Repo Size](https://img.shields.io/github/repo-size/TomasB-Dev/utnetwork)
+
 ## ⚙️ Tecnologias Utilizadas
 
 - **Frontend:** Bootstrap, CSS, JS
@@ -58,5 +57,11 @@ mysql-connector-python==9.3.0
 ## 🔒 Seguridad
 - Encriptacion de contraseñas mediante hashing con SHA-256
 - Mensajes Encriptados.
+
+---
+
+## ℹ️Información Extra
+![Last Commit](https://img.shields.io/github/last-commit/TomasB-Dev/utnetwork)
+![Repo Size](https://img.shields.io/github/repo-size/TomasB-Dev/utnetwork)
 
 ---
