@@ -11,5 +11,6 @@
 const sesion = "{{ usuario | safe }}";
 localStorage.setItem('usuario', sesion)
 </script>
+<a href="{{ url_for('logout') }}">desloguear</a>
 </body>
 </html>

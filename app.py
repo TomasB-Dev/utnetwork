@@ -47,7 +47,12 @@ def registrar():
 @app.route('/home')
 def home():
     token = session.get('usuario')
-    return render_template('home.html', token=token)
+    if session:
+        return render_template('home.html', token=token)
+    else:
+        return render_template('error.html')
+    
+
     
 
 @app.route('/app/Loguear', methods=['POST'])
@@ -57,12 +62,17 @@ def log():
     user = Login(mail, key)
     check = user.loguear()
     if check == False:
+        session.clear()
         return redirect(url_for('login'))
     else:
         session['usuario'] = user.get_id()
         return redirect(url_for('home'))
 
-
+@app.route('/logout')
+def logout():
+    session.clear()
+    return redirect(url_for('login'))
 
 if __name__ == "__main__":
     app.run(debug=True)
+    
