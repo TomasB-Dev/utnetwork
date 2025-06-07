@@ -7,6 +7,9 @@
 </head>
 <body>
     
-    
+<script>
+const sesion = "{{ usuario | safe }}";
+localStorage.setItem('usuario', sesion)
+</script>
 </body>
 </html>

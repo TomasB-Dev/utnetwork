@@ -20,15 +20,12 @@ class Login:
     def __hashear(self):
         self.key = hashlib.sha256(self.key.encode()).hexdigest()
 
-    def __generarToken(self):
-        token = secrets.token_bytes(16)  
-        token_hex = token.hex() 
+    def get_id(self):
         db_user.conectar()
-        db_user.consulta(
-            "UPDATE usuarios SET token = %s WHERE mail = %s",(token_hex,self.mail)
-        )
-        token2 = hashlib.sha256(token_hex.encode()).hexdigest()
-        return  {"token": token2}
+        resultados = db_user.consulta(
+            "SELECT id FROM usuarios WHERE mail = %s AND contrasena = %s", (self.mail, self.key))
+        db_user.cerrar()
+        return resultados
     
     def loguear(self):
         self.__hashear()
@@ -38,7 +35,8 @@ class Login:
         db_user.cerrar()
         
         if len(resultados) > 0:
-            token = self.__generarToken() # cada vez que loguea genera un token que sirve durante la session
-            return token
+            
+            return True
         else:
-            return 0 #retorna 0 como paramatero para comparar en la raiz
+            return False 
+    

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request,  redirect, jsonify
+from flask import Flask, render_template, url_for, request,  redirect, jsonify,session
 from app.registro import Registro
 from app.Loguear import Login
 import time
@@ -44,6 +44,11 @@ def registrar():
     if registro == True:
         return redirect(url_for('login'))
 
+@app.route('/home')
+def home():
+    token = session.get('usuario')
+    return render_template('home.html', token=token)
+    
 
 @app.route('/app/Loguear', methods=['POST'])
 def log():
@@ -51,10 +56,11 @@ def log():
     mail = request.form['mail']
     user = Login(mail, key)
     check = user.loguear()
-    if check == 0:
-        redirect(url_for('login'))
+    if check == False:
+        return redirect(url_for('login'))
     else:
-        return jsonify(check)
+        session['usuario'] = user.get_id()
+        return redirect(url_for('home'))
 
 
 
