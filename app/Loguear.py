@@ -32,10 +32,16 @@ class Login:
         resultados = db_user.consulta(
             "SELECT * FROM usuarios WHERE mail = %s AND contrasena = %s", (self.mail, self.key))
         db_user.cerrar()
-        
+        print('***********')
+        print(len(resultados))
+        print('***********')
         if len(resultados) > 0:
-            
-            return True
+            print('entro primer if')
+            print(resultados[0]['state'])
+            if resultados[0]['state'] == 1:
+                return True
+            else:
+                return '0' # retorno 0 para saber que no esta verificada
         else:
             return False 
     

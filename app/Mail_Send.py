@@ -13,7 +13,7 @@ class Send_Mail:
 
     def enviarMail(self,asunto,contenido):
         """
-        Envia un mail al usuario en formato html
+        Envia un mail al usuario en formato html.
         """
         mensaje = MIMEMultipart("alternative")
         mensaje['From'] = self.mail
@@ -26,7 +26,7 @@ class Send_Mail:
             servidor.login(self.mail, self.key)
             servidor.send_message(mensaje)
             servidor.quit()
-            return True
+            
         except Exception as e:
             print(f'error al enviar el correo {e}')
-            return False
+            

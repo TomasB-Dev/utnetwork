@@ -3,7 +3,7 @@ from app.Data_Base import DataBase
 from dotenv import load_dotenv
 import os
 from mysql.connector import Error
-from Mail_Send import Send_Mail
+from app.Mail_Send import Send_Mail
 load_dotenv(dotenv_path='../.env')
 
 
@@ -64,7 +64,7 @@ class Registro:
             if self.key:
                 db_user.conectar()
                 db_user.consulta(
-                    "INSERT INTO usuarios (nombre, mail,contrasena,state) VALUES (%s, %s,%s,%s,%s)", (self.nombre, self.mail, self.key,True))
+                    "INSERT INTO usuarios (nombre, mail,contrasena,state) VALUES (%s, %s,%s,%s)", (self.nombre, self.mail, self.key,False))
                 
                 db_user.cerrar()
                 # Manejar errores en caso de
