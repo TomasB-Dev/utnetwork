@@ -3,6 +3,7 @@ from app.Data_Base import DataBase
 from dotenv import load_dotenv
 import os
 from mysql.connector import Error
+from Mail_Send import Send_Mail
 load_dotenv(dotenv_path='../.env')
 
 
@@ -67,7 +68,37 @@ class Registro:
                 
                 db_user.cerrar()
                 # Manejar errores en caso de
-                print('Registro')
+                MAIL = os.getenv('MAIL')
+                MAIL_KEY = os.getenv('MAIL_KEY')
+                avisar = Send_Mail(MAIL,MAIL_KEY,self.mail)
+                #el contenido de abajo es solo representativo por el momento, armar uno decente
+                contenido = """
+                            <html>
+<body style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; margin: 0;">
+    <table width="100%" cellpadding="0" cellspacing="0" style="max-width: 600px; margin: auto; background-color: #ffffff; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+    <tr>
+        <td style="padding: 30px; text-align: center;">
+        <h1 style="color: #2c3e50; margin-bottom: 10px;">¡Bienvenido a UTNetwork! 🎉</h1>
+        <p style="color: #555555; font-size: 16px; line-height: 1.6;">
+            Acabás de registrarte exitosamente en <strong>UTNetwork</strong>, la plataforma donde la comunidad tecnológica se conecta, comparte y crece.
+        </p>
+        <p style="color: #555555; font-size: 16px; line-height: 1.6;">
+            Desde ahora vas a poder acceder a contenido exclusivo, eventos en vivo, foros técnicos y mucho más.
+        </p>
+        <a href="https://utnetwork.com/login" style="display: inline-block; background-color: #0066cc; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 5px; margin-top: 20px;">
+            Accedé a tu cuenta
+        </a>
+        <hr style="margin: 40px 0; border: none; border-top: 1px solid #eeeeee;">
+        <p style="font-size: 13px; color: #999999;">
+Si no fuiste vos quien se registró, podés ignorar este mensaje o contactarnos.
+</p>
+</td>
+</tr>
+</table>
+</body>
+</html>
+                            """
+                avisar.enviarMail('Bienvenido a UTNetwork',contenido)
                 return True
 
             else:

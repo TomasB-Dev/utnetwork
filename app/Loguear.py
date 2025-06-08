@@ -1,5 +1,4 @@
 import hashlib
-import secrets
 from app.Data_Base import DataBase
 from dotenv import load_dotenv
 import os
