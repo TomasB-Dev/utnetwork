@@ -73,6 +73,13 @@ def logout():
     session.clear()
     return redirect(url_for('login'))
 
+
+@app.errorhandler(404)
+def page_error(error): 
+    return render_template('error.html'), 404
+
+
+
 if __name__ == "__main__":
     app.run(debug=True)
     
