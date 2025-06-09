@@ -1,6 +1,7 @@
 from flask import Flask, render_template, url_for, request,  redirect, jsonify,session
 from app.registro import Registro
 from app.Loguear import Login
+from app.datosUsuario import get_user_dataId
 import time
 import os
 
@@ -48,7 +49,9 @@ def registrar():
 def home():
     token = session.get('usuario')
     if session:
-        return render_template('home.html', token=token)
+
+        user_data = get_user_dataId(token[0]['id'])
+        return render_template('home.html', usuario=user_data[0])
     else:
         return render_template('error.html')
     

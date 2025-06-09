@@ -7,9 +7,12 @@
 </head>
 <body>
     
+    <h1>{{ usuario['nombre'] }}</h1>
+
+
 <script>
-const sesion = "{{ usuario | safe }}";
-localStorage.setItem('usuario', sesion)
+const usuario = '{{ usuario | tojson |safe }}';
+localStorage.setItem('usuario', usuario)
 </script>
 <a href="{{ url_for('logout') }}">desloguear</a>
 </body>

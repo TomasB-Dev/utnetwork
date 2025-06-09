@@ -41,7 +41,8 @@ class DataBase:
         """
 
         try:
-
+            if parametros is not None and not isinstance(parametros, tuple):
+                parametros = (parametros,) # esto es para verificar sea una tupla atte:los teni diabolicos
             self.cursor.execute(query, parametros or ())
             if query.strip().lower().startswith("select"):  # aca verifico si es un select
                 return self.cursor.fetchall()
