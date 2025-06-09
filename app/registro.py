@@ -7,7 +7,6 @@ from app.Mail_Send import Send_Mail
 load_dotenv(dotenv_path='../.env')
 
 
-
 DB_NAME = os.getenv('DB_NAME')
 DB_KEY = os.getenv('DB_KEY')
 HOST = os.getenv('HOST')
@@ -22,14 +21,12 @@ class Registro:
         self.mail = mail
         self.key = key
 
-
     def __hashear(self):  # podria incluir esta en registrar directamente pero prefiero manejarlo de manera separada
         """
         Hashea la contraseña
         """
         self.key = hashlib.sha256(self.key.encode()).hexdigest(
         )  # se supone que flask viene con una funcion para hacer esto piola
-
 
     def __existe(self):
         """
@@ -44,12 +41,11 @@ class Registro:
             f"SELECT mail FROM usuarios WHERE mail = '{self.mail}'"
         )
         db_user.cerrar()
-        
+
         if len(check_mail) < 1:
             return False
         else:
             return True
-
 
     def registrar(self):
         """
@@ -64,14 +60,14 @@ class Registro:
             if self.key:
                 db_user.conectar()
                 db_user.consulta(
-                    "INSERT INTO usuarios (nombre, mail,contrasena,state) VALUES (%s, %s,%s,%s)", (self.nombre, self.mail, self.key,False))
-                
+                    "INSERT INTO usuarios (nombre, mail,contrasena,state) VALUES (%s, %s,%s,%s)", (self.nombre, self.mail, self.key, False))
+
                 db_user.cerrar()
                 # Manejar errores en caso de
                 MAIL = os.getenv('MAIL')
                 MAIL_KEY = os.getenv('MAIL_KEY')
-                avisar = Send_Mail(MAIL,MAIL_KEY,self.mail)
-                #el contenido de abajo es solo representativo por el momento, armar uno decente
+                avisar = Send_Mail(MAIL, MAIL_KEY, self.mail)
+                # el contenido de abajo es solo representativo por el momento, armar uno decente
                 contenido = """
                             <html>
 <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; margin: 0;">
@@ -98,13 +94,12 @@ Si no fuiste vos quien se registró, podés ignorar este mensaje o contactarnos.
 </body>
 </html>
                             """
-                avisar.enviarMail('Bienvenido a UTNetwork',contenido)
+                avisar.enviarMail('Bienvenido a UTNetwork', contenido)
                 return True
 
             else:
                 print('no registrado')
                 return False
-
 
     def __str__(self):
         return f'nombre: {self.nombre} mail: {self.mail} key:{self.key}'

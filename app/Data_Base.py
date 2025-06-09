@@ -9,8 +9,9 @@ class DataBase:
         self.key = key
         self.db = db
         self.conectar()
+
     def conectar(self):
-        
+
         try:
             self.conexion = mysql.connector.connect(
                 host=self.host,
@@ -24,7 +25,6 @@ class DataBase:
 
         except Error as e:
             print(f"Error al conectar: {e}")
-
 
     def cerrar(self):
         """
