@@ -16,9 +16,15 @@ class Login:
         self.key = key
 
     def __hashear(self):
+        """
+        Hashea la contraseña
+        """
         self.key = hashlib.sha256(self.key.encode()).hexdigest()
 
     def get_id(self):
+        """
+        Retorna el id del usuario
+        """
         db_user.conectar()
         resultados = db_user.consulta(
             "SELECT id FROM usuarios WHERE mail = %s AND contrasena = %s", (self.mail, self.key))
@@ -26,6 +32,12 @@ class Login:
         return resultados
 
     def loguear(self):
+        """
+        Loguea el usuario, hashea la contraseña y luego compara el mail y la contraseña.
+        cuando el mail y la contraseña matchean revisa el estado de la cuenta
+        si es 1 significa que la cuenta esta confirmada y devuelve True, si no esta confirmada
+        devuelve '0'.en caso de que no matchee devuelve False
+        """
         self.__hashear()
         db_user.conectar()
         resultados = db_user.consulta(
