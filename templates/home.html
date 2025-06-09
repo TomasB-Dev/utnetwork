@@ -4,17 +4,32 @@
     <link rel="shortcut icon" href="{{url_for('static',filename='images/logo.ico')}}" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/home.css')}}">
     <title>Inicio</title>
 </head>
 <body>
+    <section class="container">
+    <div class="container_info_profile">
+        <div class="nav_profile">
+            <a href="">Mensajes</a>
+            <a href="">Laboratorio</a>
+            <a href="{{ url_for('logout') }}">Cerrar sesion</a>
+        </div>
     
-    <h1>{{ usuario['nombre'] }}</h1>
+    </div>
+    <div class="container_publish">
+        <textarea name="" id="" placeholder="en que estas pensando? {{usuario['nombre']}}" maxlength="500" ></textarea>
+        <button>Publicar</button>
+    </div>
+    <div class="right_container">
+        <h2>Sugerencia de amigos</h2>
 
+    </div>
 
+    </section>
 <script>
 const usuario = '{{ usuario | tojson |safe }}';
 localStorage.setItem('usuario', usuario)
 </script>
-<a href="{{ url_for('logout') }}">desloguear</a>
 </body>
 </html>

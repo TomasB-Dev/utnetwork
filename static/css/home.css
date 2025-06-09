@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    --bg--color : #282828; 
+    --bg--secundary: #00628D;
+    --color-resalt: #BDE4F7;
+    --color-shadows: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    --color-hover: #009EE0;
+    --bg-cards: #363636;
+
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+
+body {
+  font-family: "Montserrat",'Verdana';
+  background-color: #000000;
+}
+
+
+
+.container {
+    display: flex;
+    margin: 50px;
+    justify-content: space-around;
+}
+
+
+.container_info_profile {
+    width: 20vw;
+    border-radius: 10px;
+    /* background-color: var(--bg--color); */
+
+    
+}
+
+.nav_profile {
+    /* border: 1px solid var(--bg-cards); */
+    border-radius: 4px;
+    padding: 20px;
+    
+    & a {
+        color: white;
+        display: block;
+        margin: 10px 0px;
+        padding:  13px;
+        text-decoration: none;
+        transition: .5s all ;
+        border-radius: 3px;
+    }
+
+    & a:hover {
+        background-color: var(--color-hover);
+    }
+}
+
+.container_publish {
+    
+width: 30vw;
+    & textarea {
+        background-color: none;
+        resize: none;
+        outline: none;
+        color: white;
+        background: none;
+        border: none;
+    }
+    
+
+
+}
+
+
+.right_container {
+    width: 20vw;
+}
