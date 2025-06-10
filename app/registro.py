@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import os
 from mysql.connector import Error
 from app.Mail_Send import Send_Mail
+import random
 load_dotenv(dotenv_path='../.env')
 
 
@@ -49,21 +50,35 @@ class Registro:
 
     def registrar(self):
         """
-        carga los datos  a la base de datos
+        Registra los usuarios en la base de datos
         """
         existe = self.__existe()
         if existe:
-            print('el mail ya esta registrado')
+            print('el mail ya esta registrado') #esto debe ser enviado al front
             return False
         else:
             self.__hashear()
             if self.key:
+                numero = random.randrange(0,30,1) #podria configurar esto para hacerlo mas dinamico
+                #que leea la cantidad de imagenes en la carpeta avatar y de ahi lo ponga como parametro maximo
+                #entonces cada vez que agreguemos un avatar eso se actualiza solo y no seria necesario ajustarlo
+                #manualmente
+
+
+                #esto asigna de manera aletoria un avatar para cada persona al momento del registro
+                if numero < 10:
+                    avatar_path= f'static/images/avatars/avatar_0{numero}.jpg'
+                else:
+                    avatar_path= f'static/images/avatars/avatar_{numero}.jpg' #no deberian existir avatars like 001
+                #solucion momentanea revisar en casa
+                print(avatar_path)
+
                 db_user.conectar()
                 db_user.consulta(
-                    "INSERT INTO usuarios (nombre, mail,contrasena,state) VALUES (%s, %s,%s,%s)", (self.nombre, self.mail, self.key, False))
+                    "INSERT INTO usuarios (nombre, mail,contrasena,state,avatar) VALUES (%s, %s,%s,%s,%s)", (self.nombre, self.mail, self.key, False, avatar_path))
 
                 db_user.cerrar()
-                # Manejar errores en caso de
+                #Los errores de consulta se maneja en  la clase base de datos
                 MAIL = os.getenv('MAIL')
                 MAIL_KEY = os.getenv('MAIL_KEY')
                 avisar = Send_Mail(MAIL, MAIL_KEY, self.mail)
@@ -98,7 +113,9 @@ Si no fuiste vos quien se registró, podés ignorar este mensaje o contactarnos.
                 return True
 
             else:
-                print('no registrado')
+                print('no registrado') #eliminar esto y poner en el front que hubo un error en el registro
+                #IMPORTANTE no especificar al usuario examente el error, solo decir que fue del sistema.
+                # Para evitar vulnerabilidades expuestas.
                 return False
 
     def __str__(self):
