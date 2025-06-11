@@ -50,9 +50,11 @@ def registrar():
 @app.route('/home')
 def home():
     token = session.get('usuario')
-    if session:
-
+    if token:
+        print(token)
         user_data = get_user_dataId(token[0]['id'])
+        statado = get_user_dataId(token[0]['state'])
+        print(statado)
         return render_template('home.html', usuario=user_data[0])
     else:
         return render_template('error.html')
