@@ -60,7 +60,10 @@ def home():
 
 @app.route('/validar')
 def validation():
-    return render_template('/temporales/confirm_mail.html')
+    if session:
+        return render_template('/temporales/confirm_mail.html')
+    else:
+        return render_template('error.html')
 
 
 @app.route('/app/Loguear', methods=['POST'])
@@ -71,7 +74,6 @@ def log():
     check = user.loguear()
     if check == False:
         session.clear()
-        print('falso')
         return redirect(url_for('login'))
     elif check == '0':
         session['usuario'] = user.get_id()

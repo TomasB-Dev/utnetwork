@@ -4,9 +4,25 @@
     <link rel="shortcut icon" href="{{url_for('static',filename='images/logo.ico')}}" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='css/confirm_mail.css')}}">
+    <title>Confirmar Mail | UTNetwork</title>
 </head>
 <body>
-    
+    <body>
+    <div class="container">
+        <h2>Ingresa tu código</h2>
+        <form class="code-input"">
+            <div class="inputs">
+                <input type="text" maxlength="1" pattern="[A-Za-z0-9]" required>
+                <input type="text" maxlength="1" pattern="[A-Za-z0-9]" required>
+                <input type="text" maxlength="1" pattern="[A-Za-z0-9]" required>
+                <input type="text" maxlength="1" pattern="[A-Za-z0-9]" required>
+                <input type="text" maxlength="1" pattern="[A-Za-z0-9]" required>
+                <input type="text" maxlength="1" pattern="[A-Za-z0-9]" required>
+            </div>
+            <button type="submit" class="confirm-btn">Confirmar</button>
+        </form>
+    </div>
+</body>
 </body>
 </html>
