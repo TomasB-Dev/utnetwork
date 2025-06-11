@@ -43,6 +43,8 @@ def registrar():
     # aca agregar la confirmacion por el mail
     if registro == True:
         return redirect(url_for('login'))
+    else:
+        return render_template('error.html')
 
 
 @app.route('/home')
