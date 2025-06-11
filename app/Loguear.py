@@ -34,12 +34,12 @@ class Login:
         return resultados
     def confirmed_mail(self):
         """
-        Si el mail no esta confirmado envia el mail
+        Si el mail no esta confirmado envia el mail con un codigo
 
         """
         db_user.conectar()
         status = db_user.consulta(
-            "SELECT status FROM usuarios WHERE mail = %s",(self.mail)
+            "SELECT state FROM usuarios WHERE mail = %s",(self.mail)
         )
         db_user.cerrar()
         if status == True:
