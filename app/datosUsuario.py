@@ -16,5 +16,6 @@ def get_user_dataId(userId):
     )
     
     db_user.cerrar()
+    print(resultado)
     return resultado
 

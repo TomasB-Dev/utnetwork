@@ -1,10 +1,11 @@
 :root {
     --bg--color: #282828;
     --bg--secundary: #00628D;
-    --color-resalt: #BDE4F7;
+    --color-resalt: #ffffff;
     --color-shadows: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     --color-hover: #009EE0;
-    --bg-cards: #363636;
+    --bg-cards: #1d1c1c;
+    /* #1d1c1c; */
 }
 
 body {
