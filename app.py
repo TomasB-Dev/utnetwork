@@ -55,10 +55,11 @@ def terminos():
 def validar_codigo():
     
     if session:
+        #el id lo prodia traer de getid pero no creo que sea lo correcto, se puede dialogar, diablo loco
         id = session.get('usuario')
         user_id = id[0]['id']   
         state = usuarios.get_state_by_id(user_id)
-        #chekea el estado de la cuenta, si la cuenta no es confirmada permite validar no es realmente necesario pero es otra capa de seguridad ?
+        #chekea el estado de la cuenta, si la cuenta no es confirmada permite validar, no es realmente necesario pero es otra capa de seguridad ?
         if state == False :
             id_session = session['usuario']
             data = request.get_json()
