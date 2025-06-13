@@ -45,6 +45,31 @@ def terminos():
     return render_template('terminos.html')
 
 
+@app.route('/validar-codigo', methods=['POST'])
+def validar_codigo():
+    
+    if session['usuario']:
+        id_session = session['usuario']
+        data = request.get_json()
+
+        codigo = data.get('c1', '') + data.get('c2', '') + data.get('c3', '') + \
+                data.get('c4', '') + data.get('c5', '') + data.get('c6', '') #el segundo parametro es lo que devuelve si esta vacio
+
+        db_user.conectar()
+        codigo_correcto  = db_user.consulta(
+            'SELECT confirmed FROM usuarios WHERE id = %s',(id_session[0]['id'])
+        )
+        db_user.cerrar()
+        print(codigo_correcto)
+        if codigo == codigo_correcto[0]['confirmed']:
+            db_user.conectar()
+            db_user.consulta(
+                "UPDATE usuarios SET state = %s WHERE id = %s",(True, id_session[0]['id'])
+            )
+            return jsonify({'correcto': True, 'redirect_url': url_for('home')}) #para redireccionar al home
+        else:
+            return jsonify({'correcto': False})
+
 @app.route('/app/registrar', methods=['POST'])
 def registrar():
 
