@@ -78,7 +78,7 @@ def validar_codigo():
 
 @app.route('/app/registrar', methods=['POST'])
 def registrar():
-    if session['usuario']:
+    if session:
         return redirect(url_for('home'))
     else:
         username = request.form['name']
