@@ -59,19 +59,22 @@ class Registro:
         else:
             self.__hashear()
             if self.key:
-                numero = random.randrange(0,30,1) #podria configurar esto para hacerlo mas dinamico
-                #que leea la cantidad de imagenes en la carpeta avatar y de ahi lo ponga como parametro maximo
-                #entonces cada vez que agreguemos un avatar eso se actualiza solo y no seria necesario ajustarlo
-                #manualmente
 
+                
+                categoria = ['animados','accion','deporte']
+                choice = random.choice(categoria) #selecciona una categoria random
+                total = 0
+                elementos = os.listdir(f'static/images/avatars/{choice}') #trae las cantidad de elementos
+                for element in elementos:
+                    total += 1 # +1 por canda elemento
+
+                numero = random.randrange(0,total,1) #elije un numero random entre 0 y la cantidad de elementos que hay
 
                 #esto asigna de manera aletoria un avatar para cada persona al momento del registro
                 if numero < 10:
-                    avatar_path= f'static/images/avatars/avatar_0{numero}.jpg'
+                    avatar_path= f'static/images/avatars/{choice}/avatar_0{numero}.jpg'
                 else:
-                    avatar_path= f'static/images/avatars/avatar_{numero}.jpg' #no deberian existir avatars like 001
-                #solucion momentanea revisar en casa
-                print(avatar_path)
+                    avatar_path= f'static/images/avatars/{choice}/avatar_{numero}.jpg' #no deberian existir avatars like 001
 
                 db_user.conectar()
                 db_user.consulta(
