@@ -61,7 +61,7 @@ class Registro:
             if self.key:
 
                 
-                categoria = ['animados','accion','deporte']#agregar manualmente
+                categoria = ['animados','accion','deporte','vikingos']#agregar manualmente
                 choice = random.choice(categoria) #selecciona una categoria random
                 total = 0
                 elementos = os.listdir(f'static/images/avatars/{choice}') #trae las cantidad de elementos

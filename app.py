@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request,  redirect, jsonify, session
+from flask import Flask, render_template
 from app.models.Usuarios import Usuarios
 import os
 from app.models.Data_Base import DataBase
@@ -33,9 +33,6 @@ register_route(app)
 validation_route(app,usuarios,db_user)
 #modularizacion loged views
 logued_route(app,usuarios)
-
-
-
 
 
 @app.errorhandler(404)
