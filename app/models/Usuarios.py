@@ -1,10 +1,6 @@
 from app.models.Data_Base import DataBase
 from dotenv import load_dotenv
 import os
-# DB_NAME = os.getenv('DB_NAME')
-# DB_KEY = os.getenv('DB_KEY')
-# HOST = os.getenv('HOST')
-# USER = os.getenv('USER')
 
 
 class Usuarios:

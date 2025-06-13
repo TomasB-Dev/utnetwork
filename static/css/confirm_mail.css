@@ -1,3 +1,5 @@
+
+
 :root {
     --bg--color: #282828;
     --bg--secundary: #00628D;
@@ -7,79 +9,205 @@
     --bg-cards: #363636;
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 body {
+    overflow-y: hidden;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
     background-color: var(--bg--color);
-    color: var(--color-resalt);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
 }
 
 .container {
-    background-color: var(--bg-cards);
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: var(--color-shadows);
-    text-align: center;
-}
-
-h2 {
-    margin-bottom: 1.5rem;
-    color: var(--color-resalt);
-}
-
-.form-codigo {
-    display: flex;
-    flex-direction: column;
+    margin: auto ;
+    height: 100vh; /* Esto es útil si querés centrar verticalmente */    display: flex;
+    justify-content: center;
     align-items: center;
-    gap: 20px;
+
 }
 
-.inputs {
-    display: flex;
-    gap: 10px;
-}
-
-.form-codigo input {
-    width: 40px;
-    height: 50px;
-    font-size: 2rem;
+.container_card {
+    color: white;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
     text-align: center;
-    border: none;
-    border-radius: 5px;
-    background-color: var(--bg--secundary);
-    color: var(--color-resalt);
-    box-shadow: var(--color-shadows);
-    transition: background-color 0.3s, transform 0.2s;
+    padding: 3vw;
+    border-radius: 10px;
+    background-color: #2c2c2c;
+
+}
+.container_img {
+    & img {
+        width: 100px;
+        margin: 0px;
+    }
+
+    & h3 {
+        font-size: 2vw;
+        margin: 0px;
+    }
+
+    & p {
+        color: darkgray;
+    }
 }
 
-.form-codigo input:focus {
-    outline: none;
-    background-color: var(--color-hover);
-    transform: scale(1.05);
-}
+.container_inputs {
+    & input {
+        background: #202020;
+        border: 0.5px solid rgb(63, 63, 63);
+        height: 60px;
+        width: 60px;
+        margin: 0px 3px;
+        border-radius: 10px;
+        font-size: xx-large;
+        text-align: center;
+        color: white;
+        transition: .5s all;
+    }
+    & input:focus {
+            outline: 2px solid #3498db; 
 
-.confirm-btn {
-    padding: 10px 20px;
-    font-size: 1rem;
-    background-color: var(--bg--secundary);
-    color: var(--color-resalt);
-    border: none;
+    }
+}   
+
+.btn_verify {
+    width: 100%;
+    margin-top: 1.5vw;
+    height: 45px;
     border-radius: 5px;
     cursor: pointer;
-    box-shadow: var(--color-shadows);
-    transition: background-color 0.3s, transform 0.2s;
+    color: white;
+    background-color: #009EE0;
+    border: none;
+    font-size: medium;
+    text-align: center;
+    transition: .5s all;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 }
 
-.confirm-btn:hover {
-    background-color: var(--color-hover);
-    transform: scale(1.03);
+.btn_verify:hover {
+    background-color: #00628D;
+}
+
+.container_re_send_code {
+    text-align: center;
+    & p {
+        color: rgb(155, 154, 154);
+    }
+}
+.btn_re_send_code {
+    background: none;
+    color: white;
+    border: none;
+    font-size: medium;
+    cursor: pointer;
+    color: #00628D;
+    transition: .5s all;
+
+
+    &:hover {
+        color: #0587be;
+    }
+
+}
+
+
+
+
+
+@media (max-width: 700px) {
+    .container_img {
+
+        & img {
+            width: max-content;
+        }
+        & h3 {
+            font-size: xx-large;
+        }
+    }
+
+    .container_card {
+    width: 100%;
+        height: 100vh;
+        padding: 61px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container_inputs {
+        & input {
+            width: 60px;
+            height: 60px;
+            margin: 33px 2px;
+        }
+    }
+
+
+
+
+    .btn_verify {
+        height: 50px;
+        font-size: normal;
+        font-weight: normal;
+        width: 60%;
+    }
+
+}
+
+@media (max-width:580px) {
+
+.container_img {
+
+        & img {
+            width: 200px;
+        }
+        & h3 {
+            font-size: xx-large;
+        }
+    }
+
+    .container_inputs {
+        & input {
+            width: 50px;
+            height: 50px;
+            margin: 33px 2px;
+        }
+    }
+
+    .container_card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 0px;
+    }
+ .btn_verify {
+        height: 40px;
+        font-size: x-large;
+        font-weight: normal;
+    }
+}   
+
+@media (max-width: 465px) {
+    
+    .container_inputs {
+        & input {
+            width: 50px;
+            height: 50px;
+            margin: 33px 2px;
+        }
+    }
+
+    .container_card {
+        padding: 0px;
+
+    }
+ .btn_verify {
+        height: 40px;
+        font-size: x-large;
+        font-weight: normal;
+    }
 }

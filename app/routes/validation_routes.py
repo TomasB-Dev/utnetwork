@@ -2,6 +2,23 @@
 CONTIENE LAS RUTAS DE VALIDACION DE LA CUENTA
 """
 from flask import render_template, url_for, request,  redirect, jsonify , session
+import random
+# from app.models.Data_Base import DataBase
+from dotenv import load_dotenv
+import os
+# import random
+from app.models.Mail_Send import Send_Mail
+# from app.models.Usuarios import Usuarios
+# load_dotenv(dotenv_path='../.env')
+# DB_NAME = os.getenv('DB_NAME')
+# DB_KEY = os.getenv('DB_KEY')
+# HOST = os.getenv('HOST')
+# USER = os.getenv('USER')
+# db_user = DataBase(HOST, USER, DB_KEY, DB_NAME)
+# usuarios = Usuarios()
+
+
+
 
 
 def validation_route(app,usuarios,db_user):
@@ -53,4 +70,36 @@ def validation_route(app,usuarios,db_user):
                 return redirect(url_for('home'))
         else:
             return redirect(url_for('login'))
+
+
+    @app.route('/reenviar-codigo')
+    def reenviar_codigo(): #No se si queres que lo comente pero para mi lo sacas al toque: 👟
+        if session: 
+            id = session.get('usuario')
+            user_id = id[0]['id']
+            user_data = usuarios.get_data_by_id(user_id)
+            
+            codigo_nuevo =str(random.randint(100000, 999999))
+            db_user.conectar()
+            db_user.consulta(
+                "UPDATE usuarios SET confirmed = %s WHERE id = %s", (codigo_nuevo, user_id) 
+            )
+            db_user.cerrar()
+            
+            
+            MAIL = os.getenv('MAIL')
+            MAIL_KEY = os.getenv('MAIL_KEY')
+            avisar = Send_Mail(MAIL, MAIL_KEY, user_data[0]['mail'])
+            
+            contenido = f"""
+                <html>
+                <body>
+                    <p>Tu nuevo código de verificación es: <strong>{codigo_nuevo}</strong></p>
+                </body>
+                </html>
+            """
+            avisar.enviarMail('Reenvío de código de verificación', contenido)
+            return jsonify({'reenviado': True})
+        else:
+            return jsonify({'reenviado': False, 'error': 'Sesión no encontrada'})
 
