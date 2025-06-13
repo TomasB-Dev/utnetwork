@@ -1,4 +1,7 @@
-from flask import render_template, url_for
+"""
+CONTIENE LAS RUTAS QUE NO SE NECESITA ESTAR LOGUEADO PARA VER
+"""
+from flask import render_template
 
 def nologued_view(app):
     @app.route('/')

@@ -1,4 +1,8 @@
-from flask import render_template, url_for, request,  redirect, jsonify , session
+"""
+CONTIENE LAS RUTAS DE CUANDO EL USUARIO YA ESTA LOGUEADO
+"""
+
+from flask import render_template, url_for, request,  redirect , session
 
 def logued_route(app,usuarios):
     @app.route('/home')

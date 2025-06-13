@@ -1,3 +1,6 @@
+"""
+CONTIENE LAS RUTAS DE VALIDACION DE LA CUENTA
+"""
 from flask import render_template, url_for, request,  redirect, jsonify , session
 
 

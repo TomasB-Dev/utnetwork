@@ -1,3 +1,7 @@
+"""
+CONTIENE LAS RUTAS DE REGISTRO DE USUARIO
+"""
+
 from flask import render_template, url_for, request,  redirect, session
 from app.models.registro import Registro
 import time

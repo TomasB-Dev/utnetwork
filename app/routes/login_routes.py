@@ -1,7 +1,8 @@
+"""
+CONTIENE LAS RUTAS DE LOGIN DEL USUARIO
+"""
 from flask import render_template, url_for, request,  redirect, session
 from app.models.Loguear import Login
-from dotenv import load_dotenv
-
 
 
 def login_route(app):
