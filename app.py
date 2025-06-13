@@ -29,7 +29,7 @@ app.secret_key = FIRMA
 def index():
     return render_template('index.html')
 #modularizacion login
-login_route(app,db_user,usuarios)
+login_route(app)
 
 
 @app.route('/register')

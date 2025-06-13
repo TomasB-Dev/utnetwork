@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 
 
-def login_route(app, db_user, usuarios):
+def login_route(app):
     
     
     @app.route('/login')
@@ -31,7 +31,7 @@ def login_route(app, db_user, usuarios):
             session['usuario'] = user.get_id()
             return redirect(url_for('home'))
     
-    
+
     @app.route('/logout')
     def logout():
         session.clear()
