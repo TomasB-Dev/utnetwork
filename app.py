@@ -97,7 +97,7 @@ def registrar():
 @app.route('/home')
 def home():
     token = session.get('usuario')
-    if session['usuario']:
+    if session:
         id_user =token[0]['id']
         user_data = usuarios.get_data_by_id(id_user)
         state = user_data[0]['state']
