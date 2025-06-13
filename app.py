@@ -108,7 +108,7 @@ def home():
 
 @app.route('/validar')
 def validation():
-    if session['usuario']:
+    if session:
         return render_template('/temporales/confirm_mail.html')
     else:
         return render_template('error.html')
