@@ -21,20 +21,25 @@ class Usuarios:
         resultado = self.db_user.consulta(
             "SELECT *  FROM usuarios WHERE id = %s", (user_id,)
         )
+    
+    
+    
         self.db_user.cerrar()
-        return resultado
+        if resultado is not None:
+            return resultado
+        else:
+            return None
         
     
     def get_state_by_id(self,user_id):
         self.db_user.conectar()
         resultado = self.db_user.conectar(
-            "SELECT state FROM usuarios WHERE id = %s", (user_id)
+            "SELECT * FROM usuarios WHERE id = %s", (user_id)
         )
+        
+        state = resultado[0]['state']
         self.db_user.cerrar()
-        if resultado:
-            state = resultado[0]['state']
-        else:
-            state = None
         return state
+        
     
     
