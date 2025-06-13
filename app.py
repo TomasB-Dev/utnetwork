@@ -32,12 +32,18 @@ def index():
 
 @app.route('/login')
 def login():
-    return render_template('login.html')
+    if session['usuario']:
+        return redirect(url_for('home'))
+    else:
+        return render_template('login.html')
 
 
 @app.route('/register')
 def register():
-    return render_template('register.html')
+    if session['usuario']:
+        return redirect(url_for('home'))
+    else:
+        return render_template('register.html')
 
 
 @app.route('/terminos')
@@ -72,24 +78,26 @@ def validar_codigo():
 
 @app.route('/app/registrar', methods=['POST'])
 def registrar():
-
-    username = request.form['name']
-    key = request.form['password']
-    mail = request.form['email']
-    usuario = Registro(username, mail, key)
-    registro = usuario.registrar()
-    time.sleep(1)  # momentaneo, hablar con agus para ver que opina
-    # aca agregar la confirmacion por el mail
-    if registro == True:
-        return redirect(url_for('login'))
+    if session['usuario']:
+        return redirect(url_for('home'))
     else:
-        return render_template('error.html')
+        username = request.form['name']
+        key = request.form['password']
+        mail = request.form['email']
+        usuario = Registro(username, mail, key)
+        registro = usuario.registrar()
+        time.sleep(1)  # momentaneo, hablar con agus para ver que opina
+        # aca agregar la confirmacion por el mail
+        if registro == True:
+            return redirect(url_for('login'))
+        else:
+            return render_template('error.html')
 
 
 @app.route('/home')
 def home():
     token = session.get('usuario')
-    if session:
+    if session['usuario']:
         id_user =token[0]['id']
         user_data = usuarios.get_data_by_id(id_user)
         state = user_data[0]['state']
@@ -100,14 +108,14 @@ def home():
 
 @app.route('/validar')
 def validation():
-    if session:
+    if session['usuario']:
         return render_template('/temporales/confirm_mail.html')
     else:
         return render_template('error.html')
 
 
 @app.route('/app/Loguear', methods=['POST'])
-def log():
+def log(): 
     key = request.form['password']
     mail = request.form['mail']
     user = Login(mail, key)
