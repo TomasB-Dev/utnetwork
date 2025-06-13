@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="shortcut icon" href="{{url_for('static',filename='images/logo.ico')}}" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/home.css')}}">
+    <title>Inicio | UTNetwork</title>
+</head>
+<body>
+    <section class="container">
+    <div class="container_info_profile">
+        <div class="nav_profile">
+            <a href="">Mensajes</a>
+            <a href="">Laboratorio</a>
+            <a href="{{ url_for('logout') }}">Cerrar sesion</a>
+        </div>
+    
+    </div>
+    <div class="container_publish">
+        <textarea name="" id="" placeholder="en que estas pensando? {{usuario['nombre']}}" maxlength="500" ></textarea>
+        <button>Publicar</button>
+    </div>
+    <div class="right_container">
+        <h2>Sugerencia de amigos</h2>
+
+    </div>
+
+    </section>
+<script>
+const usuario = '{{ usuario | tojson |safe }}';
+localStorage.setItem('usuario', usuario)
+</script>
+</body>
+</html>

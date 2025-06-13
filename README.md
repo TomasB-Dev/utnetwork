@@ -15,6 +15,19 @@ UTNetwork es la red social donde estudiantes, ingenieros, técnicos y docentes s
 - **Frontend:** Bootstrap, CSS, JS
 - **Backend:** Flask
 - **Otras herramientas:** Figma, GitHub
+### Dependencias
+```
+Flask==3.1.1
+python-dotenv==1.1.0
+requests==2.32.3
+mysql-connector-python==9.3.0
+
+```
+Puedes instalarlas atraves de 
+
+```
+pip install -r requirements.txt
+```
 
 ---
 
@@ -49,5 +62,14 @@ UTNetwork es la red social donde estudiantes, ingenieros, técnicos y docentes s
 ## 🔒 Seguridad
 - Encriptacion de contraseñas mediante hashing con SHA-256
 - Mensajes Encriptados.
+
+---
+
+## ℹ️Información Extra
+
+![Repo Size](https://img.shields.io/github/repo-size/TomasB-Dev/utnetwork)
+
+![Last Commit](https://img.shields.io/github/last-commit/TomasB-Dev/utnetwork)
+
 
 ---

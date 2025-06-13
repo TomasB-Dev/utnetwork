@@ -1,0 +1,9 @@
+fixear register login
+implementar authenticador de mail
+notificar si mail ya existe
+error handler
+
+
+
+SE INSTALAN LOS REQUERIMENTS ASI:
+pip install -r requirements.txt

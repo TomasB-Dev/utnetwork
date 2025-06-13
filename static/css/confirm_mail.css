@@ -1,0 +1,85 @@
+:root {
+    --bg--color: #282828;
+    --bg--secundary: #00628D;
+    --color-resalt: #BDE4F7;
+    --color-shadows: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    --color-hover: #009EE0;
+    --bg-cards: #363636;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg--color);
+    color: var(--color-resalt);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: var(--bg-cards);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: var(--color-shadows);
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 1.5rem;
+    color: var(--color-resalt);
+}
+
+.form-codigo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.inputs {
+    display: flex;
+    gap: 10px;
+}
+
+.form-codigo input {
+    width: 40px;
+    height: 50px;
+    font-size: 2rem;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--bg--secundary);
+    color: var(--color-resalt);
+    box-shadow: var(--color-shadows);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.form-codigo input:focus {
+    outline: none;
+    background-color: var(--color-hover);
+    transform: scale(1.05);
+}
+
+.confirm-btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: var(--bg--secundary);
+    color: var(--color-resalt);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: var(--color-shadows);
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.confirm-btn:hover {
+    background-color: var(--color-hover);
+    transform: scale(1.03);
+}

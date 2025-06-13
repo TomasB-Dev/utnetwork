@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="shortcut icon" href="{{url_for('static',filename='images/logo.ico')}}" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Error| UTNetwork</title>
+  
+  <link rel="stylesheet" href="{{url_for('static',filename='css/error.css')}}" />
+</head>
+<body>
+  <section class="container">
+    <div class="container_text_error">
+      <h1>404</h1>
+      <p>¿Te has perdido?</p>
+      <p>intente recargar esta página o vuelva a la página de inicio</p>
+      <a href="{{url_for('login')}}" >Volver a inicio</a>
+    </div>
+    <div class="container_img">
+      <img src="{{url_for('static', filename='images/error_404.png')}}" alt="">
+    </div>
+  </div>
+  </section>
+</body>
+</html>
