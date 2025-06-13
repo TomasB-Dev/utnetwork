@@ -27,7 +27,7 @@ class Usuarios:
     
     def get_state_by_id(self,user_id):
         self.db_user.conectar()
-        resultado = self.db_user.conectar(
+        resultado = self.db_user.consulta(
             "SELECT state FROM usuarios WHERE id = %s", (user_id)
         )
         self.db_user.cerrar()
