@@ -1,10 +1,10 @@
 from app.Data_Base import DataBase
 from dotenv import load_dotenv
 import os
-DB_NAME = os.getenv('DB_NAME')
-DB_KEY = os.getenv('DB_KEY')
-HOST = os.getenv('HOST')
-USER = os.getenv('USER')
+# DB_NAME = os.getenv('DB_NAME')
+# DB_KEY = os.getenv('DB_KEY')
+# HOST = os.getenv('HOST')
+# USER = os.getenv('USER')
 
 
 class Usuarios:
@@ -26,9 +26,15 @@ class Usuarios:
         
     
     def get_state_by_id(self,user_id):
+        self.db_user.conectar()
         resultado = self.db_user.conectar(
-            "SELECT s.state FROM usuarios s WHERE id = %s", (user_id)
+            "SELECT state FROM usuarios WHERE id = %s", (user_id)
         )
         self.db_user.cerrar()
-        return resultado
+        if resultado:
+            state = resultado[0]['state']
+        else:
+            state = None
+        return state
+    
     

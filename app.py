@@ -58,7 +58,7 @@ def home():
     if session:
         id_user =token[0]['id']
         user_data = usuarios.get_data_by_id(id_user)
-    
+        state = user_data[0]['state']
         return render_template('home.html', usuario=user_data[0])
     else:
         return render_template('error.html')
