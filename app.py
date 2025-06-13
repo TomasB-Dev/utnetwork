@@ -32,7 +32,7 @@ def index():
 
 @app.route('/login')
 def login():
-    if session['usuario']:
+    if session:
         return redirect(url_for('home'))
     else:
         return render_template('login.html')
@@ -40,7 +40,7 @@ def login():
 
 @app.route('/register')
 def register():
-    if session['usuario']:
+    if session:
         return redirect(url_for('home'))
     else:
         return render_template('register.html')
