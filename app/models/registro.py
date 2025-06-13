@@ -61,7 +61,7 @@ class Registro:
             if self.key:
 
                 
-                categoria = ['animados','accion','deporte']
+                categoria = ['animados','accion','deporte']#agregar manualmente
                 choice = random.choice(categoria) #selecciona una categoria random
                 total = 0
                 elementos = os.listdir(f'static/images/avatars/{choice}') #trae las cantidad de elementos
@@ -85,7 +85,6 @@ class Registro:
                 MAIL = os.getenv('MAIL')
                 MAIL_KEY = os.getenv('MAIL_KEY')
                 avisar = Send_Mail(MAIL, MAIL_KEY, self.mail)
-                # el contenido de abajo es solo representativo por el momento, armar uno decente
                 contenido = """
                             <html>
 <body style="font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; margin: 0;">
