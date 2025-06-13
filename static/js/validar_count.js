@@ -77,6 +77,12 @@ function enviarCodigo(e) {
 
 function reenviarCodigo(e) {
     e.preventDefault()
+
+    const btn = document.getElementById('btn_re_send')
+    btn.classList.remove('btn_re_send_code')
+    btn.classList.add('btn_disabled')
+    btn.disabled= true;
+
     fetch('http://127.0.0.1:5000/reenviar-codigo')
     .then(response => response.json())
     .then(data => {
@@ -98,5 +104,15 @@ function reenviarCodigo(e) {
                 }).showToast();
         }
     })
+
+
+    setTimeout(()=> {
+        
+        btn.classList.remove('btn_disabled')
+        btn.classList.add('btn_re_send_code')
+        btn.disabled=false;
+    }, 10000)
+
+  
 
 }

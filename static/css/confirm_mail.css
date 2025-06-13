@@ -89,6 +89,14 @@ body {
     background-color: #00628D;
 }
 
+.btn_disabled {
+    background: none;
+    color: white;
+    border: none;
+    font-size: medium;
+    color: gray;
+}
+
 .container_re_send_code {
     text-align: center;
     & p {

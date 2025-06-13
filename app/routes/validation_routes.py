@@ -3,19 +3,8 @@ CONTIENE LAS RUTAS DE VALIDACION DE LA CUENTA
 """
 from flask import render_template, url_for, request,  redirect, jsonify , session
 import random
-# from app.models.Data_Base import DataBase
-from dotenv import load_dotenv
 import os
-# import random
 from app.models.Mail_Send import Send_Mail
-# from app.models.Usuarios import Usuarios
-# load_dotenv(dotenv_path='../.env')
-# DB_NAME = os.getenv('DB_NAME')
-# DB_KEY = os.getenv('DB_KEY')
-# HOST = os.getenv('HOST')
-# USER = os.getenv('USER')
-# db_user = DataBase(HOST, USER, DB_KEY, DB_NAME)
-# usuarios = Usuarios()
 
 
 
@@ -101,5 +90,5 @@ def validation_route(app,usuarios,db_user):
             avisar.enviarMail('Reenvío de código de verificación', contenido)
             return jsonify({'reenviado': True})
         else:
-            return jsonify({'reenviado': False, 'error': 'Sesión no encontrada'})
+            return jsonify({'reenviado': False, 'error': 'Sesión no encontrada'}) # esta parte manda un json con el alias digamos de reenviado para que se lo envie al js (validar_count) y validar si se envio correctamente 
 
