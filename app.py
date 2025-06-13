@@ -54,7 +54,7 @@ def terminos():
 @app.route('/validar-codigo', methods=['POST'])
 def validar_codigo():
     
-    if session['usuario']:
+    if session:
         id_session = session['usuario']
         data = request.get_json()
 
