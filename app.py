@@ -6,6 +6,8 @@ from dotenv import load_dotenv
 from app.routes.login_routes import login_route
 from app.routes.register_route import register_route
 from app.routes.validation_routes import validation_route
+from app.routes.loged_routes import logued_route
+from app.routes.nologed_routes import nologued_view
 
 load_dotenv(dotenv_path='../.env')
 DB_NAME = os.getenv('DB_NAME')
@@ -21,36 +23,19 @@ app = Flask(__name__)
 FIRMA = os.getenv('FIRMA')  # firmar la cokiee
 app.secret_key = FIRMA
 
-
-@app.route('/')
-def index():
-    return render_template('index.html')
+#modularizacion vista que no necesitan loguear
+nologued_view(app)
 #modularizacion login
 login_route(app)
 #modularizacion register
 register_route(app)
 #modularizacion vaidations
 validation_route(app,usuarios,db_user)
+#modularizacion loged views
+logued_route(app,usuarios)
 
 
-@app.route('/terminos')
-def terminos():
-    return render_template('terminos.html')
 
-
-@app.route('/home')
-def home():
-    token = session.get('usuario')
-    if session:
-        id_user = token[0]['id']
-        info_user = usuarios.get_data_by_id(id_user)
-        user_state = usuarios.get_state_by_id(id_user)
-        if user_state == True:
-            return render_template('home.html', usuario=info_user[0])
-        else:
-            return redirect(url_for('validation'))
-    else:
-        return render_template('error.html')
 
 
 @app.errorhandler(404)
