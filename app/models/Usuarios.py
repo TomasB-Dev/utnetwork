@@ -1,4 +1,4 @@
-from app.Data_Base import DataBase
+from app.models.Data_Base import DataBase
 from dotenv import load_dotenv
 import os
 # DB_NAME = os.getenv('DB_NAME')

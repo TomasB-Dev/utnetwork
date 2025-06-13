@@ -1,5 +1,5 @@
 from flask import render_template, url_for, request,  redirect, session
-from app.registro import Registro
+from app.models.registro import Registro
 import time
 
 def register_route(app):
