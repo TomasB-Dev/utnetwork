@@ -6,6 +6,7 @@ import os
 from app.Data_Base import DataBase
 from dotenv import load_dotenv
 from app.routes.login_routes import login_route
+from app.routes.register_route import register_route
 
 load_dotenv(dotenv_path='../.env')
 DB_NAME = os.getenv('DB_NAME')
@@ -30,14 +31,10 @@ def index():
     return render_template('index.html')
 #modularizacion login
 login_route(app)
+register_route(app)
 
 
-@app.route('/register')
-def register():
-    if session:
-        return redirect(url_for('home'))
-    else:
-        return render_template('register.html')
+
 
 
 @app.route('/terminos')
@@ -80,22 +77,7 @@ def validar_codigo():
     else:
         return redirect(url_for('login'))
 
-@app.route('/app/registrar', methods=['POST'])
-def registrar():
-    if session:
-        return redirect(url_for('home'))
-    else:
-        username = request.form['name']
-        key = request.form['password']
-        mail = request.form['email']
-        usuario = Registro(username, mail, key)
-        registro = usuario.registrar()
-        time.sleep(1)  # espera 1 segundo para que se consiga ver el mensaje de registro correcto
-        #si el registro es correcto redirecciona al login si no envia al template de error
-        if registro == True:
-            return redirect(url_for('login'))
-        else:
-            return render_template('error.html')
+
 
 
 @app.route('/home')
