@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import os
 from mysql.connector import Error
 from app.models.Mail_Send import Send_Mail
+from app.utils.Error_Saver import save_error
 import random
 load_dotenv(dotenv_path='../.env')
 
@@ -115,9 +116,7 @@ Si no fuiste vos quien se registró, podés ignorar este mensaje o contactarnos.
                 return True
 
             else:
-                print('no registrado') #eliminar esto y poner en el front que hubo un error en el registro
-                #IMPORTANTE no especificar al usuario examente el error, solo decir que fue del sistema.
-                # Para evitar vulnerabilidades expuestas.
+                save_error('No se pudo completar el registro')
                 return False
 
     def __str__(self):
