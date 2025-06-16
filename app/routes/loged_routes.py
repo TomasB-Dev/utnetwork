@@ -2,6 +2,7 @@
 CONTIENE LAS RUTAS DE CUANDO EL USUARIO YA ESTA LOGUEADO
 """
 from flask import render_template, url_for, request,  redirect , session
+from app.utils.Error_Saver import save_error
 
 def logued_route(app,usuarios):
     @app.route('/home')
@@ -21,8 +22,12 @@ def logued_route(app,usuarios):
         
     @app.route('/app/publicar',methods=['POST'])
     def publicar():
-        token = session.get('usuario')
-        id_user = token[0]['id']
-        contenido = request.form['publicacion']
-        usuarios.publicar(id_user,contenido)
-        return redirect(url_for('home'))
+        try:
+            token = session.get('usuario')
+            id_user = token[0]['id']
+            contenido = request.form['publicacion']
+            usuarios.publicar(id_user,contenido)
+            return redirect(url_for('home'))
+        except NameError as e:
+            save_error(e)
+            return render_template('error.html')
