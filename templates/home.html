@@ -22,8 +22,12 @@
     
     </div>
     <div class="container_publish">
-        <textarea name="" id="" placeholder="en que estas pensando? {{usuario['nombre']}}" maxlength="500" ></textarea>
-        <button>Publicar</button>
+        <form action="{{ url_for('publicar') }}" method="POST">
+            <textarea name="publicacion" id="publicacion" placeholder="en que estas pensando? {{usuario['nombre']}}" maxlength="500" ></textarea>
+            <button type="submit">Publicar</button>
+        </form>
+        <!-- test pa ver como se ve, hacerlo lindo -->
+        <h2>{{publicaciones[0]['contenido']}}</h2>
     </div>
     <div class="right_container">
         <h2>Sugerencia de amigos</h2>
