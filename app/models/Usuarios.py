@@ -36,6 +36,3 @@ class Usuarios:
         state = resultado[0]['state']
         self.db_user.cerrar()
         return state
-        
-    
-    

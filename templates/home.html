@@ -8,7 +8,7 @@
     <title>Inicio | UTNetwork</title>
 </head>
 <body>
-    <section class="container">
+    <!-- <section class="container">
     <div class="container_info_profile">
         <div>
             <img src="{{usuario['avatar'] }}" alt="">
@@ -30,7 +30,50 @@
 
     </div>
 
-    </section>
+    </section> -->
+    <div class="container_main">
+
+        <aside class="left">
+            <div class="left_profile_div">
+                <picture>
+                    <img src="{{usuario['avatar']}}" alt="">
+                </picture>
+                <div>
+                    <p>{{usuario['nombre']}}</p>
+                    <p>{{usuario['mail']}}</p>
+                </div>
+            </div>
+            <nav class="left_profile_nav">
+                    <a href="">
+                        Facu Amigos
+                    </a>
+                    <a href="">
+                        Mensajes
+                    </a>
+                    <a href="">
+                        Configuracion
+                    </a>
+                    <a href="">
+                        Cerrar Sesion
+                    </a>
+            </nav>
+        </aside>
+        <main>
+            <div class="container_publish">
+                <div>
+                    <picture>
+                        <img src="{{usuario['avatar']}}" alt="">
+                    </picture>
+                    <textarea type="text" placeholder="En que estas pensando? {{usuario['nombre']}}"></textarea>
+                </div>
+                <button>Publicar</button>
+            </div>
+        </main>
+        <aside class="right">
+
+        </aside>
+    </div>
+
 <script>
 const usuario = '{{ usuario | tojson |safe }}';
 localStorage.setItem('usuario', usuario)
