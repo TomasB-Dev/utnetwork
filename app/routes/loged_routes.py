@@ -40,3 +40,25 @@ def logued_route(app, usuarios, publicaciones):
         except NameError as e:
             save_error(e)
             return render_template('error.html')
+    @app.route('/app/seguir',methods=['POST'])
+
+    def seguir():
+        token = session.get('usuario')
+        id_user = token[0]['id']
+        id_seguido = request.form['id_seguido']
+        seguimiento = usuarios.seguir_usuario(id_user,id_seguido)
+        if seguimiento == True:
+            return redirect(url_for('home'))
+        else:
+            return render_template('error.html')
+        
+    @app.route('/app/no-seguir',methods=['POST'])
+    
+    def unfollow():
+        token = session.get('usuario')
+        id_user = token[0]['id']
+        id_seguido = request.form['id_seguido']
+        un_seguir = usuarios.dejar_de_seguir(id_user,id_seguido)
+        if un_seguir == True:
+            return redirect(url_for('home'))
+    
