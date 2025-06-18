@@ -63,7 +63,18 @@
             </div>
         </main>
         <aside class="right">
-
+            {% for usuarios_sugerido in usuarios_sugeridos %}
+            <div class="container_sugeridos">
+                <div class="container_sugeridos_img">
+                    <img src="{{usuarios_sugerido['avatar']}}" alt="">
+                </div>
+                <div class="container_sugeridos_text">
+                    <p>{{usuarios_sugerido['nombre']}}</p>
+                    <p>{{usuarios_sugerido['mail']}}</p>
+                </div>
+                <button class="btn_follow">Seguir</button>
+            </div>
+            {%endfor%}
         </aside>
     </div>
 <script src="{{url_for('static',filename='js/modo-luz.js')}}"></script>

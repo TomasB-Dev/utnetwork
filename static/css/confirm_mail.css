@@ -23,7 +23,6 @@ body {
     height: 100vh; /* Esto es útil si querés centrar verticalmente */    display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .container_card {
@@ -33,6 +32,7 @@ body {
     padding: 3vw;
     border-radius: 10px;
     background-color: #2c2c2c;
+    position: relative;
 
 }
 .container_img {
@@ -117,6 +117,37 @@ body {
         color: #0587be;
     }
 
+}
+
+
+.btn_paste {
+    background: none;
+    border: none;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 10px;
+    transition: .5s all;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn_paste:hover {
+    background-color: rgb(53, 52, 52);
+}
+
+
+.btn_paste i {
+    color: gray;
+    font-size: 24px;
+
+}
+
+.logout_link a {
+    margin-top: 7px;
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
 }
 
 
@@ -219,3 +250,4 @@ body {
         font-weight: normal;
     }
 }
+

@@ -14,11 +14,12 @@ def logued_route(app, usuarios, publicaciones):
             id_user = token[0]['id']
             info_user = usuarios.get_data_by_id(id_user)
             user_state = usuarios.get_state_by_id(id_user)
+            users_suggested = usuarios.suggest_users(id_user)
             if user_state == True:
                 
                 pregunta = random.choice(preguntas_graciosas)
                 publicacion = publicaciones.ver_publicaciones(id_user) #traigo las publicaciones
-                return render_template('home.html', usuario=info_user[0],publicaciones=publicacion,pregunta=pregunta)
+                return render_template('home.html', usuario=info_user[0],publicaciones=publicacion,pregunta=pregunta, usuarios_sugeridos=users_suggested)
             else:
                 return redirect(url_for('validation'))
         else:

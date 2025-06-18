@@ -33,6 +33,7 @@ def validation_route(app,usuarios,db_user):
             id = session.get('usuario')
             user_id = id[0]['id']   
             state = usuarios.get_state_by_id(user_id)
+            print(user_id, 'user_id')
             #chekea el estado de la cuenta, si la cuenta no es confirmada permite validar, no es realmente necesario pero es otra capa de seguridad ?
             if state == False :
                 id_session = session['usuario']
@@ -40,7 +41,7 @@ def validation_route(app,usuarios,db_user):
                 #obtengo la data de los inputs y los concateno
                 codigo = data.get('c1', '') + data.get('c2', '') + data.get('c3', '') + \
                         data.get('c4', '') + data.get('c5', '') + data.get('c6', '') #el segundo parametro es lo que devuelve si esta vacio
-
+                print(codigo, 'codigo')
                 db_user.conectar()
                 codigo_correcto  = db_user.consulta(
                     'SELECT confirmed FROM usuarios WHERE id = %s',(id_session[0]['id'])

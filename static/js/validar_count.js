@@ -37,7 +37,6 @@
 // });
 
 
-
 function enviarCodigo(e) {
     e.preventDefault();
 
@@ -59,19 +58,15 @@ function enviarCodigo(e) {
         })
         .then(res => res.json())
         .then(respuesta => {
-            const mensaje = document.getElementById('mensaje-respuesta');
+            console.log(respuesta);
             if (respuesta.correcto) {
                 window.location.href = respuesta.redirect_url; /* diablo loco , reza reza */
-            } else {
-                mensaje.textContent = 'Codigo incorrecto';
-                mensaje.style.color = 'red';
             }
         })
         .catch(error => {
             console.error('Error:', error);
         });
 }
-
 
 
 
@@ -87,7 +82,7 @@ function reenviarCodigo(e) {
     .then(response => response.json())
     .then(data => {
         if(data.reenviado) {
-           Toastify({
+            Toastify({
                 text: "El codigo fue reenviado correctamente",
                 className: "info",
                 style: {
@@ -115,4 +110,21 @@ function reenviarCodigo(e) {
 
   
 
+}
+
+
+
+function pegarCodigo() {
+    navigator.clipboard.readText().then(text => {
+        const inputs = document.querySelectorAll('.code');
+        const character = text.trim().slice(0, inputs.length).split('');
+
+        character.forEach((char, index)=> {
+            inputs[index].value = char;
+
+        })
+    }).catch(err => {
+        alert("error al acceder al portapapeles");
+        console.error(err);
+    })
 }
