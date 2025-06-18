@@ -57,7 +57,6 @@ body {
         height: 60px;
         border-radius: 50%;
         overflow: hidden;
-    
         margin-right: 15px;
     }
 
@@ -172,6 +171,36 @@ body {
     
 }
 
+
+.publish_card {
+
+}
+
+
+.container_info_profile {
+    display: flex;
+    align-items: center;
+
+
+
+
+    & picture {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 15px;
+    }
+
+    & img {
+        object-fit: contain;
+        width: 100%;
+    }
+}
+
+
+
+
 /* btn cambiar de oscuro a claro*/
 #swap-btn {
     position: absolute;
@@ -211,7 +240,7 @@ body {
 .container_sugeridos {
     height: 400px;
     overflow-y: hidden;
-    
+
 }
 
 

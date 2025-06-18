@@ -56,13 +56,18 @@
             <div>
                {% for publicacion in publicaciones %}
                 <div class="publish_card">
-                    <div class="container_avatar">
-                        <img src="{{ publicacion['avatar'] }}" alt="">
+                    <div class="container_info_profile">
+                        <picture>
+                            <img src="{{ publicacion['avatar'] }}" alt="">
+                        </picture>
+                        <div>
+                            <p>{{publicacion['nombre']}}</p>
+                            <p>{{publicacion['fecha']}}</p>
+
+                        </div>
                     </div>
                     <div class="container_text">
-                        <p class="name">{{ publicacion['nombre'] }}</p>
                         <p class="text">{{ publicacion['contenido'] }}</p>
-                        <p class="date">{{ publicacion['fecha'] }}</p>
                     </div>
                 </div>
             {% endfor %}
@@ -77,6 +82,7 @@
                     <img src="{{usuarios_sugerido['avatar']}}" alt="">
                 </div>
                 <div class="container_sugeridos_text">
+                    <p style="display: none;">{{usuarios_sugerido['id']}}</p>
                     <p>{{usuarios_sugerido['nombre']}}</p>
                     <p>{{usuarios_sugerido['mail']}}</p>
                 </div>
