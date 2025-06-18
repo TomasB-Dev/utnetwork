@@ -72,11 +72,11 @@ def validation_route(app,usuarios,db_user):
             
             codigo_nuevo = ''
             for i in range(6):
-                codigo += str(random.randrange(0,9,1))
+                codigo_nuevo += str(random.randrange(0,9,1))
             db_user.conectar()
-
+            codigo_hash = hashlib.sha256(codigo_nuevo.encode()).hexdigest()
             db_user.consulta(
-                "UPDATE usuarios SET confirmed = %s WHERE id = %s", (codigo_nuevo, user_id) 
+                "UPDATE usuarios SET confirmed = %s WHERE id = %s", (codigo_hash, user_id) 
             )
             db_user.cerrar()
             
