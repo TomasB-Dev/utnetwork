@@ -5,7 +5,7 @@ from flask import render_template, url_for, request,  redirect, jsonify , sessio
 import random
 import os
 from app.models.Mail_Send import Send_Mail
-
+import hashlib
 
 
 
@@ -46,6 +46,7 @@ def validation_route(app,usuarios,db_user):
                     'SELECT confirmed FROM usuarios WHERE id = %s',(id_session[0]['id'])
                 )
                 db_user.cerrar()
+                codigo = hashlib.sha256(codigo.encode()).hexdigest()
                 #check si los codigos coinciden, si coinciden cambia el status y el usuario no podria ver mas validar.
                 if codigo == codigo_correcto[0]['confirmed']:
                     db_user.conectar()
@@ -68,8 +69,11 @@ def validation_route(app,usuarios,db_user):
             user_id = id[0]['id']
             user_data = usuarios.get_data_by_id(user_id)
             
-            codigo_nuevo =str(random.randint(100000, 999999))
+            codigo_nuevo = ''
+            for i in range(6):
+                codigo += str(random.randrange(0,9,1))
             db_user.conectar()
+
             db_user.consulta(
                 "UPDATE usuarios SET confirmed = %s WHERE id = %s", (codigo_nuevo, user_id) 
             )

@@ -55,7 +55,6 @@ class Registro:
         """
         existe = self.__existe()
         if existe:
-            print('el mail ya esta registrado') #esto debe ser enviado al front
             return False
         else:
             self.__hashear()

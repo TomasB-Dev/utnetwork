@@ -48,9 +48,10 @@ class Login:
             codigo = ''
             for i in range(6):
                 codigo += str(random.randrange(0,9,1))
+            codigo_hash = hashlib.sha256(codigo.encode()).hexdigest() #hasheo el codigo de confirmacion
             db_user.conectar()
             db_user.consulta(
-                "UPDATE usuarios SET confirmed = %s WHERE mail = %s",(codigo,self.mail)
+                "UPDATE usuarios SET confirmed = %s WHERE mail = %s",(codigo_hash,self.mail)
             )
             db_user.cerrar()
             MAIL = os.getenv('MAIL')
