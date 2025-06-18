@@ -56,6 +56,7 @@
             <div>
                 {% for publicacion in publicaciones %}
                     <div class="publicacion">
+                        <img src="{{usuario['avatar']}}" alt="">
                         <p>{{ publicacion['contenido'] }}</p>
                     </div>
                 {% endfor %}
