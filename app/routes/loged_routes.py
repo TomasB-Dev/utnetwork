@@ -37,7 +37,7 @@ def logued_route(app, usuarios, publicaciones):
             else:
                 publicaciones.publicar(id_user,contenido)
                 return redirect(url_for('home'))
-        except NameError as e:
+        except Exception as e:
             save_error(e)
             return render_template('error.html')
     @app.route('/app/seguir',methods=['POST'])
@@ -46,7 +46,9 @@ def logued_route(app, usuarios, publicaciones):
         token = session.get('usuario')
         id_user = token[0]['id']
         id_seguido = request.form['id_seguido']
+        print(id_seguido)
         seguimiento = usuarios.seguir_usuario(id_user,id_seguido)
+
         if seguimiento == True:
             return redirect(url_for('home'))
         else:
@@ -58,6 +60,7 @@ def logued_route(app, usuarios, publicaciones):
         token = session.get('usuario')
         id_user = token[0]['id']
         id_seguido = request.form['id_seguido']
+        
         un_seguir = usuarios.dejar_de_seguir(id_user,id_seguido)
         if un_seguir == True:
             return redirect(url_for('home'))
