@@ -28,7 +28,7 @@ class Publicaciones:
     def ver_publicaciones(self,user_id):
             self.db_user.conectar()
             publicaciones = self.db_user.consulta(
-                "SELECT * FROM publicaciones" #aca va filtrado por amigos pero no hicimos esa parte todavia
+                "SELECT * FROM publicaciones ORDER BY fecha DESC" #aca va filtrado por amigos pero no hicimos esa parte todavia
             )
             self.db_user.cerrar()
             return publicaciones
