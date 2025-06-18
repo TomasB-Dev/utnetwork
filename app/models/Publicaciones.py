@@ -22,6 +22,7 @@ class Publicaciones:
             resultado =self.db_user.consulta(
                 "INSERT INTO publicaciones (id_user,fecha,contenido) VALUES (%s,%s,%s)",(user_id,fecha,contenido)
             )
+            
             self.db_user.cerrar()
             return resultado
         
