@@ -1,6 +1,7 @@
 from flask import Flask, render_template
 from app.models.Usuarios import Usuarios
 import os
+from app.models.Publicaciones import Publicaciones
 from app.models.Data_Base import DataBase
 from dotenv import load_dotenv
 from app.routes.login_routes import login_route
@@ -16,7 +17,7 @@ HOST = os.getenv('HOST')
 USER = os.getenv('USER')
 db_user = DataBase(HOST, USER, DB_KEY, DB_NAME)
 usuarios = Usuarios()
-
+publicaciones =  Publicaciones()
 
 app = Flask(__name__)
 
@@ -32,7 +33,7 @@ register_route(app)
 #modularizacion vaidations
 validation_route(app,usuarios,db_user)
 #modularizacion loged views
-logued_route(app,usuarios)
+logued_route(app,usuarios, publicaciones)
 
 
 @app.errorhandler(404)
