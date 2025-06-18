@@ -1,6 +1,7 @@
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from app.utils.Error_Saver import save_error
 
 
 class Send_Mail:
@@ -27,4 +28,5 @@ class Send_Mail:
             servidor.quit()
 
         except Exception as e:
-            print(f'error al enviar el correo {e}')
+            save_error(e)
+            

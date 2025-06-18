@@ -1,9 +1,9 @@
 import hashlib
-from app.Data_Base import DataBase
+from app.models.Data_Base import DataBase
 from dotenv import load_dotenv
 import os
 import random
-from app.Mail_Send import Send_Mail
+from app.models.Mail_Send import Send_Mail
 load_dotenv(dotenv_path='../.env')
 DB_NAME = os.getenv('DB_NAME')
 DB_KEY = os.getenv('DB_KEY')
@@ -48,9 +48,10 @@ class Login:
             codigo = ''
             for i in range(6):
                 codigo += str(random.randrange(0,9,1))
+            codigo_hash = hashlib.sha256(codigo.encode()).hexdigest() #hasheo el codigo de confirmacion
             db_user.conectar()
             db_user.consulta(
-                "UPDATE usuarios SET confirmed = %s WHERE mail = %s",(codigo,self.mail)
+                "UPDATE usuarios SET confirmed = %s WHERE mail = %s",(codigo_hash,self.mail)
             )
             db_user.cerrar()
             MAIL = os.getenv('MAIL')

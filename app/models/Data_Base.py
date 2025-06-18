@@ -2,6 +2,7 @@ import mysql.connector
 from mysql.connector import Error
 
 
+
 class DataBase:
     def __init__(self, host, nombre, key, db):
         self.host = host

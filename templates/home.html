@@ -7,29 +7,97 @@
     <link rel="stylesheet" href="{{url_for('static',filename='css/home.css')}}">
     <title>Inicio | UTNetwork</title>
 </head>
-<body>
-    <section class="container">
-    <div class="container_info_profile">
-        <div class="nav_profile">
-            <a href="">Mensajes</a>
-            <a href="">Laboratorio</a>
-            <a href="{{ url_for('logout') }}">Cerrar sesion</a>
-        </div>
-    
-    </div>
-    <div class="container_publish">
-        <textarea name="" id="" placeholder="en que estas pensando? {{usuario['nombre']}}" maxlength="500" ></textarea>
-        <button>Publicar</button>
-    </div>
-    <div class="right_container">
-        <h2>Sugerencia de amigos</h2>
+<body id="body">
+   
+    <div class="container_main">
 
-    </div>
+        <aside class="left">
+            <div class="left_profile_div">
+                <picture>
+                    <img src="{{usuario['avatar']}}" alt="">
+                </picture>
+                <div>
+                    <p>{{usuario['nombre']}}</p>
+                    <p>{{usuario['mail']}}</p>
+                </div>
+            </div>
+            <nav class="left_profile_nav">
+                    <a href="">
+                        Facu Amigos
+                    </a>
+                    <a href="">
+                        Mensajes
+                    </a>
+                    <a href="">
+                        Configuracion
+                    </a>
+                    <a href="{{url_for('logout')}}">
+                        Cerrar Sesion
+                    </a>
+            </nav>
+        </aside>
+        <main>
+            <button id="swap-btn" onclick="changue_BG()"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="5" fill="currentColor"/>
+                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button>
+            <div class="container_publish">
+                <div>
+                    <picture>
+                        <img src="{{usuario['avatar']}}" alt="">
+                    </picture>
+                    <form action="{{url_for('publicar')}}" method="POST">
+                    <textarea id="input_publish" name='input_publish' type="text" placeholder="{{usuario['nombre']}}, {{pregunta}}"></textarea>
+                </div>
+                <button  type="submit">Publicar</button>
+                </form>
+            </div>
+            <div>
+               {% for publicacion in publicaciones %}
+                <div class="publish_card">
+                    <div class="container_info_profile">
+                        <picture>
+                            <img src="{{ publicacion['avatar'] }}" alt="">
+                        </picture>
+                        <div class="container_info_profile_text">
+                            <p>{{publicacion['nombre']}}</p>
+                            <p>{{publicacion['fecha']}}</p>
 
-    </section>
+                        </div>
+                    </div>
+                    <div class="container_text">
+                        <p class="text">{{ publicacion['contenido'] }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+
+            </div>
+        </main>
+        <aside class="right">
+            
+          {% for usuarios_sugerido in usuarios_sugeridos %}
+            <div class="container_sugeridos">
+                <div class="container_sugeridos_img">
+                    <img src="{{usuarios_sugerido['avatar']}}" alt="">
+                </div>
+                <form action="{{url_for('seguir')}}" method="POST">
+                <div class="container_sugeridos_text">
+                    <input name="id_seguido"id="id_seguido" style="display: none;" value="{{usuarios_sugerido['id']}}">
+                    <p>{{usuarios_sugerido['nombre']}}</p>
+                    <p>{{usuarios_sugerido['mail']}}</p>
+                </div>
+                <button  type='submit' >Seguir</button>
+                </form>
+            </div>
+            {%endfor%}
+        </aside>
+    </div>
+<script src="{{url_for('static',filename='js/modo-luz.js')}}"></script>
 <script>
 const usuario = '{{ usuario | tojson |safe }}';
 localStorage.setItem('usuario', usuario)
 </script>
+<script src="{{url_for('static',filename='js/publicacion.js')}}"></script>
 </body>
 </html>
