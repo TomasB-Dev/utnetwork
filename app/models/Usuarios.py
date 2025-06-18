@@ -66,7 +66,7 @@ class Usuarios:
         try:
             self.db_user.conectar()
             self.db_user.consulta(
-                "INSERT INTO seguidores (id_user, id_follow) VALUES (%s, %s)", (user_id, follow_id)
+                "INSERT INTO seguidores (id_user, seguido_id) VALUES (%s, %s)", (user_id, follow_id)
             )
             self.db_user.cerrar()
             return True
