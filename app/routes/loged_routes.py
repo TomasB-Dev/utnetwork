@@ -26,8 +26,11 @@ def logued_route(app, usuarios, publicaciones):
             token = session.get('usuario')
             id_user = token[0]['id']
             contenido = request.form['publicacion']
-            publicaciones.publicar(id_user,contenido)
-            return redirect(url_for('home'))
+            if contenido == '':
+                return redirect(url_for('home'))
+            else:
+                publicaciones.publicar(id_user,contenido)
+                return redirect(url_for('home'))
         except NameError as e:
             save_error(e)
             return render_template('error.html')
