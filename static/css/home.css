@@ -188,7 +188,23 @@ body {
     transition: all 0.3s ease;
     z-index: 999;
 }
+ /*esto despues borrarlo*/
+ .publicacion {
+    background-color: var(--bg-cards, #252525);
+    color: white;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    box-shadow: var(--box_shadows, rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px);
+    font-size: 1rem;
+    line-height: 1.4;
+    transition: background-color 0.3s ease;
+}
 
+.publicacion:hover {
+    background-color: var(--hover_buttons, #2e2e2e); 
+    cursor: pointer;
+}
 
 
 

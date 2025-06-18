@@ -47,12 +47,18 @@
                     <picture>
                         <img src="{{usuario['avatar']}}" alt="">
                     </picture>
-                    <textarea type="text" placeholder="En que estas pensando? {{usuario['nombre']}}"></textarea>
+                    <form action="{{url_for('publicar')}}" method="POST">
+                    <textarea type="text" id="publicacion" name="publicacion" placeholder="En que estas pensando? {{usuario['nombre']}}"></textarea>
                 </div>
                 <button>Publicar</button>
+                </form>
             </div>
             <div>
-                {{publicaciones[0]['contenido']}}
+                {% for publicacion in publicaciones %}
+                    <div class="publicacion">
+                        <p>{{ publicacion['contenido'] }}</p>
+                    </div>
+                {% endfor %}
             </div>
         </main>
         <aside class="right">

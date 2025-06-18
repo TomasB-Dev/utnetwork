@@ -39,21 +39,21 @@ class Usuarios:
         return state
     
 
-    # def publicar(self, user_id, contenido):
-    #     fecha = datetime.datetime.now()
-    #     self.db_user.conectar()
-    #     self.db_user.consulta(
-    #         "INSERT INTO publicaciones (id_user,fecha,contenido) VALUES (%s,%s,%s)",(user_id,fecha,contenido)
-    #     )
-    #     self.db_user.cerrar()
+    def publicar(self, user_id, contenido):
+        fecha = datetime.datetime.now()
+        self.db_user.conectar()
+        self.db_user.consulta(
+            "INSERT INTO publicaciones (id_user,fecha,contenido) VALUES (%s,%s,%s)",(user_id,fecha,contenido)
+            )
+        self.db_user.cerrar()
     
-    # def ver_publicaciones(self,user_id):
-    #     self.db_user.conectar()
-    #     publicaciones = self.db_user.consulta(
-    #         "SELECT * FROM publicaciones" #aca va filtrado por amigos pero no hicimos esa parte todavia
-    #     )
-    #     self.db_user.cerrar()
-    #     return publicaciones
+    def ver_publicaciones(self,user_id):
+        self.db_user.conectar()
+        publicaciones = self.db_user.consulta(
+            "SELECT * FROM publicaciones" #aca va filtrado por amigos pero no hicimos esa parte todavia
+            )
+        self.db_user.cerrar()
+        return publicaciones
     
     def seguir_usuario (self, user_id, follow_id):
         self.db_user.conectar()
