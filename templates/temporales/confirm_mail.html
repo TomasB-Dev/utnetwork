@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <link rel="stylesheet" href="{{url_for('static',filename='css/confirm_mail.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <title>Confirmar Mail | UTNetwork</title>
 </head>
 <body>
@@ -13,26 +14,28 @@
 
     <div class="container">
         <div class="container_card">
-
+            <button onclick="pegarCodigo()" class="btn_paste"><i class="fa-regular fa-clipboard"></i></button>
             <div class="container_img">
                 <img src="{{ url_for('static', filename='images/email_icon.svg') }}" alt="">
                 <h3>Confirmar Email</h3>
                 <p>Por favor, verifique la bandeja de entrada de su correo electrónico.</p>
             </div>
             <div class="container_inputs">
-                <input maxlength="1" pattern="[A-Za-z0-9]" type="text" name="" id="1c">
-                <input maxlength="1" pattern="[A-Za-z0-9]" type="text" name="" id="2c">
-                <input maxlength="1" pattern="[A-Za-z0-9]" type="text" name="" id="3c">
-                <input maxlength="1" pattern="[A-Za-z0-9]" type="text" name="" id="4c">
-                <input maxlength="1" pattern="[A-Za-z0-9]" type="text" name="" id="5c">
-                <input maxlength="1" pattern="[A-Za-z0-9]" type="text" name="" id="6c">
+                <input maxlength="1" pattern="[A-Za-z0-9]" type="text" name="" class="code" id="1c">
+                <input maxlength="1" pattern="[A-Za-z0-9]" type="text" name="" class="code" id="2c">
+                <input maxlength="1" pattern="[A-Za-z0-9]" type="text" name="" class="code" id="3c">
+                <input maxlength="1" pattern="[A-Za-z0-9]" type="text" name="" class="code" id="4c">
+                <input maxlength="1" pattern="[A-Za-z0-9]" type="text" name="" class="code" id="5c">
+                <input maxlength="1" pattern="[A-Za-z0-9]" type="text" name="" class="code" id="6c">
             </div>
             <button onclick="enviarCodigo(event)" class="btn_verify">Verificar</button>
             <div class="container_re_send_code">
                 <p>¿No recibiste el código? </p>
                 <button id="btn_re_send" onclick="reenviarCodigo(event)" class="btn_re_send_code">Reenviar codigo</button>
             </div>
-            
+            <div class="logout_link">
+                <a href="{{url_for('logout')}}">Cerrar Sesion</a>
+            </div>
             
         </div>
     </div>
