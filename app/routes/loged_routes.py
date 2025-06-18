@@ -46,6 +46,7 @@ def logued_route(app, usuarios, publicaciones):
         token = session.get('usuario')
         id_user = token[0]['id']
         id_seguido = request.form['id_seguido']
+        print(id_seguido, 'id_seguido')
         print(id_seguido)
         seguimiento = usuarios.seguir_usuario(id_user,id_seguido)
 

@@ -136,8 +136,8 @@ body {
     }
     
     & picture {
-        width: 60px;
-        height: 60px;
+       width: 55px;
+        height: 52px;   
         border-radius: 50%;
         overflow: hidden;
         margin-right: 15px;
