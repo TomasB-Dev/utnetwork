@@ -121,8 +121,13 @@ body {
 
 .container_publish {
 
-    padding: 10px;
-    /* background-color: var(--bg-cards); */
+    padding: 15px;
+    background-color: var(--bg-cards);
+    & form {
+        width: 100%;
+    }
+    
+    margin-bottom: 20px;
     
     & div {
         display: flex;
@@ -150,10 +155,12 @@ body {
         padding: 1rem;
         /* width: 100%; */
         background: none;
+        outline: none;
+        color: white;
         min-height: 80px;
         font-size: 1rem;
-        min-width: 200px;
-        max-width: 600px
+        width: -webkit-fill-available;
+    
     }
 
 
@@ -173,7 +180,10 @@ body {
 
 
 .publish_card {
-
+    background-color: #252525;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    padding: 10px;
 }
 
 
@@ -195,6 +205,18 @@ body {
     & img {
         object-fit: contain;
         width: 100%;
+    }
+ 
+
+    margin-bottom: 20px;
+}
+
+.container_info_profile_text {
+
+
+
+    & p:nth-child(2){ 
+        color: gray;
     }
 }
 

@@ -36,4 +36,10 @@ class Publicaciones:
             return publicaciones
     #metodo traer publicaciones de amigos
     
-    
+    def eliminar_publicacion(self, publicacion_id):
+        self.db_user.conectar()
+        self.db_user.consulta(
+            "DELETE FROM publicaciones WHERE id = %s", (publicacion_id)
+        )
+        self.db_user.cerrar()
+        return True
