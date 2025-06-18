@@ -29,7 +29,7 @@ def logued_route(app, usuarios, publicaciones):
         try:
             token = session.get('usuario')
             id_user = token[0]['id']
-            contenido = request.form['publicacion']
+            contenido = request.form['input_publish']
             if contenido == '':
                 return redirect(url_for('home'))
             else:

@@ -47,9 +47,11 @@
                     <picture>
                         <img src="{{usuario['avatar']}}" alt="">
                     </picture>
-                    <textarea id="input_publish" type="text" placeholder="En que estas pensando? {{usuario['nombre']}}"></textarea>
+                    <form action="{{url_for('publicar')}}" method="POST">
+                    <textarea id="input_publish" name='input_publish' type="text" placeholder="{{usuario['nombre']}}, {{pregunta}}"></textarea>
                 </div>
-                <button onclick="publicar(event)" type="submit">Publicar</button>
+                <button  type="submit">Publicar</button>
+                </form>
             </div>
             <div>
                 {% for publicacion in publicaciones %}
