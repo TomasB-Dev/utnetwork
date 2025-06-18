@@ -15,38 +15,50 @@ class Usuarios:
         self.db_user = DataBase(HOST, USER, DB_KEY, DB_NAME)    
 
     def get_data_by_id(self, user_id):
-        self.db_user.conectar()
-        resultado = self.db_user.consulta(
-            "SELECT *  FROM usuarios WHERE id = %s", (user_id,)
-        )
+        try:
+            self.db_user.conectar()
+            resultado = self.db_user.consulta(
+                "SELECT *  FROM usuarios WHERE id = %s", (user_id,)
+            )
+            
         
-    
-    
-    
-        self.db_user.cerrar()
-        if resultado is not None:
-            return resultado
-        else:
-            return None
         
+        
+            self.db_user.cerrar()
+            if resultado is not None:
+                return resultado
+            else:
+                return None
+        except Exception as e :
+            save_error(e)
+            return False
+            
         
     def suggest_users(self, user_id):
-        self.db_user.conectar()
-        resultado = self.db_user.consulta(
-            "SELECT * FROM usuarios WHERE id != %s ORDER BY RAND() LIMIT 5", (user_id,)
-        )
-        self.db_user.cerrar()
-        return resultado
+        try:
+            self.db_user.conectar()
+            resultado = self.db_user.consulta(
+                "SELECT * FROM usuarios WHERE id != %s ORDER BY RAND() LIMIT 5", (user_id,)
+            )
+            self.db_user.cerrar()
+            return resultado
+        except Exception as e :
+            save_error(e)
+            return False
     
     def get_state_by_id(self,user_id):
-        self.db_user.conectar()
-        resultado = self.db_user.consulta(
-            "SELECT state FROM usuarios WHERE id = %s", (user_id)
-        )
-        
-        state = resultado[0]['state']
-        self.db_user.cerrar()
-        return state
+        try:
+            self.db_user.conectar()
+            resultado = self.db_user.consulta(
+                "SELECT state FROM usuarios WHERE id = %s", (user_id)
+            )
+            
+            state = resultado[0]['state']
+            self.db_user.cerrar()
+            return state
+        except Exception as e :
+            save_error(e)
+            return False
     
 
     
@@ -58,35 +70,47 @@ class Usuarios:
             )
             self.db_user.cerrar()
             return True
-        except NameError as e:
+        except Exception as e :
             save_error(e)
             return False
     
     def dejar_de_seguir_usuario(self, user_id, follow_id):
-        self.db_user.conectar()
-        self.db_user.consulta(
-            "DELETE FROM seguidores WHERE id_user = %s AND id_follow = %s", (user_id, follow_id)
-        )
-        self.db_user.cerrar()
-        return True
+        try:
+            self.db_user.conectar()
+            self.db_user.consulta(
+                "DELETE FROM seguidores WHERE id_user = %s AND id_follow = %s", (user_id, follow_id)
+            )
+            self.db_user.cerrar()
+            return True
+        except Exception as e :
+            save_error(e)
+            return False
     
     def obtener_seguidores(self, user_id):
-        self.db_user.conectar()
-        resultado = self.db_user.consulta(
-            "SELECT id_follow FROM seguidores WHERE id_user = %s", (user_id,)
-        )
-        self.db_user.cerrar()
-        resultado_final = [row['id_follow'] for row in resultado]
-        return resultado_final
+        try:
+            self.db_user.conectar()
+            resultado = self.db_user.consulta(
+                "SELECT id_follow FROM seguidores WHERE id_user = %s", (user_id,)
+            )
+            self.db_user.cerrar()
+            resultado_final = [row['id_follow'] for row in resultado]
+            return resultado_final
+        except Exception as e :
+            save_error(e)
+            return False
     
     def obtener_seguidos(self, user_id):
-        self.db_user.conectar()
-        resultado = self.db_user.consulta(
-            'SELECT id_user FROM seguidores WHERE id_follow = %s', (user_id,)
-        )
-        resultado_final = [row['id_user'] for row in resultado]
-        self.db_user.cerrar()
-        return resultado_final      
+        try:
+            self.db_user.conectar()
+            resultado = self.db_user.consulta(
+                'SELECT id_user FROM seguidores WHERE id_follow = %s', (user_id,)
+            )
+            resultado_final = [row['id_user'] for row in resultado]
+            self.db_user.cerrar()
+            return resultado_final  
+        except Exception as e :
+            save_error(e)
+            return False    
     
     #metodo traer publicaciones de amigos
     
