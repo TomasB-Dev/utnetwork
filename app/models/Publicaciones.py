@@ -35,7 +35,9 @@ class Publicaciones:
                 usuarios.nombre, 
                 usuarios.avatar, 
                 publicaciones.fecha, 
-                publicaciones.contenido
+                publicaciones.contenido,
+                publicaciones.id_user,
+                publicaciones.id_publicacion
             FROM publicaciones
 
             INNER JOIN usuarios ON publicaciones.id_user = usuarios.id
@@ -57,7 +59,7 @@ class Publicaciones:
     def eliminar_publicacion(self, publicacion_id):
         self.db_user.conectar()
         self.db_user.consulta(
-            "DELETE FROM publicaciones WHERE id = %s", (publicacion_id)
+            "DELETE FROM publicaciones WHERE id_publicacion = %s", (publicacion_id)
         )
         self.db_user.cerrar()
         return True
