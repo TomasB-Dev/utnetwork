@@ -19,6 +19,7 @@ def logued_route(app, usuarios, publicaciones):
                 
                 pregunta = random.choice(preguntas_graciosas)
                 publicacion = publicaciones.ver_publicaciones(id_user) #traigo las publicaciones
+                print(publicacion, 'publicacion')
                 return render_template('home.html', usuario=info_user[0],publicaciones=publicacion,pregunta=pregunta, usuarios_sugeridos=users_suggested)
             else:
                 return redirect(url_for('validation'))

@@ -54,12 +54,19 @@
                 </form>
             </div>
             <div>
-                {% for publicacion in publicaciones %}
-                    <div class="publicacion">
-                        <img src="{{usuario['avatar']}}" alt="">
-                        <p>{{ publicacion['contenido'] }}</p>
+               {% for publicacion in publicaciones %}
+                <div class="publish_card">
+                    <div class="container_avatar">
+                        <img src="{{ publicacion['avatar'] }}" alt="">
                     </div>
-                {% endfor %}
+                    <div class="container_text">
+                        <p class="name">{{ publicacion['nombre'] }}</p>
+                        <p class="text">{{ publicacion['contenido'] }}</p>
+                        <p class="date">{{ publicacion['fecha'] }}</p>
+                    </div>
+                </div>
+            {% endfor %}
+
             </div>
         </main>
         <aside class="right">
