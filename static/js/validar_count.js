@@ -62,9 +62,6 @@ function enviarCodigo(e) {
             const mensaje = document.getElementById('mensaje-respuesta');
             if (respuesta.correcto) {
                 window.location.href = respuesta.redirect_url; /* diablo loco , reza reza */
-            } else {
-                mensaje.textContent = 'Codigo incorrecto';
-                mensaje.style.color = 'red';
             }
         })
         .catch(error => {
