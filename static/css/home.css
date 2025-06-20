@@ -21,6 +21,10 @@
 }
 
 
+p {
+    margin: 0
+}
+
 
 body {
     font-family: "Montserrat", sans-serif;
@@ -47,7 +51,7 @@ body {
     /* background: var(--bg-cards); */
     display: flex;
     align-items: center;
-
+    background-color: var(--bg-cards);
     /* box-shadow: var(--box_shadows); */
 
     padding: 10px;
@@ -72,6 +76,7 @@ body {
         background: none;
         & p {
             background: none;
+            margin: 0px;
         }
 
         & p:nth-child(1) {
@@ -98,7 +103,8 @@ body {
     display: flex;
     flex-direction: column;
     margin-top: 3rem;
-    border-radius: 10px;
+    border-radius: 5px;
+    background-color: var(--bg-cards);
     & a {
         color: white;
         padding: 21px 0 21px 10px;
@@ -305,6 +311,12 @@ body {
         & img {
             object-fit: contain;
             width: 100%;
+        }
+    }
+
+    .container_sugged_person_text {
+        & p {
+            margin: 0;
         }
     }
 
