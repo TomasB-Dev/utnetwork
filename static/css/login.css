@@ -92,6 +92,27 @@ body {
     }
 }
 
+
+
+
+.error {
+    color: #ff4d4f;         /* Rojo para errores */
+    font-size: 0.95rem;
+    margin-top: 4px;
+    /* display: none; */
+    margin-bottom: 8px;
+    min-height: 18px;       /* Reserva espacio aunque no haya error */
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.error_input {
+    border: 1px solid #ff4d4f;
+    background-color: #ffcccc; /* Fondo rojo claro */
+    color: #ff4d4f; /* Texto rojo */
+    box-shadow: rgba(255, 77, 79, 0.25) 0px 6px 12px -2px, rgba(255, 77, 79, 0.3) 0px 3px 7px -3px;
+}
+
 .container_image_text::before {
     content: '';
     position: absolute;
