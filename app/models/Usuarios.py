@@ -59,8 +59,6 @@ class Usuarios:
             save_error(e)
             return False
     
-
-    
     def seguir_usuario (self, user_id, follow_id):
         try:
             self.db_user.conectar()
@@ -111,6 +109,27 @@ class Usuarios:
             save_error(e)
             return False    
     
+    def obtener_estadisticas(self,user_id):
+        stats = {}
+        try:
+            self.db_user.conectar()
+            cantidad_publi = self.db_user.consulta(
+                "SELECT COUNT(id_publicacion) FROM publicaciones WHERE id_user = %s",(user_id)
+            )
+            cantidad_segui = self.db_user.consulta(
+            'SELECT COUNT(id_user) FROM seguidores WHERE id_user = %s',(user_id)
+            )
+            cantidad_followers = self.db_user.consulta(
+                'SELECT COUNT(seguido_id) FROM seguidores WHERE id_user = %s',(user_id)
+            )
+            self.db_user
+            stats['cant_publi'] = cantidad_publi[0]['COUNT(id_publicacion)']
+            stats['cant_seguidos'] = cantidad_segui[0]['COUNT(id_user)']
+            stats['cant_seguidores'] = cantidad_followers[0]['COUNT(seguido_id)']
+            return stats
+        except Exception as e:
+            save_error(e)
+
     #metodo traer publicaciones de amigos
     
     

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>publicacion: {{stats['cant_publi']}}</p>
+    <p>seguidos: {{stats['cant_seguidos']}}</p>
+    <p>seguidores: {{stats['cant_seguidores']}}</p>
+    {% for publicacion in publicaciones %}
+                <div class="publish_card">
+                    <div class="container_profile">
+
+                    <div class="container_info_profile">
+                        
+                        <picture>
+                            <img src="{{ publicacion['avatar'] }}" alt="">
+                        </picture>
+                        <div class="container_info_profile_text">
+                            <p>{{publicacion['nombre']}}</p>
+                            <p>{{publicacion['fecha']}}</p>
+                            <input name="id_publi"id="id_publi" style="display: none;" value="{{publicacion['id_publicacion']}}">
+
+                        </div>
+                    </div>
+
+                        <div class="container_info_profile_buttons">
+                             {% if publicacion['id_user'] == usuario['id'] %}
+                            <form method="POST" action="{{ url_for('eliminar_publi') }}">
+                                <input type="hidden" name="id_publi" value="{{ publicacion['id_publicacion'] }}">
+                                <button type="submit"><i class="fa-solid fa-minus"></i></button>
+                            </form>
+                        {% endif %}
+                        </div>
+                        </div>
+
+                    <div class="container_text">
+                        <p class="text">{{ publicacion['contenido'] }}</p>
+                    
+                    </div>
+                   
+                </div>
+            {% endfor %}
+</body>
+</html>

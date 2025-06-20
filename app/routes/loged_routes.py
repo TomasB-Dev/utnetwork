@@ -9,6 +9,7 @@ import random
 def logued_route(app, usuarios, publicaciones):
     @app.route('/home')
     def home():
+        
         token = session.get('usuario')
         if session:
             id_user = token[0]['id']
@@ -16,7 +17,6 @@ def logued_route(app, usuarios, publicaciones):
             user_state = usuarios.get_state_by_id(id_user)
             users_suggested = usuarios.suggest_users(id_user)
             if user_state == True:
-                
                 pregunta = random.choice(preguntas_graciosas)
                 publicacion = publicaciones.ver_publicaciones(id_user) #traigo las publicaciones
                 return render_template('home.html', usuario=info_user[0],publicaciones=publicacion,pregunta=pregunta, usuarios_sugeridos=users_suggested)
@@ -25,6 +25,23 @@ def logued_route(app, usuarios, publicaciones):
         else:
             return render_template('error.html')
         
+    @app.route('/perfil')
+    def perfil():
+        token = session.get('usuario')
+        if session:
+            id_user = token[0]['id']
+            info_user = usuarios.get_data_by_id(id_user)
+            user_state = usuarios.get_state_by_id(id_user)
+            if user_state == True:
+                stats = usuarios.obtener_estadisticas(id_user)
+                publica = publicaciones.solo_una_persona(id_user)
+                return render_template('perfil.html', usuario=info_user[0],stats=stats,publicaciones=publica)
+            else:
+                return redirect(url_for('validation'))
+        else:
+            return render_template('error.html')
+        
+
     @app.route('/app/publicar',methods=['POST'])
     def publicar():
         try:
@@ -45,7 +62,6 @@ def logued_route(app, usuarios, publicaciones):
         token = session.get('usuario')
         id_user = token[0]['id']
         id_seguido = request.form['id_seguido']
-        print(id_seguido, 'id_seguido')
         seguimiento = usuarios.seguir_usuario(id_user,id_seguido)
 
         if seguimiento == True:
