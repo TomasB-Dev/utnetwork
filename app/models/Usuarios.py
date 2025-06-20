@@ -70,7 +70,7 @@ class Usuarios:
             )
             self.db_user.cerrar()
             return True
-        except Exception as e :
+        except Exception as e:
             save_error(e)
             return False
     

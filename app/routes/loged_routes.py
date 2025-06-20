@@ -19,7 +19,6 @@ def logued_route(app, usuarios, publicaciones):
                 
                 pregunta = random.choice(preguntas_graciosas)
                 publicacion = publicaciones.ver_publicaciones(id_user) #traigo las publicaciones
-                print(publicacion, 'publicacion')
                 return render_template('home.html', usuario=info_user[0],publicaciones=publicacion,pregunta=pregunta, usuarios_sugeridos=users_suggested)
             else:
                 return redirect(url_for('validation'))
@@ -47,7 +46,6 @@ def logued_route(app, usuarios, publicaciones):
         id_user = token[0]['id']
         id_seguido = request.form['id_seguido']
         print(id_seguido, 'id_seguido')
-        print(id_seguido)
         seguimiento = usuarios.seguir_usuario(id_user,id_seguido)
 
         if seguimiento == True:

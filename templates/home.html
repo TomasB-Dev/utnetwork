@@ -77,7 +77,7 @@
         <aside class="right">
             
           {% for usuarios_sugerido in usuarios_sugeridos %}
-            <div class="container_sugeridos">
+            <!-- <div class="container_sugeridos">
                 <div class="container_sugeridos_img">
                     <img src="{{usuarios_sugerido['avatar']}}" alt="">
                 </div>
@@ -85,10 +85,26 @@
                 <div class="container_sugeridos_text">
                     <input name="id_seguido"id="id_seguido" style="display: none;" value="{{usuarios_sugerido['id']}}">
                     <p>{{usuarios_sugerido['nombre']}}</p>
-                    <p>{{usuarios_sugerido['mail']}}</p>
                 </div>
                 <button class="btn_follow" >Seguir</button>
                 </form>
+            </div> -->
+
+        <div class="container_sugged_person">
+                <div class="card_sugged_person">
+                    <div class="container_sugged_person_img">
+                        <picture class="container_sugged_person_picture">
+                            <img src="{{usuario['avatar']}}" alt="">
+                        </picture>
+                        <form action="{{url_for('seguir')}}" method="POST">
+                            <div class="container_sugged_person_text">
+                                <p>{{usuario['nombre']}}</p>
+                                <input name="id_seguido"id="id_seguido" style="display: none;" value="{{usuarios_sugerido['id']}}">
+                            </div>
+                        </form>
+                    </div>
+                    <button class="btn_follow">Seguir</button>
+                </div>
             </div>
             {%endfor%}
         </aside>
