@@ -2,8 +2,7 @@ from app.models.Data_Base import DataBase
 from dotenv import load_dotenv
 import os
 from app.utils.Error_Saver import save_error
-import datetime
-import mysql.connector
+
 
 class Usuarios:
     def __init__(self):
@@ -66,7 +65,7 @@ class Usuarios:
         try:
             self.db_user.conectar()
             self.db_user.consulta(
-                "INSERT INTO seguidores (id_user, id_follow) VALUES (%s, %s)", (user_id, follow_id)
+                "INSERT INTO seguidores (id_user, seguido_id) VALUES (%s, %s)", (user_id, follow_id)
             )
             self.db_user.cerrar()
             return True
@@ -78,7 +77,7 @@ class Usuarios:
         try:
             self.db_user.conectar()
             self.db_user.consulta(
-                "DELETE FROM seguidores WHERE id_user = %s AND id_follow = %s", (user_id, follow_id)
+                "DELETE FROM seguidores WHERE id_user = %s AND seguido_id = %s", (user_id, follow_id)
             )
             self.db_user.cerrar()
             return True

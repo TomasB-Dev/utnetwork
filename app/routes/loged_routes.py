@@ -63,4 +63,8 @@ def logued_route(app, usuarios, publicaciones):
         un_seguir = usuarios.dejar_de_seguir(id_user,id_seguido)
         if un_seguir == True:
             return redirect(url_for('home'))
-    
+    @app.route('/eliminar-publi',methods=['POST'])
+    def eliminar_publi():
+        id_publicacion = request.form['id_publi']
+        publicaciones.eliminar_publicacion(id_publicacion)
+        return redirect(url_for('home'))

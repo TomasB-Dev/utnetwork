@@ -26,20 +26,40 @@ class Publicaciones:
             self.db_user.cerrar()
             return resultado
         
-    def ver_publicaciones(self,user_id):
-            self.db_user.conectar()
-            publicaciones = self.db_user.consulta(
-                "SELECT usuarios.nombre, usuarios.avatar, publicaciones.fecha, publicaciones.contenido FROM publicaciones INNER JOIN usuarios ON publicaciones.id_user = usuarios.id WHERE publicaciones.id_user = %s ORDER BY publicaciones.fecha DESC", (user_id)
-                #aca va filtrado por amigos pero no hicimos esa parte todavia
+    def ver_publicaciones(self, user_id):
+        self.db_user.conectar()
+        
+        publicaciones = self.db_user.consulta(
+            """
+            SELECT 
+                usuarios.nombre, 
+                usuarios.avatar, 
+                publicaciones.fecha, 
+                publicaciones.contenido,
+                publicaciones.id_user,
+                publicaciones.id_publicacion
+            FROM publicaciones
+
+            INNER JOIN usuarios ON publicaciones.id_user = usuarios.id
+            WHERE publicaciones.id_user = %s
+            OR publicaciones.id_user IN (
+                    SELECT seguido_id 
+                    FROM seguidores 
+                    WHERE id_user = %s
             )
-            self.db_user.cerrar()
-            return publicaciones
+            ORDER BY publicaciones.fecha DESC
+            """,
+            (user_id, user_id) # consulta que trae la publicaciones de seguidos y las mias
+        )
+    
+        self.db_user.cerrar()
+        return publicaciones
     #metodo traer publicaciones de amigos
     
     def eliminar_publicacion(self, publicacion_id):
         self.db_user.conectar()
         self.db_user.consulta(
-            "DELETE FROM publicaciones WHERE id = %s", (publicacion_id)
+            "DELETE FROM publicaciones WHERE id_publicacion = %s", (publicacion_id)
         )
         self.db_user.cerrar()
         return True
