@@ -51,7 +51,13 @@ class Publicaciones:
             """,
             (user_id, user_id) # consulta que trae la publicaciones de seguidos y las mias
         )
-    
+        self.db_user.cerrar()
+        return publicaciones
+    def solo_una_persona(self,id_user):
+        self.db_user.conectar()
+        publicaciones = self.db_user.consulta(
+            'SELECT * FROM publicaciones WHERE id_user = %s',(id_user)
+        )
         self.db_user.cerrar()
         return publicaciones
     #metodo traer publicaciones de amigos
