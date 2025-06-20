@@ -37,8 +37,17 @@ class Usuarios:
         try:
             self.db_user.conectar()
             resultado = self.db_user.consulta(
-                "SELECT * FROM usuarios WHERE id != %s ORDER BY RAND() LIMIT 5", (user_id,)
-            )
+                """
+                SELECT u.*
+                FROM usuarios u
+                WHERE u.id != %s
+                AND u.id NOT IN (
+                    SELECT seguido_id FROM seguidores WHERE id_user = %s
+                )
+                ORDER BY RAND()
+                LIMIT 5
+            """, (user_id, user_id))
+                        
             self.db_user.cerrar()
             return resultado
         except Exception as e :
