@@ -59,8 +59,6 @@ class Usuarios:
             save_error(e)
             return False
     
-
-    
     def seguir_usuario (self, user_id, follow_id):
         try:
             self.db_user.conectar()
@@ -111,6 +109,20 @@ class Usuarios:
             save_error(e)
             return False    
     
+    def obtener_estadisticas(self,user_id):
+        stats = {}
+        try:
+            self.db_user.conectar()
+            cantidad_publi = self.db_user.consulta(
+                "SELECT COUNT(id_publicacion) FROM publicaciones WHERE id_user = %s",(user_id)
+            )
+            self.db_user.cerrar()
+            
+            stats['cant_publi'] = cantidad_publi[0]['COUNT(id_publicacion)']
+            return stats
+        except Exception as e:
+            save_error(e)
+
     #metodo traer publicaciones de amigos
     
     

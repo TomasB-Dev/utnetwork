@@ -9,6 +9,7 @@ import random
 def logued_route(app, usuarios, publicaciones):
     @app.route('/home')
     def home():
+        
         token = session.get('usuario')
         if session:
             id_user = token[0]['id']
@@ -17,9 +18,13 @@ def logued_route(app, usuarios, publicaciones):
             users_suggested = usuarios.suggest_users(id_user)
             if user_state == True:
                 
+                stats = usuarios.obtener_estadisticas(id_user)
+                
+
+                
                 pregunta = random.choice(preguntas_graciosas)
                 publicacion = publicaciones.ver_publicaciones(id_user) #traigo las publicaciones
-                return render_template('home.html', usuario=info_user[0],publicaciones=publicacion,pregunta=pregunta, usuarios_sugeridos=users_suggested)
+                return render_template('home.html', usuario=info_user[0],publicaciones=publicacion,pregunta=pregunta, usuarios_sugeridos=users_suggested,stats = stats)
             else:
                 return redirect(url_for('validation'))
         else:
