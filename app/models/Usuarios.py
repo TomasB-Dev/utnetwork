@@ -46,7 +46,7 @@ class Usuarios:
                 )
                 ORDER BY RAND()
                 LIMIT 5
-            """, (user_id, user_id))
+            """, (user_id, user_id))#trae usuarios random que no seguis
                         
             self.db_user.cerrar()
             return resultado
