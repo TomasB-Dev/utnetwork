@@ -54,7 +54,7 @@
                 </form>
             </div>
             <div>
-               {% for publicacion in publicaciones %}
+            {% for publicacion in publicaciones %}
                 <div class="publish_card">
                     <div class="container_info_profile">
                         <picture>
@@ -63,12 +63,20 @@
                         <div class="container_info_profile_text">
                             <p>{{publicacion['nombre']}}</p>
                             <p>{{publicacion['fecha']}}</p>
+                            <input name="id_publi"id="id_publi" style="display: none;" value="{{publicacion['id_publicacion']}}">
 
                         </div>
                     </div>
                     <div class="container_text">
                         <p class="text">{{ publicacion['contenido'] }}</p>
+                    
                     </div>
+                    {% if publicacion['id_user'] == usuario['id'] %}
+                    <form method="POST" action="{{ url_for('eliminar_publi') }}">
+                        <input type="hidden" name="id_publi" value="{{ publicacion['id_publicacion'] }}">
+                        <button type="submit">Eliminar</button>
+                    </form>
+                    {% endif %}
                 </div>
             {% endfor %}
 
