@@ -172,7 +172,10 @@ body {
         border-radius: 5px;
         background-color: var(--bg--secundary);
         cursor: pointer;
-
+        transition: .5s all;
+        &:hover {
+            background-color: var(--color-hover);
+        }
     }
 
     
@@ -187,9 +190,35 @@ body {
 }
 
 
+
+
+
+.container_info_profile_buttons {
+    & button {
+        background:none;
+        color: var(--bg--secundary);
+        border: 0px;
+        font-size: larger;
+        cursor: pointer;
+        transition: .5s all;
+        &:hover {
+            color: var(--color-hover);
+        }
+    }
+}
+
+
+.container_profile {
+        display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
 .container_info_profile {
     display: flex;
     align-items: center;
+
+
 
 
 
@@ -221,22 +250,53 @@ body {
 }
 
 
-
-.container_sugged_person {
+.container_sugged_persons {
     background-color: var(--bg-cards);
-    padding: 10px;
+    padding: 10px ;
     border-radius: 5px;
+}
 
 
-    & .card_sugged_person {
+
+
+
+
+
+
+     .card_sugged_person {
         display: flex;
-        align-items: center;
+        
         justify-content: space-between;
-
+        align-items: center;
+        /* margin: 10px; */
+        padding: 10px;
         
     }
 
-    & .container_sugged_person_picture {
+
+
+    .container_sugged_person_info {
+        display: flex;
+        align-items: center;
+    }
+
+
+
+    .btn_follow  {
+        border: none;
+        background: none;
+        color: var(--bg--secundary);
+        font-size: larger;
+        cursor: pointer;
+        transition: .5s all;
+
+
+        &:hover {
+            color: var(--color-hover);
+        }
+    }
+
+    .container_sugged_person_picture {
         width: 50px;
         height: 50px;
         border-radius: 50%;
@@ -247,7 +307,7 @@ body {
             width: 100%;
         }
     }
-}
+
 
 
 /* btn cambiar de oscuro a claro*/
