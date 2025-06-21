@@ -361,6 +361,25 @@ body {
         color: gray;
     }
 
+    @media (max-width: 1350px) {
+    .container_main  {
+        gap: 1rem;
+        padding: 10px;
+
+    }
+}
+
+
+@media (max-width: 991px) {
+    .container_main {
+        grid-template-columns: 6fr 4fr;
+    }
+    .left {
+        display: none;
+    }
+}
+
+
 
 /* btn cambiar de oscuro a claro*/
 #swap-btn {
