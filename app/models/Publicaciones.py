@@ -26,7 +26,7 @@ class Publicaciones:
             self.db_user.cerrar()
             return resultado
         
-    def ver_publicaciones(self, user_id):
+    def ver_publicaciones(self, user_id, offset=0, limite=10):
         self.db_user.conectar()
         
         publicaciones = self.db_user.consulta(
@@ -48,8 +48,10 @@ class Publicaciones:
                     WHERE id_user = %s
             )
             ORDER BY publicaciones.fecha DESC
+            LIMIT %s OFFSET %s
+
             """,
-            (user_id, user_id) # consulta que trae la publicaciones de seguidos y las mias
+            (user_id, user_id, limite, offset) # consulta que trae la publicaciones de seguidos y las mias
         )
         self.db_user.cerrar()
         return publicaciones
