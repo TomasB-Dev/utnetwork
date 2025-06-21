@@ -294,6 +294,13 @@ body {
 
 
 
+.error_message_update {
+    color: red;
+    display: none;
+    margin: 10px 0px;
+}
+
+
      .card_sugged_person {
         display: flex;
         
@@ -344,6 +351,33 @@ body {
             margin: 0;
         }
     }
+
+
+    .if_not_publication {
+        margin: auto;
+        width: 100%;
+        text-align: center;
+        font-size: 25px;
+        color: gray;
+    }
+
+    @media (max-width: 1350px) {
+    .container_main  {
+        gap: 1rem;
+        padding: 10px;
+
+    }
+}
+
+
+@media (max-width: 991px) {
+    .container_main {
+        grid-template-columns: 6fr 4fr;
+    }
+    .left {
+        display: none;
+    }
+}
 
 
 

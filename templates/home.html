@@ -56,6 +56,9 @@
                 </form>
             </div>
             <div>
+
+            {% if publicaciones %}
+
             {% for publicacion in publicaciones %}
                 <div class="publish_card">
                     <div class="container_profile">
@@ -81,12 +84,14 @@
                             </form>
 
                             <button style="margin-left: 10px; font-size: medium;" onclick="activateUpdate(this)"><i class="fa-solid fa-pen-to-square"></i></button>
+
                         {% endif %}
                         </div>
                         </div>
 
                     <div class="container_text">
-                        <form action="{{url_for('actualizar_publi')}}" method="POST">
+
+                        <form action="{{url_for('actualizar_publi')}}" method="POST" id="form_update_text">
                         <input type="hidden" name="id_publi" value="{{ publicacion['id_publicacion'] }}">
 
                         <div class="view_publication" >
@@ -95,15 +100,25 @@
                             
                         <div class="edit_publication" style="display: none;">
                             <textarea name="contenido" id="contenido">{{ publicacion['contenido'] }}</textarea>
-                            <button type="submit"> Guardar</button>
-
+                            <div id="error_update_post" class="error_message_update"></div>
+                            <button type="submit" id="button_save_post"> Guardar</button>
+                            <button onclick="cancelUpdate(this)">Cancelar</button>  
                         </div>
+
                         </form>
                     </div>
                    
                 </div>
+
             {% endfor %}
-                <a href="{{ url_for('home', page=page + 1) }}">Cargar más</a>
+            <a href="{{ url_for('home', page=page + 1) }}">Cargar más</a>
+
+        {% else %}
+            
+            <div class="if_not_publication">
+                Ups... no hay nada por aqui
+            </div>
+        {% endif %}
             </div>
         </main>
         <aside class="right">
