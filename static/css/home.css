@@ -47,6 +47,8 @@ body {
 
 } */
 
+
+
 .left_profile_div {
     /* background: var(--bg-cards); */
     display: flex;
@@ -129,6 +131,7 @@ body {
 
     padding: 15px;
     background-color: var(--bg-cards);
+    border-radius: 5px;
     & form {
         width: 100%;
     }
@@ -366,8 +369,9 @@ body {
 
 
 @media (max-width: 768px) {
-  .layout {
+  .container_main {
     grid-template-columns: 1fr;
+    padding: 20px;
   }
   .left, .right {
     display: none;

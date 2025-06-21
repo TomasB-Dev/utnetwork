@@ -29,7 +29,7 @@ def logued_route(app, usuarios, publicaciones):
             return render_template('error.html')
         
     @app.route('/perfil')
-    def perfil():
+    def profile():
         token = session.get('usuario')
         if session:
             id_user = token[0]['id']
@@ -38,7 +38,7 @@ def logued_route(app, usuarios, publicaciones):
             if user_state == True:
                 stats = usuarios.obtener_estadisticas(id_user)
                 publica = publicaciones.solo_una_persona(id_user)
-                return render_template('perfil.html', usuario=info_user[0],stats=stats,publicaciones=publica)
+                return render_template('profile.html', usuario=info_user[0],stats=stats,publicaciones=publica)
             else:
                 return redirect(url_for('validation'))
         else:
