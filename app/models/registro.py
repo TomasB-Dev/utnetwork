@@ -61,14 +61,14 @@ class Registro:
             if self.key:
 
                 
-                categoria = ['animados','accion','deporte','vikingos']#agregar manualmente
+                categoria = ['animados','accion','deporte','vikingos','frikis']#agregar manualmente
                 choice = random.choice(categoria) #selecciona una categoria random
                 total = 0
                 elementos = os.listdir(f'static/images/avatars/{choice}') #trae las cantidad de elementos
                 for element in elementos:
                     total += 1 # +1 por canda elemento
 
-                numero = random.randrange(0,total,1) #elije un numero random entre 0 y la cantidad de elementos que hay
+                numero = random.randrange(1,total,1) #elije un numero random entre 0 y la cantidad de elementos que hay
 
                 #esto asigna de manera aletoria un avatar para cada persona al momento del registro
                 if numero < 10:
