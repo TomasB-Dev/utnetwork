@@ -33,12 +33,35 @@ const publicar = (e) => {
 
 
 const activateUpdate =(button)=> {
-    const form = button.closest('form');
-    const view = document.querySelector('.view_publication');
-    const edit = document.querySelector('.edit_publication');
+    const container = button.closest('.publish_card');
 
+
+     if (!container) {
+        console.error('No se encontró el contenedor .container_text');
+        return;
+    }
+
+    const view = container.querySelector('.view_publication');
+    const edit = container.querySelector('.edit_publication');
+
+
+    
 
     view.style.display = 'none';
     edit.style.display = 'block'
+
+}
+
+
+const cancelUpdate =(button)=> {
+    const container = button.closest('.publish_card');
+    
+
+    const view = container.querySelector('.view_publication');
+    const edit = container.querySelector('.edit_publication');
+
+
+    view.style.display = 'block';
+    edit.style.display = 'none'
 
 }
