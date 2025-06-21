@@ -49,6 +49,7 @@ class Usuarios:
             """, (user_id, user_id))#trae usuarios random que no seguis
                         
             self.db_user.cerrar()
+            resultado = resultado or []
             return resultado
         except Exception as e :
             save_error(e)
