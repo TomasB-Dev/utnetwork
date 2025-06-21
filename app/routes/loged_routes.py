@@ -94,7 +94,7 @@ def logued_route(app, usuarios, publicaciones,db_user):
         return redirect(url_for('home'))
     
     #INICIA BUSCAR
-    @app.route('/app/buscar',methods=['POST'])
+    @app.route('/buscar',methods=['POST'])
     def buscar():
         if session:
             token = session.get('usuario')
@@ -104,12 +104,13 @@ def logued_route(app, usuarios, publicaciones,db_user):
                 info_user = usuarios.get_data_by_id(id_user)
                 buscar = request.form['busqueda']
                 db_user.conectar()
-                db_user.consulta(
+                busqueda = db_user.consulta(
                     "SELECT nombre, avatar FROM usuarios WHERE nombre LIKE %s",
                     ('%' + buscar + '%',)
                 )
                 db_user.cerrar()
-                return render_template('search.html',usuario=info_user[0],busqueda=buscar)
+                print(busqueda)
+                return render_template('search.html',usuario=info_user[0],busqueda=busqueda)
             else:
                 return redirect(url_for('validation'))
         return redirect(url_for('login'))

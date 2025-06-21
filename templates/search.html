@@ -11,7 +11,6 @@
     <title>Inicio | UTNetwork</title>
 </head>
 <body id="body">
-
     {% include 'components/header.html' %}
 
     <div class="container_main">
@@ -57,10 +56,10 @@
                     <div class="container_info_profile">
                         
                         <picture>
-                            <img src="{{ busqueda['avatar'] }}" alt="">
+                            <img src="{{busca['avatar']}}" alt="">
                         </picture>
                         <div class="container_info_profile_text">
-                            <p>{{busqueda['nombre']}}</p>
+                            <p>{{busca['nombre']}}</p>
                             
                             <input name="id_publi"id="id_publi" style="display: none;" value="">
 

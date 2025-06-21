@@ -6,7 +6,7 @@
      <a href="{{url_for('profile')}}" class="container_avatar_mobile">
         <img src="{{usuario.avatar}}" alt="">
       </a>
-    <a class="navbar-brand" href="#" style="color: white;">UTNetwork</a>
+    <a class="navbar-brand" href="{{url_for('home')}}" style="color: white;">UTNetwork</a>
     
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -35,9 +35,9 @@
         <li class="nav-item">
           <a class="nav-link disabled" aria-disabled="true">Disabled</a>
         </li>
-      </ul> -->
+      </ul> 
       <form class="d-flex" role="search" action="{{url_for('buscar')}}" method="POST">
-        <input class="form-control me-2" type="search" placeholder="Search" name="busqueda" aria-label="Search" style=" border: none;"/>
+        <input class="form-control me-2" type="search" placeholder="Search" name="busqueda" id="busqueda" aria-label="Search" style=" border: none;"/>
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
       <a href="{{url_for('profile')}}" class="container_avatar_desktop">
