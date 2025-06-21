@@ -1,7 +1,7 @@
 """
 CONTIENE LAS RUTAS DE CUANDO EL USUARIO YA ESTA LOGUEADO
 """
-from flask import render_template, url_for, request,  jsonify,redirect , session
+from flask import render_template, url_for, request,  redirect , session
 from app.utils.Error_Saver import save_error
 from app.utils.preguntas import preguntas_graciosas
 import random
@@ -17,14 +17,12 @@ def logued_route(app, usuarios, publicaciones):
             user_state = usuarios.get_state_by_id(id_user)
             users_suggested = usuarios.suggest_users(id_user)
             if user_state == True:
-                page = int(request.args.get('page', 1))
-                limite = 10
-                offset = (page - 1) * limite
+                page = int(request.args.get("page", 1)) 
+                limit = 40
+                offset = (page - 1) * limit
                 pregunta = random.choice(preguntas_graciosas)
-                publicacion = publicaciones.ver_publicaciones(id_user, offset, limite) #traigo las publicaciones
-                
-                print(users_suggested, 'usuarios sugeridos')
-                return render_template('home.html', usuario=info_user[0],publicaciones=publicacion,pregunta=pregunta, usuarios_sugeridos=users_suggested) and jsonify(publicacion)
+                publicacion = publicaciones.ver_publicaciones(id_user,limit,offset) #traigo las publicaciones
+                return render_template('home.html', usuario=info_user[0],publicaciones=publicacion,pregunta=pregunta, usuarios_sugeridos=users_suggested,page=page)
             else:
                 return redirect(url_for('validation'))
         else:
