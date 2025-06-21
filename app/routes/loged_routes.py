@@ -4,9 +4,10 @@ CONTIENE LAS RUTAS DE CUANDO EL USUARIO YA ESTA LOGUEADO
 from flask import render_template, url_for, request,  redirect , session
 from app.utils.Error_Saver import save_error
 from app.utils.preguntas import preguntas_graciosas
+
 import random
 
-def logued_route(app, usuarios, publicaciones):
+def logued_route(app, usuarios, publicaciones,db_user):
     @app.route('/home')
     def home():
         
@@ -59,6 +60,8 @@ def logued_route(app, usuarios, publicaciones):
         except Exception as e:
             save_error(e)
             return render_template('error.html')
+        
+    #INICIA SEGUIR
     @app.route('/app/seguir',methods=['POST'])
 
     def seguir():
@@ -82,8 +85,32 @@ def logued_route(app, usuarios, publicaciones):
         un_seguir = usuarios.dejar_de_seguir(id_user,id_seguido)
         if un_seguir == True:
             return redirect(url_for('home'))
+        
+    #INICIA PUBLICACIONES
     @app.route('/eliminar-publi',methods=['POST'])
     def eliminar_publi():
         id_publicacion = request.form['id_publi']
         publicaciones.eliminar_publicacion(id_publicacion)
         return redirect(url_for('home'))
+    
+    #INICIA BUSCAR
+    @app.route('/app/buscar',methods=['POST'])
+    def buscar():
+        if session:
+            token = session.get('usuario')
+            id_user = token[0]['id']
+            state = usuarios.get_state_by_id(id_user)
+            if state == True:
+                info_user = usuarios.get_data_by_id(id_user)
+                buscar = request.form['busqueda']
+                db_user.conectar()
+                db_user.consulta(
+                    "SELECT nombre, avatar FROM usuarios WHERE nombre LIKE %s",
+                    ('%' + buscar + '%',)
+                )
+                db_user.cerrar()
+                return render_template('search.html',usuario=info_user[0],busqueda=buscar)
+            else:
+                return redirect(url_for('validation'))
+        return redirect(url_for('login'))
+
