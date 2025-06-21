@@ -20,7 +20,7 @@
                     <img src="{{usuario['avatar']}}" alt="">
                 </picture>
                 <div>
-                    <a href="{{url_for('profile')}}"><p>{{usuario['nombre']}}</p></a>
+                    <p>{{usuario['nombre']}}</p>
                     <p>{{usuario['mail']}}</p>
                     
                 </div>
@@ -49,29 +49,32 @@
             </button> -->
             
             <div>
-            {% for busca in busqueda %}
+                        {% for busca in busqueda %}
                 <div class="publish_card">
                     <div class="container_profile">
-
-                    <div class="container_info_profile">
-                        
-                        <picture>
-                            <img src="{{busca['avatar']}}" alt="">
-                        </picture>
-                        <div class="container_info_profile_text">
-                            <p>{{busca['nombre']}}</p>
-                            
-                            <input name="id_publi"id="id_publi" style="display: none;" value="">
-
+                        <div class="container_info_profile">
+                            <picture>
+                                <img src="{{ busca['avatar'] }}" alt="">
+                            </picture>
+                            <div class="container_info_profile_text">
+                                <p>{{ busca['nombre'] }}</p>
+                                <form action="{{ url_for('seguir') }}" method="POST">
+                                    <input name="id_seguido" id="id_seguido" style="display: none;" value="{{ busca['id'] }}">
+                                    <button class="btn_follow"><i class="fa-solid fa-plus"></i></button>
+                                </form>
+                            </div>
                         </div>
                     </div>
-
-                        </div>
-
+                </div>
+            {% else %}
+                <div class="publish_card">
+                    <div class="container_profile">
+                        <p>No se hayaron resultados.</p>
+                    </div>
                 </div>
             {% endfor %}
-                
-            </div>
+                            
+                        </div>
         </main>
         <aside class="right">
             
@@ -104,10 +107,7 @@
         </aside>
     </div>
 <script src="{{url_for('static',filename='js/modo-luz.js')}}"></script>
-<script>
-const usuario = '{{ usuario | tojson |safe }}';
-localStorage.setItem('usuario', usuario)
-</script>
+
 <script src="{{url_for('static',filename='js/publicacion.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 

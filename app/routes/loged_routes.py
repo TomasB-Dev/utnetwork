@@ -105,7 +105,7 @@ def logued_route(app, usuarios, publicaciones,db_user):
                 buscar = request.form['busqueda']
                 db_user.conectar()
                 busqueda = db_user.consulta(
-                    "SELECT nombre, avatar FROM usuarios WHERE nombre LIKE %s",
+                    "SELECT id,nombre, avatar FROM usuarios WHERE nombre LIKE %s",
                     ('%' + buscar + '%',)
                 )
                 db_user.cerrar()
