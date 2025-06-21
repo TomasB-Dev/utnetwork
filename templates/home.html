@@ -81,11 +81,13 @@
                             </form>
 
                             <button style="margin-left: 10px; font-size: medium;" onclick="activateUpdate(this)"><i class="fa-solid fa-pen-to-square"></i></button>
+
                         {% endif %}
                         </div>
                         </div>
 
                     <div class="container_text">
+
                         <form action="{{url_for('actualizar_publi')}}" method="POST">
                         <input type="hidden" name="id_publi" value="{{ publicacion['id_publicacion'] }}">
 
@@ -96,6 +98,7 @@
                         <div class="edit_publication" style="display: none;">
                             <textarea name="contenido" id="contenido">{{ publicacion['contenido'] }}</textarea>
                             <button type="submit"> Guardar</button>
+                            <button onclick="cancelUpdate(this)">Cancelar</button>
 
                         </div>
                         </form>
