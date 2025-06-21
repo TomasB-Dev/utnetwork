@@ -16,6 +16,23 @@ class Publicaciones:
 
 
 
+    def actualizar_publicacion(self, publicacion_id,contenido_nuevo):
+        fecha = datetime.datetime.now()
+        self.db_user.conectar()
+        resultado = self.db_user.consulta(
+            """
+            UPDATE publicaciones
+            SET contenido = %s,
+                fecha = %s
+            WHERE id_publicacion = %s    
+
+            """, (contenido_nuevo, fecha, publicacion_id)
+        )
+        self.db_user.cerrar()
+        return resultado
+        
+
+
     def publicar(self, user_id, contenido):
             fecha = datetime.datetime.now()
             self.db_user.conectar()

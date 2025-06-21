@@ -270,6 +270,28 @@ body {
 
 
 
+.edit_publication {
+    width: 100%;
+
+
+    & textarea {
+        resize: none;
+    width: 100%;
+    background: none;
+    border: none;
+    color: white;
+    outline: none;
+    }
+
+
+    & button {
+        /* width: 100%; */
+        padding: 10px;
+        background-color: #00628D;
+        color: white;
+    }
+}
+
 
 
      .card_sugged_person {
