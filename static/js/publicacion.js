@@ -54,6 +54,8 @@ const activateUpdate =(button)=> {
 
 
 const cancelUpdate =(button)=> {
+    event.preventDefault?.();
+
     const container = button.closest('.publish_card');
     
 
