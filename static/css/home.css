@@ -21,6 +21,10 @@
 }
 
 
+p {
+    margin: 0
+}
+
 
 body {
     font-family: "Montserrat", sans-serif;
@@ -43,11 +47,13 @@ body {
 
 } */
 
+
+
 .left_profile_div {
     /* background: var(--bg-cards); */
     display: flex;
     align-items: center;
-
+    background-color: var(--bg-cards);
     /* box-shadow: var(--box_shadows); */
 
     padding: 10px;
@@ -72,6 +78,7 @@ body {
         background: none;
         & p {
             background: none;
+            margin: 0px;
         }
 
         & p:nth-child(1) {
@@ -98,7 +105,8 @@ body {
     display: flex;
     flex-direction: column;
     margin-top: 3rem;
-    border-radius: 10px;
+    border-radius: 5px;
+    background-color: var(--bg-cards);
     & a {
         color: white;
         padding: 21px 0 21px 10px;
@@ -123,6 +131,7 @@ body {
 
     padding: 15px;
     background-color: var(--bg-cards);
+    border-radius: 5px;
     & form {
         width: 100%;
     }
@@ -172,7 +181,10 @@ body {
         border-radius: 5px;
         background-color: var(--bg--secundary);
         cursor: pointer;
-
+        transition: .5s all;
+        &:hover {
+            background-color: var(--color-hover);
+        }
     }
 
     
@@ -187,9 +199,35 @@ body {
 }
 
 
+
+
+
+.container_info_profile_buttons {
+    & button {
+        background:none;
+        color: var(--bg--secundary);
+        border: 0px;
+        font-size: larger;
+        cursor: pointer;
+        transition: .5s all;
+        &:hover {
+            color: var(--color-hover);
+        }
+    }
+}
+
+
+.container_profile {
+        display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
 .container_info_profile {
     display: flex;
     align-items: center;
+
+
 
 
 
@@ -220,6 +258,92 @@ body {
     }
 }
 
+
+.container_sugged_persons {
+    background-color: var(--bg-cards);
+    padding: 10px ;
+    border-radius: 5px;
+}
+
+
+
+
+
+
+.edit_publication {
+    width: 100%;
+
+
+    & textarea {
+        resize: none;
+    width: 100%;
+    background: none;
+    border: none;
+    color: white;
+    outline: none;
+    }
+
+
+    & button {
+        /* width: 100%; */
+        padding: 10px;
+        background-color: #00628D;
+        color: white;
+    }
+}
+
+
+
+     .card_sugged_person {
+        display: flex;
+        
+        justify-content: space-between;
+        align-items: center;
+        /* margin: 10px; */
+        padding: 10px;
+        
+    }
+
+
+
+    .container_sugged_person_info {
+        display: flex;
+        align-items: center;
+    }
+
+
+
+    .btn_follow  {
+        border: none;
+        background: none;
+        color: var(--bg--secundary);
+        font-size: larger;
+        cursor: pointer;
+        transition: .5s all;
+
+
+        &:hover {
+            color: var(--color-hover);
+        }
+    }
+
+    .container_sugged_person_picture {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 15px;
+        & img {
+            object-fit: contain;
+            width: 100%;
+        }
+    }
+
+    .container_sugged_person_text {
+        & p {
+            margin: 0;
+        }
+    }
 
 
 
@@ -267,8 +391,9 @@ body {
 
 
 @media (max-width: 768px) {
-  .layout {
+  .container_main {
     grid-template-columns: 1fr;
+    padding: 20px;
   }
   .left, .right {
     display: none;

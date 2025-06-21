@@ -11,13 +11,11 @@
     <title>Inicio | UTNetwork</title>
 </head>
 <body id="body">
-
-    {% set user = usuario %}
     {% include 'components/header.html' %}
 
     <div class="container_main">
         <aside class="left">
-            <div class="left_profile_div" >
+            <div class="left_profile_div">
                 <picture>
                     <img src="{{usuario['avatar']}}" alt="">
                 </picture>
@@ -44,75 +42,45 @@
             </nav>
         </aside>
         <main>
-            <div class="container_publish">
-                <div>
-                    <picture>
-                        <img src="{{usuario['avatar']}}" alt="">
-                    </picture>
-                    <form action="{{url_for('publicar')}}" method="POST">
-                    <textarea id="input_publish" name='input_publish' type="text" placeholder="{{usuario['nombre']}}, {{pregunta}}"></textarea>
-                </div>
-                <button  type="submit">Publicar</button>
-                </form>
-            </div>
+            <!-- <button id="swap-btn" onclick="changue_BG()"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="5" fill="currentColor"/>
+                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                </svg>
+            </button> -->
+            
             <div>
-            {% for publicacion in publicaciones %}
+                        {% for busca in busqueda %}
                 <div class="publish_card">
                     <div class="container_profile">
-
-                    <div class="container_info_profile">
-                        
-                        <picture>
-                            <img src="{{ publicacion['avatar'] }}" alt="">
-                        </picture>
-                        <div class="container_info_profile_text">
-                            <p>{{publicacion['nombre']}}</p>
-                            <p>{{publicacion['fecha']}}</p>
-                            <input name="id_publi"id="id_publi" style="display: none;" value="{{publicacion['id_publicacion']}}">
-
+                        <div class="container_info_profile">
+                            <picture>
+                                <img src="{{ busca['avatar'] }}" alt="">
+                            </picture>
+                            <div class="container_info_profile_text">
+                                <p>{{ busca['nombre'] }}</p>
+                                <form action="{{ url_for('seguir') }}" method="POST">
+                                    <input name="id_seguido" id="id_seguido" style="display: none;" value="{{ busca['id'] }}">
+                                    <button class="btn_follow"><i class="fa-solid fa-plus"></i></button>
+                                </form>
+                            </div>
                         </div>
                     </div>
-
-                        <div class="container_info_profile_buttons" style="display: flex;">
-                             {% if publicacion['id_user'] == usuario['id'] %}
-                            <form method="POST" action="{{ url_for('eliminar_publi') }}" >
-                                <input type="hidden" name="id_publi" value="{{ publicacion['id_publicacion'] }}">
-                                <button type="submit"><i class="fa-solid fa-xmark"></i></button>
-                            </form>
-
-                            <button style="margin-left: 10px; font-size: medium;" onclick="activateUpdate(this)"><i class="fa-solid fa-pen-to-square"></i></button>
-                        {% endif %}
-                        </div>
-                        </div>
-
-                    <div class="container_text">
-                        <form action="{{url_for('actualizar_publi')}}" method="POST">
-                        <input type="hidden" name="id_publi" value="{{ publicacion['id_publicacion'] }}">
-
-                        <div class="view_publication" >
-                            <p class="text">{{ publicacion['contenido'] }}</p>
-                        </div>
-                            
-                        <div class="edit_publication" style="display: none;">
-                            <textarea name="contenido" id="contenido">{{ publicacion['contenido'] }}</textarea>
-                            <button type="submit"> Guardar</button>
-
-                        </div>
-                        </form>
+                </div>
+            {% else %}
+                <div class="publish_card">
+                    <div class="container_profile">
+                        <p>No se hayaron resultados.</p>
                     </div>
-                   
                 </div>
             {% endfor %}
-                <a href="{{ url_for('home', page=page + 1) }}">Cargar más</a>
-            </div>
+                            
+                        </div>
         </main>
         <aside class="right">
             
-            {% if usuarios_sugeridos %}
 
             <div class="container_sugged_persons">
                 
-
             {% for usuarios_sugerido in usuarios_sugeridos %}
 
                 <form action="{{url_for('seguir')}}"  method="POST">
@@ -135,14 +103,11 @@
                 <!-- </div> -->
                 {%endfor%}
         </div>
-                {% endif %}
 
         </aside>
     </div>
 <script src="{{url_for('static',filename='js/modo-luz.js')}}"></script>
-<script>
 
-</script>
 <script src="{{url_for('static',filename='js/publicacion.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 

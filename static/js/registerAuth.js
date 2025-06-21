@@ -2,6 +2,15 @@
 const authForm= document.getElementById('form');
 
 
+window.addEventListener('DOMContentLoaded',()=> {
+    const msg = document.getElementById('id_email_used');
+    if(msg) {
+        setTimeout(()=> {
+            msg.style.display ='none';
+
+        },4000)
+    }
+})
 
 
 const validateTerm =()=> {
@@ -30,13 +39,13 @@ const validateName = ()=> {
     const error_message = document.getElementById('error_name');
     const value = document.getElementById('name').value.trim();
     const input = document.getElementById('name');
-    const regex = /^[a-zA-Z]+$/;
+    const regex = /^[A-Za-zÁÉÍÓÚáéíóúÑñ0-9\-_!@#$%^&*()\[\]{}.,<>?:;"'=+|\\/~]+$/;
 
     let verify = regex.test(value);
 
 
     if(value.length <3 || !verify) {
-        error_message.textContent= 'Debe tener al menos 3 caracteres, solo se admiten letras.'
+        error_message.textContent= 'Debe tener al menos 3 caracteres.'
         error_message.style.display = 'block'
         input.classList.add('error_input')
         return false

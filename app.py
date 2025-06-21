@@ -33,7 +33,7 @@ register_route(app)
 #modularizacion vaidations
 validation_route(app,usuarios,db_user)
 #modularizacion loged views
-logued_route(app,usuarios, publicaciones)
+logued_route(app,usuarios, publicaciones,db_user)
 
 
 @app.errorhandler(404)
