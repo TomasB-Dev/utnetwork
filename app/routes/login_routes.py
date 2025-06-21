@@ -24,7 +24,7 @@ def login_route(app):
         check = user.loguear()
         if check == False:
             session.clear()   
-            return render_template('login.html', mensaje='Credenciales incorrectas')
+            return render_template('login.html', incorrect_credential=True)
         elif check == '0':
             session['usuario'] = user.get_id()
             return redirect(url_for('validation'))

@@ -29,4 +29,4 @@ def register_route(app):
             if registro == True:
                 return redirect(url_for('login'))
             else:
-                render_template('register.html', message="El email ya esta en uso")
+              return  render_template('register.html', email_used=True)

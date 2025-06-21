@@ -14,8 +14,8 @@
 <body id="body">
     <main>
 
-        {%if mensaje %}
-            <div id="id_error_credential" class="alert alert-danger position-absolute "  style='top: 10px; right: 10px;' role="alert">
+        {%if incorrect_credential %}
+            <div id="id_error_credential" class="alert alert-danger position-absolute "  style='top: 10px; left: 10px; z-index: 20;' role="alert">
                 Las credenciales son incorrectas, Vuelva a intentarlo
             </div>
         {% endif %}

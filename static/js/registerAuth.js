@@ -2,6 +2,15 @@
 const authForm= document.getElementById('form');
 
 
+window.addEventListener('DOMContentLoaded',()=> {
+    const msg = document.getElementById('id_email_used');
+    if(msg) {
+        setTimeout(()=> {
+            msg.style.display ='none';
+
+        },4000)
+    }
+})
 
 
 const validateTerm =()=> {
