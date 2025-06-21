@@ -73,19 +73,32 @@
                         </div>
                     </div>
 
-                        <div class="container_info_profile_buttons">
+                        <div class="container_info_profile_buttons" style="display: flex;">
                              {% if publicacion['id_user'] == usuario['id'] %}
-                            <form method="POST" action="{{ url_for('eliminar_publi') }}">
+                            <form method="POST" action="{{ url_for('eliminar_publi') }}" >
                                 <input type="hidden" name="id_publi" value="{{ publicacion['id_publicacion'] }}">
                                 <button type="submit"><i class="fa-solid fa-xmark"></i></button>
                             </form>
+
+                            <button style="margin-left: 10px; font-size: medium;" onclick="activateUpdate(this)"><i class="fa-solid fa-pen-to-square"></i></button>
                         {% endif %}
                         </div>
                         </div>
 
                     <div class="container_text">
-                        <p class="text">{{ publicacion['contenido'] }}</p>
-                    
+                        <form action="{{url_for('actualizar_publi')}}" method="POST">
+                        <input type="hidden" name="id_publi" value="{{ publicacion['id_publicacion'] }}">
+
+                        <div class="view_publication" >
+                            <p class="text">{{ publicacion['contenido'] }}</p>
+                        </div>
+                            
+                        <div class="edit_publication" style="display: none;">
+                            <textarea name="contenido" id="contenido">{{ publicacion['contenido'] }}</textarea>
+                            <button type="submit"> Guardar</button>
+
+                        </div>
+                        </form>
                     </div>
                    
                 </div>
@@ -128,8 +141,7 @@
     </div>
 <script src="{{url_for('static',filename='js/modo-luz.js')}}"></script>
 <script>
-const usuario = '{{ usuario | tojson |safe }}';
-localStorage.setItem('usuario', usuario)
+
 </script>
 <script src="{{url_for('static',filename='js/publicacion.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>

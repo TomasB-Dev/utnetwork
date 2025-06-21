@@ -93,6 +93,16 @@ def logued_route(app, usuarios, publicaciones,db_user):
         publicaciones.eliminar_publicacion(id_publicacion)
         return redirect(url_for('home'))
     
+    
+    
+    
+    @app.route('/actualizar-publi', methods=['POST'])
+    def actualizar_publi():
+        id_publicacion = request.form['id_publi']
+        nuevo_contenido = request.form['contenido']
+        print('nuevapublicacion', nuevo_contenido)
+        publicaciones.actualizar_publicacion(id_publicacion, nuevo_contenido)
+        return redirect(url_for('home'))
     #INICIA BUSCAR
     @app.route('/buscar',methods=['POST'])
     def buscar():

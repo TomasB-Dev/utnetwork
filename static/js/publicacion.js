@@ -29,3 +29,16 @@ const publicar = (e) => {
         }
     })
 }
+
+
+
+const activateUpdate =(button)=> {
+    const form = button.closest('form');
+    const view = document.querySelector('.view_publication');
+    const edit = document.querySelector('.edit_publication');
+
+
+    view.style.display = 'none';
+    edit.style.display = 'block'
+
+}
