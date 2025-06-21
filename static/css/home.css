@@ -353,6 +353,14 @@ body {
     }
 
 
+    .if_not_publication {
+        margin: auto;
+        width: 100%;
+        text-align: center;
+        font-size: 25px;
+        color: gray;
+    }
+
 
 /* btn cambiar de oscuro a claro*/
 #swap-btn {

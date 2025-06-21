@@ -56,6 +56,9 @@
                 </form>
             </div>
             <div>
+
+            {% if publicaciones %}
+
             {% for publicacion in publicaciones %}
                 <div class="publish_card">
                     <div class="container_profile">
@@ -106,8 +109,16 @@
                     </div>
                    
                 </div>
+
             {% endfor %}
-                <a href="{{ url_for('home', page=page + 1) }}">Cargar más</a>
+            <a href="{{ url_for('home', page=page + 1) }}">Cargar más</a>
+
+        {% else %}
+            
+            <div class="if_not_publication">
+                Ups... no hay nada por aqui
+            </div>
+        {% endif %}
             </div>
         </main>
         <aside class="right">
