@@ -294,6 +294,13 @@ body {
 
 
 
+.error_message_update {
+    color: red;
+    display: none;
+    margin: 10px 0px;
+}
+
+
      .card_sugged_person {
         display: flex;
         

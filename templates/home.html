@@ -88,7 +88,7 @@
 
                     <div class="container_text">
 
-                        <form action="{{url_for('actualizar_publi')}}" method="POST">
+                        <form action="{{url_for('actualizar_publi')}}" method="POST" id="form_update_text">
                         <input type="hidden" name="id_publi" value="{{ publicacion['id_publicacion'] }}">
 
                         <div class="view_publication" >
@@ -97,10 +97,11 @@
                             
                         <div class="edit_publication" style="display: none;">
                             <textarea name="contenido" id="contenido">{{ publicacion['contenido'] }}</textarea>
-                            <button type="submit"> Guardar</button>
-                            <button onclick="cancelUpdate(this)">Cancelar</button>
-
+                            <div id="error_update_post" class="error_message_update"></div>
+                            <button type="submit" id="button_save_post"> Guardar</button>
+                            <button onclick="cancelUpdate(this)">Cancelar</button>  
                         </div>
+
                         </form>
                     </div>
                    
