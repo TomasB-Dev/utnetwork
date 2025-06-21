@@ -17,9 +17,12 @@ def logued_route(app, usuarios, publicaciones):
             user_state = usuarios.get_state_by_id(id_user)
             users_suggested = usuarios.suggest_users(id_user)
             if user_state == True:
+                page = int(request.args.get("page", 1)) 
+                limit = 40
+                offset = (page - 1) * limit
                 pregunta = random.choice(preguntas_graciosas)
-                publicacion = publicaciones.ver_publicaciones(id_user) #traigo las publicaciones
-                return render_template('home.html', usuario=info_user[0],publicaciones=publicacion,pregunta=pregunta, usuarios_sugeridos=users_suggested)
+                publicacion = publicaciones.ver_publicaciones(id_user,limit,offset) #traigo las publicaciones
+                return render_template('home.html', usuario=info_user[0],publicaciones=publicacion,pregunta=pregunta, usuarios_sugeridos=users_suggested,page=page)
             else:
                 return redirect(url_for('validation'))
         else:
