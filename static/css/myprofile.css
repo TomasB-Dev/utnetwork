@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+:root{
+    --bg--color : #212121; 
+    --bg--secundary: #00628D;
+    --color-resalt: #BDE4F7;
+    --color-shadows: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    --color-hover: #009EE0;
+    --bg-cards: #252525;
+    --box_shadows:   rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    --hover_buttons: #2e2e2e;
+
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    
+
+}
+
+
+p {
+    margin: 0
+}
+
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background-color: var(--bg--color);
+}
+
+
+.container_main {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 3rem;
+    color: white;
+    margin: 0 auto; /* centra horizontalmente */
+    padding: 2rem 3rem; /* margen interno lateral */
+}
+
+
+
+
