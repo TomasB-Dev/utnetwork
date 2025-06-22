@@ -78,7 +78,7 @@
                     </div>
 
                         <div class="container_info_profile_buttons" style="display: flex;">
-                             {% if publicacion['id_user'] == usuario['id'] %}
+                            {% if publicacion['id_user'] == usuario['id'] %}
                             <form method="POST" action="{{ url_for('eliminar_publi') }}">
                                 <input type="hidden" name="id_publi" value="{{ publicacion['id_publicacion'] }}">
                                 <button type="submit"><i class="fa-solid fa-xmark"></i></button>
@@ -105,10 +105,8 @@
                             <button type="submit" id="button_save_post"> Guardar</button>
                             <button onclick="cancelUpdate(this)">Cancelar</button>  
                         </div>
-
                         </form>
                     </div>
-                   
                 </div>
 
             {% endfor %}
