@@ -114,12 +114,7 @@ def logued_route(app, usuarios, publicaciones,db_user):
                 info_user = usuarios.get_data_by_id(id_user)
                 seguidos = usuarios.obtener_seguidores(id_user)
                 buscar = request.form['busqueda']
-                db_user.conectar()
-                busqueda = db_user.consulta(
-                    "SELECT id,nombre, avatar FROM usuarios WHERE nombre LIKE %s",
-                    ('%' + buscar + '%',)
-                )
-                db_user.cerrar()
+                busqueda = usuarios.buscar_usuario(buscar)
                 return render_template('search.html',usuario=info_user[0],busqueda=busqueda,seguidos=seguidos)
             else:
                 return redirect(url_for('validation'))
