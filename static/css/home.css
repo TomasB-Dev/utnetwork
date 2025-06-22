@@ -383,9 +383,7 @@ body {
 
 /* btn cambiar de oscuro a claro*/
 #swap-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+   
     padding: 0.6rem 1.2rem;
     background: #ffffff;
     border: none;
