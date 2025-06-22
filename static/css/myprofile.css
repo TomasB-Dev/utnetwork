@@ -44,3 +44,132 @@ body {
 
 
 
+.container_info_profile {
+    display: flex;
+    align-items: center;
+
+
+
+
+
+
+    & picture {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 15px;
+    }
+
+    & img {
+        object-fit: contain;
+        width: 100%;
+    }
+ 
+
+    margin-bottom: 20px;
+}
+
+.container_info_profile_text {
+
+
+
+    & p:nth-child(2){ 
+        color: gray;
+    }
+}
+
+
+
+.container_publish {
+
+    padding: 15px;
+    background-color: var(--bg-cards);
+    border-radius: 5px;
+    & form {
+        width: 100%;
+    }
+    
+    margin-bottom: 20px;
+    
+    & div {
+        display: flex;
+            align-items: start;
+
+    }
+    
+    & picture {
+       width: 55px;
+        height: 52px;   
+        border-radius: 50%;
+        overflow: hidden;
+        margin-right: 15px;
+    }
+
+    & img {
+        object-fit: contain;
+        width: 100%;
+    }
+
+
+    & textarea {
+        border: none;
+        resize: none;
+        padding: 1rem;
+        /* width: 100%; */
+        background: none;
+        outline: none;
+        color: white;
+        min-height: 80px;
+        font-size: 1rem;
+        width: -webkit-fill-available;
+    
+    }
+
+
+    & button {
+        padding: 10px;
+        border: none;
+        font-size: medium;
+        color: white;
+        border-radius: 5px;
+        background-color: var(--bg--secundary);
+        cursor: pointer;
+        transition: .5s all;
+        &:hover {
+            background-color: var(--color-hover);
+        }
+    }
+
+    
+}
+
+
+.publish_card {
+    background-color: #252525;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+
+
+
+
+.container_info_profile_buttons {
+    & button {
+        background:none;
+        color: var(--bg--secundary);
+        border: 0px;
+        font-size: larger;
+        cursor: pointer;
+        transition: .5s all;
+        &:hover {
+            color: var(--color-hover);
+        }
+    }
+}
+
+
+
+
