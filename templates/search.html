@@ -53,10 +53,21 @@
                             </picture>
                             <div class="container_info_profile_text">
                                 <p>{{ busca['nombre'] }}</p>
-                                <form action="{{ url_for('seguir') }}" method="POST">
-                                    <input name="id_seguido" id="id_seguido" style="display: none;" value="{{ busca['id'] }}">
+                                
+                                    
+                                    
+                                    {%if busca['id'] is not in seguidos %}   
+                                    <form action="{{ url_for('seguir') }}" method="POST">
+                                    <input name="id_seguido" id="id_seguido" style="display: none;" value="{{ busca['id'] }}">             
                                     <button class="btn_follow"><i class="fa-solid fa-plus"></i> Seguir</button>
-                                </form>
+                                    </form>
+                                    {% else %}
+                                    <form action="{{ url_for('unfollow') }}" method="POST">
+                                    <input name="id_seguido" id="id_seguido" style="display: none;" value="{{ busca['id'] }}">
+                                    <button class="btn_follow"><i class="fa-solid fa-minus"></i> Dejar de seguir</button>
+                                    </form>
+                                    {% endif %}
+                                
                             </div>
                         </div>
                     </div>

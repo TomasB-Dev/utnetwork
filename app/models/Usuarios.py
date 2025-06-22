@@ -97,10 +97,10 @@ class Usuarios:
         try:
             self.db_user.conectar()
             resultado = self.db_user.consulta(
-                "SELECT id_follow FROM seguidores WHERE id_user = %s", (user_id,)
+                "SELECT seguido_id FROM seguidores WHERE id_user = %s", (user_id,)
             )
             self.db_user.cerrar()
-            resultado_final = [row['id_follow'] for row in resultado]
+            resultado_final = [row['seguido_id'] for row in resultado]
             return resultado_final
         except Exception as e :
             save_error(e)
@@ -110,10 +110,11 @@ class Usuarios:
         try:
             self.db_user.conectar()
             resultado = self.db_user.consulta(
-                'SELECT id_user FROM seguidores WHERE id_follow = %s', (user_id,)
+                'SELECT id_user FROM seguidores WHERE seguido_id = %s', (user_id,)
             )
             resultado_final = [row['id_user'] for row in resultado]
             self.db_user.cerrar()
+            print(resultado_final)
             return resultado_final  
         except Exception as e :
             save_error(e)

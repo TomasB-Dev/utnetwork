@@ -82,7 +82,7 @@ def logued_route(app, usuarios, publicaciones,db_user):
         id_user = token[0]['id']
         id_seguido = request.form['id_seguido']
         
-        un_seguir = usuarios.dejar_de_seguir(id_user,id_seguido)
+        un_seguir = usuarios.dejar_de_seguir_usuario(id_user,id_seguido)
         if un_seguir == True:
             return redirect(url_for('home'))
         
@@ -112,6 +112,7 @@ def logued_route(app, usuarios, publicaciones,db_user):
             state = usuarios.get_state_by_id(id_user)
             if state == True:
                 info_user = usuarios.get_data_by_id(id_user)
+                seguidos = usuarios.obtener_seguidores(id_user)
                 buscar = request.form['busqueda']
                 db_user.conectar()
                 busqueda = db_user.consulta(
@@ -119,8 +120,7 @@ def logued_route(app, usuarios, publicaciones,db_user):
                     ('%' + buscar + '%',)
                 )
                 db_user.cerrar()
-                print(busqueda)
-                return render_template('search.html',usuario=info_user[0],busqueda=busqueda)
+                return render_template('search.html',usuario=info_user[0],busqueda=busqueda,seguidos=seguidos)
             else:
                 return redirect(url_for('validation'))
         return redirect(url_for('login'))
