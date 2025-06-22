@@ -6,7 +6,8 @@
     <link rel="stylesheet" href="{{url_for('static',filename='css/myprofile.css')}}">
     <title>Mi perfil</title>
 </head>
-<body>
+<body id="body">
+
     <div class="container_banner">
         <img src="" alt="">
     </div>
@@ -19,7 +20,7 @@
                 <h4>{{usuario['nombre']}}</h4>
                 <h5>{{usuario['mail']}}</h5>
                 {% if usuario['descripcion'] %}
-                <p>{usuario['descripcion']}</p>
+                <p>{{usuario['descripcion']}}</p>
                 {% else %}
                 <textarea name="" id="" placeholder="agregar comentario"></textarea>
                 {% endif %}
@@ -112,8 +113,8 @@
         <aside class="right">
             <div class="container_stats">
                 <p>publicaciones: {{stats['cant_publi']}}</p>
-                <p>Seguidores: {{stats}}</p>
-                <p>Siguiendo: {{stats['cant_seguidores']}}</p>
+                <p>Seguidores: {{stats['cant_seguidores']}}</p>
+                <p>Siguiendo: {{stats['cant_seguidos']}}</p>
             </div>
             
 

@@ -57,7 +57,7 @@ def logued_route(app, usuarios, publicaciones,db_user):
                 return redirect(url_for('home'))
             else:
                 publicaciones.publicar(id_user,contenido)
-                return redirect(url_for('home'))
+                return redirect(request.referrer)
         except Exception as e:
             save_error(e)
             return render_template('error.html')
@@ -92,7 +92,7 @@ def logued_route(app, usuarios, publicaciones,db_user):
     def eliminar_publi():
         id_publicacion = request.form['id_publi']
         publicaciones.eliminar_publicacion(id_publicacion)
-        return redirect(url_for('home'))
+        return redirect(request.referrer)
     
     
     
@@ -103,7 +103,7 @@ def logued_route(app, usuarios, publicaciones,db_user):
         nuevo_contenido = request.form['contenido']
         print('nuevapublicacion', nuevo_contenido)
         publicaciones.actualizar_publicacion(id_publicacion, nuevo_contenido)
-        return redirect(url_for('home'))
+        return redirect(request.referrer)
     #INICIA BUSCAR
     @app.route('/buscar',methods=['POST'])
     def buscar():
@@ -119,5 +119,6 @@ def logued_route(app, usuarios, publicaciones,db_user):
                 return render_template('search.html',usuario=info_user[0],busqueda=busqueda,seguidos=seguidos)
             else:
                 return redirect(url_for('validation'))
-        return redirect(url_for('login'))
+        else:
+            return redirect(url_for('login'))
 
