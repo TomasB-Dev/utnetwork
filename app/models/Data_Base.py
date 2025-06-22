@@ -20,8 +20,6 @@ class DataBase:
                 password=self.key,
                 database=self.db
             )
-            if self.conexion.is_connected():
-                print(" Conexion exitosa") # eliminar es solo para debug
             self.cursor = self.conexion.cursor(dictionary=True)
 
         except Error as e:

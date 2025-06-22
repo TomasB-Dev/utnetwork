@@ -132,7 +132,6 @@ class Usuarios:
             )
             resultado_final = [row['id_user'] for row in resultado]
             self.db_user.cerrar()
-            print(resultado_final)
             return resultado_final  
         except Exception as e :
             save_error(e)
