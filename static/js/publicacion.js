@@ -40,10 +40,10 @@ const form_post_publication = document.getElementById('form_new_post');
 
 
 const verifyPost = (e, id_input, id_error)=> {
-    const value = document.getElementById(id_input).value.trim();
+    const value = document.getElementById(id_input).value;
     const error_message = document.getElementById(id_error);
 
-    if(value === '') {
+    if(value.trim() ==='') {
         e.preventDefault();
         error_message.style.display='block';
         error_message.textContent='Debe agregar un texto'
