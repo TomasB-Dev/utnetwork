@@ -30,7 +30,7 @@ def logued_route(app, usuarios, publicaciones,db_user):
             return render_template('error.html')
         
     @app.route('/miperfil')
-    def profile():
+    def myprofile():
         token = session.get('usuario')
         if session:
             id_user = token[0]['id']
