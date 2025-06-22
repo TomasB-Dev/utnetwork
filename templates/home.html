@@ -112,7 +112,14 @@
                 </div>
 
             {% endfor %}
+            {%if publicaciones|length > 40 %}
             <a href="{{ url_for('home', page=page + 1) }}">Cargar más</a>
+            {% else %}
+            
+            <div class="if_not_publication">
+                Misión completada. No hay más contenido por descubrir... por ahora.
+            </div>
+            {% endif %}
 
         {% else %}
             
