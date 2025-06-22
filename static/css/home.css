@@ -276,19 +276,25 @@ body {
 
     & textarea {
         resize: none;
-    width: 100%;
-    background: none;
-    border: none;
-    color: white;
-    outline: none;
+        width: 100%;
+        background: none;
+        border: none;
+        color: white;
+        outline: none;
+    }
+
+    & button {
+        padding: 10px;
+        color: white;
+        border: none;
+        border-radius: 5px;
+
+        background-color: #009EE0;
     }
 
 
-    & button {
-        /* width: 100%; */
-        padding: 10px;
-        background-color: #00628D;
-        color: white;
+    & button:nth-last-child(1) {
+        background-color: rgb(172, 5, 5);
     }
 }
 
@@ -301,7 +307,7 @@ body {
 }
 
 
-     .card_sugged_person {
+    .card_sugged_person {
         display: flex;
         
         justify-content: space-between;
