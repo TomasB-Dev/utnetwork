@@ -49,8 +49,9 @@
                     <picture>
                         <img src="{{usuario['avatar']}}" alt="">
                     </picture>
-                    <form action="{{url_for('publicar')}}" method="POST">
+                    <form action="{{url_for('publicar')}}" method="POST" id="form_new_post">
                     <textarea id="input_publish" name='input_publish' type="text" placeholder="{{usuario['nombre']}}, {{pregunta}}"></textarea>
+                    <div id="error_new_post" class="error_message"></div>
                 </div>
                 <button  type="submit">Publicar</button>
                 </form>
@@ -78,7 +79,7 @@
 
                         <div class="container_info_profile_buttons" style="display: flex;">
                              {% if publicacion['id_user'] == usuario['id'] %}
-                            <form method="POST" action="{{ url_for('eliminar_publi') }}" >
+                            <form method="POST" action="{{ url_for('eliminar_publi') }}">
                                 <input type="hidden" name="id_publi" value="{{ publicacion['id_publicacion'] }}">
                                 <button type="submit"><i class="fa-solid fa-xmark"></i></button>
                             </form>
@@ -100,7 +101,7 @@
                             
                         <div class="edit_publication" style="display: none;">
                             <textarea name="contenido" id="contenido">{{ publicacion['contenido'] }}</textarea>
-                            <div id="error_update_post" class="error_message_update"></div>
+                            <div id="error_update_post" class="error_message"></div>
                             <button type="submit" id="button_save_post"> Guardar</button>
                             <button onclick="cancelUpdate(this)">Cancelar</button>  
                         </div>

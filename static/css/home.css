@@ -294,7 +294,7 @@ body {
 
 
 
-.error_message_update {
+.error_message {
     color: red;
     display: none;
     margin: 10px 0px;
