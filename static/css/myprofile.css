@@ -4,10 +4,10 @@
     --bg--color : #212121; 
     --bg--secundary: #00628D;
     --color-resalt: #BDE4F7;
-    --color-shadows: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    /* --color-shadows: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
     --color-hover: #009EE0;
     --bg-cards: #252525;
-    --box_shadows:   rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    --box_shadows: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     --hover_buttons: #2e2e2e;
 
 
@@ -42,7 +42,59 @@ body {
 }
 
 
+.container_title_publication {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    & h2 {
+    border-bottom: solid 1px var(--bg--secundary);
+    padding-bottom: 5px;
 
+    }
+    /* display: flex; */
+}
+
+
+.container_profile_left {
+    background-color: var(--bg-cards);
+    padding: 15px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 5px;
+    box-shadow: var(--box_shadows);
+
+
+    & .container_info_user_left {
+        text-align: start;
+
+
+        margin: 10px 0px;
+        & h5 { 
+            font-size: large;
+        }
+
+
+        & p {
+            color: gray;
+        }
+    }
+
+    & .picture_profile {
+        border-radius: 50%;
+        overflow: hidden;
+        display: flex;
+        width: 245px;
+        height: 245px;
+        box-shadow: var(--box_shadows);
+        & img {
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+
+}
 
 .container_info_profile {
     display: flex;
@@ -150,6 +202,7 @@ body {
     margin-bottom: 20px;
     border-radius: 5px;
     padding: 10px;
+    box-shadow: var(--box_shadows);
 }
 
 
@@ -173,3 +226,31 @@ body {
 
 
 
+
+.container_banner {
+
+    height: 341px;
+
+    overflow: hidden;
+}
+
+.container_stats {
+    background-color: var(--bg-cards);
+    box-shadow: var(--box_shadows);
+    padding: 15px;
+    border-radius: 5px;
+    & h5 {
+        font-size: x-large;
+    }
+
+    & p {
+        font-size: larger;
+        color: gray;
+    }
+
+    & span {
+        font-weight: bold;
+        color: white;
+    }
+
+}

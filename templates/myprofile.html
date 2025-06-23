@@ -3,22 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
     <link rel="stylesheet" href="{{url_for('static',filename='css/myprofile.css')}}">
+    
     <title>Mi perfil</title>
 </head>
 <body id="body">
+        {% include 'components/header.html' %}
 
     <div class="container_banner">
-        <img src="" alt="">
+        <img src="{{url_for('static',filename='images/banner_black_profile.jpg')}}" alt="">
     </div>
     <div class="container_main">
         <aside class="left">
             <div class="container_profile_left">
-                <picture>
+                <picture class="picture_profile">
                     <img src="{{usuario['avatar']}}" alt="">
                 </picture>
-                <h4>{{usuario['nombre']}}</h4>
-                <h5>{{usuario['mail']}}</h5>
+                <div class="container_info_user_left">
+                    <h4>{{usuario['nombre']}}</h4>
+                    <p>{{usuario['mail']}}</p>
+                </div>
+
                 {% if usuario['descripcion'] %}
                 <p>{{usuario['descripcion']}}</p>
                 {% else %}
@@ -27,7 +34,7 @@
             </div>
         </aside>
         <main>
-            <div class="container_publish">
+            <!-- <div class="container_publish">
                 <div>
                     <picture>
                         <img src="{{usuario['avatar']}}" alt="">
@@ -38,11 +45,14 @@
                 </div>
                 <button  type="submit">Publicar</button>
                 </form>
-            </div>
+            </div> -->
             <div>
 
             {% if publicaciones %}
+            <div class="container_title_publication">
+                <h2 class="h2_public">Publicaciones</h2>
 
+            </div>
             {% for publicacion in publicaciones %}
                 <div class="publish_card">
                     <div class="container_profile">
@@ -112,13 +122,19 @@
         </main>
         <aside class="right">
             <div class="container_stats">
-                <p>publicaciones: {{stats['cant_publi']}}</p>
-                <p>Seguidores: {{stats['cant_seguidores']}}</p>
-                <p>Siguiendo: {{stats['cant_seguidos']}}</p>
+                <h5>Estadisticas</h5>
+                <p>Publicaciones <span>{{stats['cant_publi']}}</span></p>
+                <p>Seguidores <span>{{stats['cant_seguidores']}}</span></p>
+                <p>Siguiendo <span>{{stats['cant_seguidos']}}</span></p>
             </div>
             
 
         </aside>
     </div>
+
+    <script src="{{url_for('static',filename='js/modo-luz.js')}}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+
 </body>
 </html>
