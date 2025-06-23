@@ -35,37 +35,32 @@ const publicar = (e) => {
 
 
 const form_update_text = document.getElementById('form_update_text');
+const form_post_publication = document.getElementById('form_new_post');
 
 
-// form_update_text.addEventListener
 
+const verifyPost = (e, id_input, id_error)=> {
+    const value = document.getElementById(id_input).value;
+    const error_message = document.getElementById(id_error);
 
-const verify_form_update_post = (e)=> {
-    const value = document.getElementById('contenido').value.trim();
-    const error_update_post = document.getElementById('error_update_post')
-    if(!value) {
+    if(value.trim() ==='') {
         e.preventDefault();
-        error_update_post.style.display='block';
-        error_update_post.textContent='Debe agregar un texto'
+        error_message.style.display='block';
+        error_message.textContent='Debe agregar un texto'
     } else {
-        error_update_post.style.display='none'
+        error_message.style.display='none'
     }
+
 }
 
 
+form_update_text.addEventListener('submit', (e)=> verifyPost(e,'contenido', 'error_update_post'))
+form_post_publication.addEventListener('submit', (e)=> verifyPost(e,'input_publish', 'error_new_post'))
 
-
-
-form_update_text.addEventListener('submit', verify_form_update_post)
 
 const activateUpdate =(button)=> {
     const container = button.closest('.publish_card');
-    // const button_save_post = document.getElementById('button_save_post');
-
-    // if (text == '') {
-    //     button_save_post.disabled = true
-    // }
-
+    
     
      if (!container) {
         console.error('No se encontró el contenedor .container_text');
@@ -74,10 +69,6 @@ const activateUpdate =(button)=> {
 
     const view = container.querySelector('.view_publication');
     const edit = container.querySelector('.edit_publication');
-
-
-    
-
 
 
     view.style.display = 'none';

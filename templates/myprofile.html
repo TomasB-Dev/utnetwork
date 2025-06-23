@@ -1,51 +1,42 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="shortcut icon" href="{{url_for('static',filename='images/logo.ico')}}" />
     <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{{url_for('static',filename='images/logo.ico')}}" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{url_for('static',filename='css/home.css')}}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-    <title>Inicio | UTNetwork</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="{{url_for('static',filename='css/myprofile.css')}}">
+    
+    <title>Mi perfil</title>
 </head>
 <body id="body">
+        {% include 'components/header.html' %}
 
-    
-    {% include 'components/header.html' %}
-
+    <div class="container_banner" id="banner">
+    </div>
     <div class="container_main">
         <aside class="left">
-            <div class="left_profile_div card_background" >
-                <picture>
+            <div class="container_profile_left card_background">
+                <picture class="picture_profile">
                     <img src="{{usuario['avatar']}}" alt="">
                 </picture>
-                <div>
-                    <p>{{usuario['nombre']}}</p>
+                <div class="container_info_user_left">
+                    <h4>{{usuario['nombre']}}</h4>
                     <p>{{usuario['mail']}}</p>
-                    
-                    
                 </div>
 
+                {% if usuario['descripcion'] %}
+                <p>{{usuario['descripcion']}}</p>
+                {% else %}
+                <textarea name="" id="" placeholder="agregar comentario"></textarea>
+                {% endif %}
             </div>
-            <nav class="left_profile_nav card_background">
-                    <a href="">
-                        Facu Amigos
-                    </a>
-                    <a href="">
-                        Mensajes
-                    </a>
-                    <a href="">
-                        Configuracion
-                    </a>
-                    <a href="{{url_for('logout')}}">
-                        Cerrar Sesion
-                    </a>
-            </nav>
         </aside>
         <main>
-            <div class="container_publish card_background">
+            <!-- <div class="container_publish">
                 <div>
                     <picture>
                         <img src="{{usuario['avatar']}}" alt="">
@@ -56,22 +47,25 @@
                 </div>
                 <button  type="submit">Publicar</button>
                 </form>
-            </div>
+            </div> -->
             <div>
 
             {% if publicaciones %}
+            <div class="container_title_publication ">
+                <h2 class="h2_public card_background">Publicaciones</h2>
 
+            </div>
             {% for publicacion in publicaciones %}
-                <div class="card_background  publish_card ">
+                <div class="publish_card card_background">
                     <div class="container_profile">
 
-                    <div class="container_info_profile ">
+                    <div class="container_info_profile">
                         
                         <picture>
-                            <img src="{{ publicacion['avatar'] }}" alt="">
+                            <img src="{{ usuario['avatar'] }}" alt="">
                         </picture>
                         <div class="container_info_profile_text">
-                            <p>{{publicacion['nombre']}}</p>
+                            <p>{{usuario['nombre']}}</p>
                             <p>{{publicacion['fecha']}}</p>
                             <input name="id_publi"id="id_publi" style="display: none;" value="{{publicacion['id_publicacion']}}">
 
@@ -129,45 +123,20 @@
             </div>
         </main>
         <aside class="right">
+            <div class="container_stats card_background">
+                <h5>Estadisticas</h5>
+                <p>Publicaciones <span>{{stats['cant_publi']}}</span></p>
+                <p>Seguidores <span>{{stats['cant_seguidores']}}</span></p>
+                <p>Siguiendo <span>{{stats['cant_seguidos']}}</span></p>
+            </div>
             
-            {% if usuarios_sugeridos %}
-
-            <div class="container_sugged_persons card_background">
-                
-            <h5>Usuarios Sugeridos</h5>
-
-            {% for usuarios_sugerido in usuarios_sugeridos %}
-
-                <form action="{{url_for('seguir')}}"  method="POST">
-
-                    <div class="card_sugged_person">
-                        <div class="container_sugged_person_info">
-                            <picture class="container_sugged_person_picture">
-                                <img src="{{usuarios_sugerido['avatar']}}" alt="">
-                            </picture>
-                                <div class="container_sugged_person_text">
-                                    <p>{{usuarios_sugerido['nombre']}}</p>
-                                    <input name="id_seguido"id="id_seguido" style="display: none;" value="{{usuarios_sugerido['id']}}">
-                                </div>
-                        </div>
-                        <button class="btn_follow"><i class="fa-solid fa-plus"></i></button>
-                    </div>
-
-                </form>
-
-                <!-- </div> -->
-                {%endfor%}
-        </div>
-                {% endif %}
 
         </aside>
     </div>
-<script src="{{url_for('static',filename='js/modo-luz.js')}}"></script>
-<script>
 
-</script>
-<script src="{{url_for('static',filename='js/publicacion.js')}}"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+    <script src="{{url_for('static',filename='js/modo-luz.js')}}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 
 </body>
 </html>

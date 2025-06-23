@@ -4,10 +4,10 @@
     --bg--color : #212121; 
     --bg--secundary: #00628D;
     --color-resalt: #BDE4F7;
-    --color-shadows: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    /* --color-shadows: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
     --color-hover: #009EE0;
     --bg-cards: #252525;
-    --box_shadows:   rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    --box_shadows: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     --hover_buttons: #2e2e2e;
 
 
@@ -54,6 +54,7 @@ body {
     display: flex;
     align-items: center;
     background-color: var(--bg-cards);
+    box-shadow: var(--box_shadows);
     /* box-shadow: var(--box_shadows); */
 
     padding: 10px;
@@ -106,9 +107,12 @@ body {
     flex-direction: column;
     margin-top: 3rem;
     border-radius: 5px;
+    box-shadow: var(--box_shadows);
     background-color: var(--bg-cards);
     & a {
-        color: white;
+        /* color: whitesmoke; */
+        text-decoration: none;
+        /* color: none; */
         padding: 21px 0 21px 10px;
         border-radius: 5px;
         /* font-weight: 500; */
@@ -128,7 +132,7 @@ body {
 
 
 .container_publish {
-
+    box-shadow: var(--box_shadows);
     padding: 15px;
     background-color: var(--bg-cards);
     border-radius: 5px;
@@ -192,10 +196,11 @@ body {
 
 
 .publish_card {
-    background-color: #252525;
+    /* background-color: #252525; */
     margin-bottom: 20px;
     border-radius: 5px;
     padding: 10px;
+    box-shadow: var(--box_shadows);
 }
 
 
@@ -260,6 +265,7 @@ body {
 
 
 .container_sugged_persons {
+    box-shadow: var(--box_shadows);
     background-color: var(--bg-cards);
     padding: 10px ;
     border-radius: 5px;
@@ -267,6 +273,17 @@ body {
 
 
 
+
+.card_background {
+    background-color: var(--bg-cards);
+    color: white;
+}
+
+body.light_mode  .card_background{
+    background: #f8f8ff;
+    color: black;
+
+}
 
 
 
@@ -276,32 +293,38 @@ body {
 
     & textarea {
         resize: none;
-    width: 100%;
-    background: none;
-    border: none;
-    color: white;
-    outline: none;
+        width: 100%;
+        background: none;
+        border: none;
+        color: white;
+        outline: none;
+    }
+
+    & button {
+        padding: 10px;
+        color: white;
+        border: none;
+        border-radius: 5px;
+
+        background-color: #009EE0;
     }
 
 
-    & button {
-        /* width: 100%; */
-        padding: 10px;
-        background-color: #00628D;
-        color: white;
+    & button:nth-last-child(1) {
+        background-color: rgb(172, 5, 5);
     }
 }
 
 
 
-.error_message_update {
+.error_message {
     color: red;
     display: none;
     margin: 10px 0px;
 }
 
 
-     .card_sugged_person {
+    .card_sugged_person {
         display: flex;
         
         justify-content: space-between;
@@ -383,9 +406,7 @@ body {
 
 /* btn cambiar de oscuro a claro*/
 #swap-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
+   
     padding: 0.6rem 1.2rem;
     background: #ffffff;
     border: none;

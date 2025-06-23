@@ -400,6 +400,7 @@ preguntas_graciosas = [
                     "¿Tus scripts corren o hacen parkour?",
                     "¿El sistema está caído o haciendo yoga de desconexión?",
                     "¿Tenés políticas de seguridad o fe ciega?",
+                    "Diablo que maldito teni.",
                     "¿Ese HTML es semántico o simplemente un collage?",
                     "¿Tu documentación es útil o poesía postmoderna?",
                     "¿El error es del código o de la humanidad?",

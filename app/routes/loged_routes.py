@@ -29,8 +29,8 @@ def logued_route(app, usuarios, publicaciones,db_user):
         else:
             return render_template('error.html')
         
-    @app.route('/perfil')
-    def profile():
+    @app.route('/miperfil')
+    def myprofile():
         token = session.get('usuario')
         if session:
             id_user = token[0]['id']
@@ -39,11 +39,12 @@ def logued_route(app, usuarios, publicaciones,db_user):
             if user_state == True:
                 stats = usuarios.obtener_estadisticas(id_user)
                 publica = publicaciones.solo_una_persona(id_user)
-                return render_template('profile.html', usuario=info_user[0],stats=stats,publicaciones=publica)
+                return render_template('myprofile.html', usuario=info_user[0],stats=stats,publicaciones=publica)
             else:
                 return redirect(url_for('validation'))
         else:
             return render_template('error.html')
+        
         
 
     @app.route('/app/publicar',methods=['POST'])
@@ -56,7 +57,7 @@ def logued_route(app, usuarios, publicaciones,db_user):
                 return redirect(url_for('home'))
             else:
                 publicaciones.publicar(id_user,contenido)
-                return redirect(url_for('home'))
+                return redirect(request.referrer)
         except Exception as e:
             save_error(e)
             return render_template('error.html')
@@ -82,7 +83,7 @@ def logued_route(app, usuarios, publicaciones,db_user):
         id_user = token[0]['id']
         id_seguido = request.form['id_seguido']
         
-        un_seguir = usuarios.dejar_de_seguir(id_user,id_seguido)
+        un_seguir = usuarios.dejar_de_seguir_usuario(id_user,id_seguido)
         if un_seguir == True:
             return redirect(url_for('home'))
         
@@ -91,7 +92,7 @@ def logued_route(app, usuarios, publicaciones,db_user):
     def eliminar_publi():
         id_publicacion = request.form['id_publi']
         publicaciones.eliminar_publicacion(id_publicacion)
-        return redirect(url_for('home'))
+        return redirect(request.referrer)
     
     
     
@@ -102,7 +103,7 @@ def logued_route(app, usuarios, publicaciones,db_user):
         nuevo_contenido = request.form['contenido']
         print('nuevapublicacion', nuevo_contenido)
         publicaciones.actualizar_publicacion(id_publicacion, nuevo_contenido)
-        return redirect(url_for('home'))
+        return redirect(request.referrer)
     #INICIA BUSCAR
     @app.route('/buscar',methods=['POST'])
     def buscar():
@@ -112,16 +113,12 @@ def logued_route(app, usuarios, publicaciones,db_user):
             state = usuarios.get_state_by_id(id_user)
             if state == True:
                 info_user = usuarios.get_data_by_id(id_user)
+                seguidos = usuarios.obtener_seguidores(id_user)
                 buscar = request.form['busqueda']
-                db_user.conectar()
-                busqueda = db_user.consulta(
-                    "SELECT id,nombre, avatar FROM usuarios WHERE nombre LIKE %s",
-                    ('%' + buscar + '%',)
-                )
-                db_user.cerrar()
-                print(busqueda)
-                return render_template('search.html',usuario=info_user[0],busqueda=busqueda)
+                busqueda = usuarios.buscar_usuario(buscar)
+                return render_template('search.html',usuario=info_user[0],busqueda=busqueda,seguidos=seguidos)
             else:
                 return redirect(url_for('validation'))
-        return redirect(url_for('login'))
+        else:
+            return redirect(url_for('login'))
 
