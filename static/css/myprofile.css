@@ -96,9 +96,46 @@ body {
 
 }
 
+
+.container_profile {
+        display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.edit_publication {
+    width: 100%;
+
+
+    & textarea {
+        resize: none;
+        width: 100%;
+        background: none;
+        border: none;
+        color: white;
+        outline: none;
+    }
+
+    & button {
+        padding: 10px;
+        color: white;
+        border: none;
+        border-radius: 5px;
+
+        background-color: #009EE0;
+    }
+
+
+    & button:nth-last-child(1) {
+        background-color: rgb(172, 5, 5);
+    }
+}
+
 .container_info_profile {
     display: flex;
     align-items: center;
+
+
 
 
 
@@ -224,7 +261,13 @@ body {
 }
 
 
-
+  .if_not_publication {
+        margin: auto;
+        width: 100%;
+        text-align: center;
+        font-size: 25px;
+        color: gray;
+    }
 
 
 .container_banner {
