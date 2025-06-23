@@ -151,7 +151,7 @@ class Usuarios:
             'SELECT COUNT(id_user) FROM seguidores WHERE id_user = %s',(user_id)
             )
             cantidad_followers = self.db_user.consulta(
-                'SELECT COUNT(seguido_id) FROM seguidores WHERE id_user = %s',(user_id)
+                'SELECT COUNT(seguido_id) FROM seguidores WHERE seguido_id = %s',(user_id)
             )
             self.db_user
             stats['cant_publi'] = cantidad_publi[0]['COUNT(id_publicacion)']
