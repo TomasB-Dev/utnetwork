@@ -14,12 +14,11 @@
 <body id="body">
         {% include 'components/header.html' %}
 
-    <div class="container_banner">
-        <img src="{{url_for('static',filename='images/banner_black_profile.jpg')}}" alt="">
+    <div class="container_banner" id="banner">
     </div>
     <div class="container_main">
         <aside class="left">
-            <div class="container_profile_left">
+            <div class="container_profile_left card_background">
                 <picture class="picture_profile">
                     <img src="{{usuario['avatar']}}" alt="">
                 </picture>
@@ -51,12 +50,12 @@
             <div>
 
             {% if publicaciones %}
-            <div class="container_title_publication">
+            <div class="container_title_publication ">
                 <h2 class="h2_public">Publicaciones</h2>
 
             </div>
             {% for publicacion in publicaciones %}
-                <div class="publish_card">
+                <div class="publish_card card_background">
                     <div class="container_profile">
 
                     <div class="container_info_profile">
@@ -123,7 +122,7 @@
             </div>
         </main>
         <aside class="right">
-            <div class="container_stats">
+            <div class="container_stats card_background">
                 <h5>Estadisticas</h5>
                 <p>Publicaciones <span>{{stats['cant_publi']}}</span></p>
                 <p>Seguidores <span>{{stats['cant_seguidores']}}</span></p>

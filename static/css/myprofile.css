@@ -244,6 +244,33 @@ body {
 
 
 
+.card_background {
+    background-color: var(--bg-cards);
+    color: white;
+}
+
+body.light_mode  .card_background{
+    background: #f8f8ff;
+    color: black;
+
+}
+
+
+
+
+#swap-btn {
+   
+    padding: 0.6rem 1.2rem;
+    background: #ffffff;
+    border: none;
+    border-radius: 2rem;
+    color: var(--bg--color);
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    z-index: 999; }
+
 
 
 .container_info_profile_buttons {
@@ -273,9 +300,19 @@ body {
 .container_banner {
 
     height: 341px;
-
     overflow: hidden;
+    background: url('../images/banner_black_profile.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
+
+body.light_mode .container_banner {
+    background: url('../images/banner_white_profile.png') center center / cover no-repeat;
+}
+
+
 
 .container_stats {
     background-color: var(--bg-cards);
