@@ -4,10 +4,10 @@
     --bg--color : #212121; 
     --bg--secundary: #00628D;
     --color-resalt: #BDE4F7;
-    --color-shadows: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    /* --color-shadows: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
     --color-hover: #009EE0;
     --bg-cards: #252525;
-    --box_shadows:   rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    --box_shadows: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
     --hover_buttons: #2e2e2e;
 
 
@@ -54,6 +54,7 @@ body {
     display: flex;
     align-items: center;
     background-color: var(--bg-cards);
+    box-shadow: var(--box_shadows);
     /* box-shadow: var(--box_shadows); */
 
     padding: 10px;
@@ -106,6 +107,7 @@ body {
     flex-direction: column;
     margin-top: 3rem;
     border-radius: 5px;
+    box-shadow: var(--box_shadows);
     background-color: var(--bg-cards);
     & a {
         color: white;
@@ -128,7 +130,7 @@ body {
 
 
 .container_publish {
-
+    box-shadow: var(--box_shadows);
     padding: 15px;
     background-color: var(--bg-cards);
     border-radius: 5px;
@@ -196,6 +198,7 @@ body {
     margin-bottom: 20px;
     border-radius: 5px;
     padding: 10px;
+    box-shadow: var(--box_shadows);
 }
 
 
@@ -260,6 +263,7 @@ body {
 
 
 .container_sugged_persons {
+    box-shadow: var(--box_shadows);
     background-color: var(--bg-cards);
     padding: 10px ;
     border-radius: 5px;
