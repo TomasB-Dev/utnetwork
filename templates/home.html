@@ -17,7 +17,7 @@
 
     <div class="container_main">
         <aside class="left">
-            <div class="left_profile_div" >
+            <div class="left_profile_div card_background" >
                 <picture>
                     <img src="{{usuario['avatar']}}" alt="">
                 </picture>
@@ -29,7 +29,7 @@
                 </div>
 
             </div>
-            <nav class="left_profile_nav">
+            <nav class="left_profile_nav card_background">
                     <a href="">
                         Facu Amigos
                     </a>
@@ -45,7 +45,7 @@
             </nav>
         </aside>
         <main>
-            <div class="container_publish">
+            <div class="container_publish card_background">
                 <div>
                     <picture>
                         <img src="{{usuario['avatar']}}" alt="">
@@ -62,10 +62,10 @@
             {% if publicaciones %}
 
             {% for publicacion in publicaciones %}
-                <div class="publish_card">
+                <div class="card_background  publish_card ">
                     <div class="container_profile">
 
-                    <div class="container_info_profile">
+                    <div class="container_info_profile ">
                         
                         <picture>
                             <img src="{{ publicacion['avatar'] }}" alt="">
@@ -132,7 +132,7 @@
             
             {% if usuarios_sugeridos %}
 
-            <div class="container_sugged_persons">
+            <div class="container_sugged_persons card_background">
                 
             <h5>Usuarios Sugeridos</h5>
 

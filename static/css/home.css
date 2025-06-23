@@ -110,7 +110,9 @@ body {
     box-shadow: var(--box_shadows);
     background-color: var(--bg-cards);
     & a {
-        color: white;
+        /* color: whitesmoke; */
+        text-decoration: none;
+        /* color: none; */
         padding: 21px 0 21px 10px;
         border-radius: 5px;
         /* font-weight: 500; */
@@ -194,7 +196,7 @@ body {
 
 
 .publish_card {
-    background-color: #252525;
+    /* background-color: #252525; */
     margin-bottom: 20px;
     border-radius: 5px;
     padding: 10px;
@@ -271,6 +273,17 @@ body {
 
 
 
+
+.card_background {
+    background-color: var(--bg-cards);
+    color: white;
+}
+
+body.light_mode  .card_background{
+    background: #f8f8ff;
+    color: black;
+
+}
 
 
 
