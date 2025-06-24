@@ -45,7 +45,22 @@ def logued_route(app, usuarios, publicaciones,db_user):
         else:
             return render_template('error.html')
         
-        
+    @app.route('/perfil',methods=['POST'])
+    def profile():
+        token = session.get('usuario')
+        if session:
+            id_user = token[0]['id']
+            id_perfil = request.form['id_user']
+            user_state = usuarios.get_state_by_id(id_user)
+            if user_state == True:
+                info_user = info_user = usuarios.get_data_by_id(id_perfil)
+                stats = usuarios.obtener_estadisticas(id_perfil)
+                publica = publicaciones.solo_una_persona(id_perfil)
+                return render_template('profile.html', usuario=info_user[0],stats=stats,publicaciones=publica)
+            else:
+                return redirect(url_for('validation'))
+        else:
+            return redirect(url_for('login'))
 
     @app.route('/app/publicar',methods=['POST'])
     def publicar():

@@ -71,7 +71,17 @@
                             <img src="{{ publicacion['avatar'] }}" alt="">
                         </picture>
                         <div class="container_info_profile_text">
-                            <p>{{publicacion['nombre']}}</p>
+                            {% if publicacion['id_user'] == usuario['id'] %}
+                                <p><a href="{{ url_for('myprofile') }}">{{ publicacion['nombre'] }}</a></p>
+                            {% else %}
+                                <form id="profileForm{{ publicacion.id_publicacion }}" action="{{ url_for('profile') }}" method="POST" style="display: inline;">
+                                    <input type="hidden" name="id_user" value="{{ publicacion.id_user }}">
+                                    <a href="#" onclick="document.getElementById('profileForm{{ publicacion.id_publicacion }}').submit(); return false;">
+                                        {{ publicacion.nombre }}
+                                    </a>
+                                </form>
+
+                            {% endif %}
                             <p>{{publicacion['fecha']}}</p>
                             <input name="id_publi"id="id_publi" style="display: none;" value="{{publicacion['id_publicacion']}}">
 
