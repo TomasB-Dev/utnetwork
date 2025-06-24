@@ -128,6 +128,16 @@
                 <p>Publicaciones <span>{{stats['cant_publi']}}</span></p>
                 <p>Seguidores <span>{{stats['cant_seguidores']}}</span></p>
                 <p>Siguiendo <span>{{stats['cant_seguidos']}}</span></p>
+                {% if stats['ultima_conexion_dias'] >= 1 %}
+                <p>Ultima Conexion <span>{{stats['ultima_conexion_dias']}} Dias</span></p>
+                {% elif stats['ultima_conexion_horas'] >= 1 %}
+                <p>Ultima Conexion <span>{{stats['ultima_conexion_horas']}} Horas</span></p>
+                {%elif stats['ultima_conexion_minutos'] > 0 %}
+                <p>Ultima Conexion <span>{{stats['ultima_conexion_minutos']}} Minutos</span></p>
+                {%else%}
+                <p>Ultima Conexion <span>{{stats['ultima_conexion_segundos']}} Segundos</span></p>
+                {%endif%}
+
             </div>
             
 

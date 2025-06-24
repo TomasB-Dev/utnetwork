@@ -4,7 +4,6 @@ CONTIENE LAS RUTAS DE CUANDO EL USUARIO YA ESTA LOGUEADO
 from flask import render_template, url_for, request,  redirect , session
 from app.utils.Error_Saver import save_error
 from app.utils.preguntas import preguntas_graciosas
-
 import random
 
 def logued_route(app, usuarios, publicaciones,db_user):
@@ -18,6 +17,7 @@ def logued_route(app, usuarios, publicaciones,db_user):
             user_state = usuarios.get_state_by_id(id_user)
             users_suggested = usuarios.suggest_users(id_user)
             if user_state == True:
+                usuarios.actualizar_conexion(id_user)
                 page = int(request.args.get("page", 1)) 
                 limit = 40
                 offset = (page - 1) * limit
@@ -37,6 +37,7 @@ def logued_route(app, usuarios, publicaciones,db_user):
             info_user = usuarios.get_data_by_id(id_user)
             user_state = usuarios.get_state_by_id(id_user)
             if user_state == True:
+                usuarios.actualizar_conexion(id_user)
                 stats = usuarios.obtener_estadisticas(id_user)
                 publica = publicaciones.solo_una_persona(id_user)
                 return render_template('myprofile.html', usuario=info_user[0],stats=stats,publicaciones=publica)
@@ -53,6 +54,7 @@ def logued_route(app, usuarios, publicaciones,db_user):
             id_perfil = request.form['id_user']
             user_state = usuarios.get_state_by_id(id_user)
             if user_state == True:
+                usuarios.actualizar_conexion(id_user)
                 info_user = info_user = usuarios.get_data_by_id(id_user)
                 info_perfil =  usuarios.get_data_by_id(id_perfil)
                 stats = usuarios.obtener_estadisticas(id_perfil)
@@ -73,6 +75,7 @@ def logued_route(app, usuarios, publicaciones,db_user):
             if contenido == '':
                 return redirect(url_for('home'))
             else:
+                usuarios.actualizar_conexion(id_user)
                 publicaciones.publicar(id_user,contenido)
                 return redirect(request.referrer)
         except Exception as e:
@@ -83,9 +86,13 @@ def logued_route(app, usuarios, publicaciones,db_user):
     @app.route('/app/seguir',methods=['POST'])
 
     def seguir():
+        """
+        Ruta para  seguir a un usuario
+        """
         token = session.get('usuario')
         id_user = token[0]['id']
         id_seguido = request.form['id_seguido']
+        usuarios.actualizar_conexion(id_user)
         seguimiento = usuarios.seguir_usuario(id_user,id_seguido)
 
         if seguimiento == True:
@@ -96,9 +103,13 @@ def logued_route(app, usuarios, publicaciones,db_user):
     @app.route('/app/no-seguir',methods=['POST'])
     
     def unfollow():
+        """
+        Ruta para dejar de seguir a un usuario
+        """
         token = session.get('usuario')
         id_user = token[0]['id']
         id_seguido = request.form['id_seguido']
+        usuarios.actualizar_conexion(id_user)
         
         un_seguir = usuarios.dejar_de_seguir_usuario(id_user,id_seguido)
         if un_seguir == True:
@@ -129,6 +140,7 @@ def logued_route(app, usuarios, publicaciones,db_user):
             id_user = token[0]['id']
             state = usuarios.get_state_by_id(id_user)
             if state == True:
+                usuarios.actualizar_conexion(id_user)
                 info_user = usuarios.get_data_by_id(id_user)
                 seguidos = usuarios.obtener_seguidores(id_user)
                 buscar = request.form['busqueda']

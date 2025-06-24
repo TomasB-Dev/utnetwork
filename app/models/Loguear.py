@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import os
 import random
 from app.models.Mail_Send import Send_Mail
+import datetime
 load_dotenv(dotenv_path='../.env')
 DB_NAME = os.getenv('DB_NAME')
 DB_KEY = os.getenv('DB_KEY')
@@ -99,6 +100,12 @@ class Login:
         db_user.cerrar()
         if len(resultados) > 0:
             if resultados[0]['state'] == 1:
+                fecha = datetime.datetime.now()
+                db_user.conectar()
+                db_user.consulta(
+                    "UPDATE usuarios SET ultima_conexion = %s WHERE mail = %s",(fecha,self.mail)
+                )
+                db_user.cerrar()
                 return True
             else:
                 self.confirmed_mail()
