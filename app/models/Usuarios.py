@@ -74,7 +74,18 @@ class Usuarios:
         except Exception as e :
             save_error(e)
             return False
-    
+    def actualizar_conexion(self,user_id):
+        """
+        Actuliza la ultima conexion
+        """
+        actual = datetime.now()
+        self.db_user.conectar()
+        self.db_user.consulta(
+            "UPDATE usuarios SET ultima_conexion = %s WHERE id = %s",(actual,user_id)
+        )
+        self.db_user.cerrar()
+
+
     def seguir_usuario (self, user_id, follow_id):
         """
         El user_id sigue a follow_id
@@ -158,18 +169,19 @@ class Usuarios:
                 "SELECT ultima_conexion FROM usuarios WHERE id = %s",(user_id)
             )
             self.db_user.cerrar()
-            print(ultima_conexion) 
             dia_actual = datetime.now()
             diferencia = dia_actual - ultima_conexion[0]['ultima_conexion']
             dias = diferencia.days
             horas= diferencia.total_seconds() / 3600
             minutos = diferencia.total_seconds() / 60
+            segundos =  diferencia.total_seconds()
             stats['cant_publi'] = cantidad_publi[0]['COUNT(id_publicacion)']
             stats['cant_seguidos'] = cantidad_segui[0]['COUNT(id_user)']
             stats['cant_seguidores'] = cantidad_followers[0]['COUNT(seguido_id)']
             stats['ultima_conexion_dias'] = round(dias)
             stats['ultima_conexion_horas'] = round(horas)
             stats['ultima_conexion_minutos'] = round(minutos)
+            stats['ultima_conexion_segundos'] = round(segundos)
             return stats
         except Exception as e:
             save_error(e)
