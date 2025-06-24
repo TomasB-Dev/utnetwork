@@ -4,7 +4,6 @@ CONTIENE LAS RUTAS DE CUANDO EL USUARIO YA ESTA LOGUEADO
 from flask import render_template, url_for, request,  redirect , session
 from app.utils.Error_Saver import save_error
 from app.utils.preguntas import preguntas_graciosas
-
 import random
 
 def logued_route(app, usuarios, publicaciones,db_user):
@@ -83,6 +82,9 @@ def logued_route(app, usuarios, publicaciones,db_user):
     @app.route('/app/seguir',methods=['POST'])
 
     def seguir():
+        """
+        Ruta para  seguir a un usuario
+        """
         token = session.get('usuario')
         id_user = token[0]['id']
         id_seguido = request.form['id_seguido']
@@ -96,6 +98,9 @@ def logued_route(app, usuarios, publicaciones,db_user):
     @app.route('/app/no-seguir',methods=['POST'])
     
     def unfollow():
+        """
+        Ruta para dejar de seguir a un usuario
+        """
         token = session.get('usuario')
         id_user = token[0]['id']
         id_seguido = request.form['id_seguido']
