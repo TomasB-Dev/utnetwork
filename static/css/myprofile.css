@@ -53,7 +53,19 @@ body {
     }
     /* display: flex; */
 }
+.btn_follow {
+        border: none;
+        background: none;
+        color: var(--bg--secundary);
+        font-size: larger;
+        cursor: pointer;
+        transition: .5s all;
 
+
+        &:hover {
+            color: var(--color-hover);
+        }
+    }
 
 .container_profile_left {
     background-color: var(--bg-cards);
