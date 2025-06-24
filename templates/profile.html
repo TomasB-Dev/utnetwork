@@ -33,12 +33,12 @@
                 {%if info_perfil['id'] is not in seguidos %}   
                                     <form action="{{ url_for('seguir') }}" method="POST">
                                     <input name="id_seguido" id="id_seguido" style="display: none;" value="{{ info_perfil['id'] }}">             
-                                    <button class="btn_follow"><i class="fa-solid fa-plus"></i> Seguir</button>
+                                    <button class="btn_follow"><i class="fa-solid fa-user-plus"></i></i> Seguir</button>
                                     </form>
                                     {% else %}
                                     <form action="{{ url_for('unfollow') }}" method="POST">
                                     <input name="id_seguido" id="id_seguido" style="display: none;" value="{{ info_perfil['id'] }}">
-                                    <button class="btn_follow"><i class="fa-solid fa-minus"></i> Dejar de seguir</button>
+                                    <button class="btn_follow"><i class="fa-solid fa-user-minus"></i></i> No Seguir</button>
                                     </form>
                                     {% endif %}
             </div>
@@ -57,13 +57,17 @@
                 </form>
             </div> -->
             <div>
-
-            {% if publicaciones %}
+            {%if info_perfil['id'] not in seguidos %} 
+            <div class="if_not_publication">
+                Para ver el contenido debes seguir a este usuario.
+            </div>
+            {%elif info_perfil['id'] is in seguidos %}
+                {% if publicaciones %}
             <div class="container_title_publication ">
                 <h2 class="h2_public card_background">Publicaciones</h2>
 
             </div>
-            {% for publicacion in publicaciones %}
+                {% for publicacion in publicaciones %}
                 <div class="publish_card card_background">
                     <div class="container_profile">
 
@@ -89,10 +93,10 @@
 
                             <button style="margin-left: 10px; font-size: medium;" onclick="activateUpdate(this)"><i class="fa-solid fa-pen-to-square"></i></button>
 
-                        {% endif %}
+                            {% endif %}
                         </div>
                         </div>
-
+                    
                     <div class="container_text">
 
                         <form action="{{url_for('actualizar_publi')}}" method="POST" id="form_update_text">
@@ -112,7 +116,9 @@
                     </div>
                 </div>
 
-            {% endfor %}
+                    {% endfor %}
+                {% endif %}
+            
             {%if publicaciones|length > 39 %}
             <a href="{{ url_for('home', page=page + 1) }}">Cargar más</a>
             {% else %}

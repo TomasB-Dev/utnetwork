@@ -63,12 +63,12 @@
                                     {%if busca['id'] is not in seguidos %}   
                                     <form action="{{ url_for('seguir') }}" method="POST">
                                     <input name="id_seguido" id="id_seguido" style="display: none;" value="{{ busca['id'] }}">             
-                                    <button class="btn_follow"><i class="fa-solid fa-plus"></i> Seguir</button>
+                                    <button class="btn_follow"><i class="fa-solid fa-user-plus"></i></i> Seguir</button>
                                     </form>
                                     {% else %}
                                     <form action="{{ url_for('unfollow') }}" method="POST">
                                     <input name="id_seguido" id="id_seguido" style="display: none;" value="{{ busca['id'] }}">
-                                    <button class="btn_follow"><i class="fa-solid fa-minus"></i> Dejar de seguir</button>
+                                    <button class="btn_follow"><i class="fa-solid fa-user-minus"></i></i> No Seguir</button>
                                     </form>
                                     {% endif %}
                                 
