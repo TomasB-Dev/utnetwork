@@ -53,10 +53,11 @@ def logued_route(app, usuarios, publicaciones,db_user):
             id_perfil = request.form['id_user']
             user_state = usuarios.get_state_by_id(id_user)
             if user_state == True:
-                info_user = info_user = usuarios.get_data_by_id(id_perfil)
+                info_user = info_user = usuarios.get_data_by_id(id_user)
+                info_perfil =  usuarios.get_data_by_id(id_perfil)
                 stats = usuarios.obtener_estadisticas(id_perfil)
                 publica = publicaciones.solo_una_persona(id_perfil)
-                return render_template('profile.html', usuario=info_user[0],stats=stats,publicaciones=publica)
+                return render_template('profile.html', usuario=info_user[0],stats=stats,publicaciones=publica,info_perfil=info_perfil[0])
             else:
                 return redirect(url_for('validation'))
         else:

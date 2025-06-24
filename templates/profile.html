@@ -21,14 +21,14 @@
         <aside class="left">
             <div class="container_profile_left card_background">
                 <picture class="picture_profile">
-                    <img src="{{usuario['avatar']}}" alt="">
+                    <img src="{{info_perfil['avatar']}}" alt="">
                 </picture>
                 <div class="container_info_user_left">
-                    <h4>{{usuario['nombre']}}</h4>
+                    <h4>{{info_perfil['nombre']}}</h4>
                 </div>
 
-                {% if usuario['descripcion'] %}
-                <p>{{usuario['descripcion']}}</p>
+                {% if info_perfil['descripcion'] %}
+                <p>{{info_perfil['descripcion']}}</p>
                 {% endif %}
             </div>
         </aside>
@@ -59,10 +59,10 @@
                     <div class="container_info_profile">
                         
                         <picture>
-                            <img src="{{ usuario['avatar'] }}" alt="">
+                            <img src="{{ info_perfil['avatar'] }}" alt="">
                         </picture>
                         <div class="container_info_profile_text">
-                            <p>{{usuario['nombre']}}</p>
+                            <p>{{info_perfil['nombre']}}</p>
                             <p>{{publicacion['fecha']}}</p>
                             <input name="id_publi"id="id_publi" style="display: none;" value="{{publicacion['id_publicacion']}}">
 
