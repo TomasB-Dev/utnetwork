@@ -71,7 +71,17 @@
                             <img src="{{ publicacion['avatar'] }}" alt="">
                         </picture>
                         <div class="container_info_profile_text">
-                            <p>{{publicacion['nombre']}}</p>
+                            {% if publicacion['id_user'] == usuario['id'] %}
+                                <p><a href="{{ url_for('myprofile') }}">{{ publicacion['nombre'] }}</a></p>
+                            {% else %}
+                                <form id="profileForm{{ publicacion.id_publicacion }}" action="{{ url_for('profile') }}" method="POST" style="display: inline;">
+                                    <input type="hidden" name="id_user" value="{{ publicacion.id_user }}">
+                                    <a href="#" onclick="document.getElementById('profileForm{{ publicacion.id_publicacion }}').submit(); return false;">
+                                        {{ publicacion.nombre }}
+                                    </a>
+                                </form>
+
+                            {% endif %}
                             <p>{{publicacion['fecha']}}</p>
                             <input name="id_publi"id="id_publi" style="display: none;" value="{{publicacion['id_publicacion']}}">
 
@@ -138,21 +148,25 @@
 
             {% for usuarios_sugerido in usuarios_sugeridos %}
 
-                <form action="{{url_for('seguir')}}"  method="POST">
-
                     <div class="card_sugged_person">
                         <div class="container_sugged_person_info">
                             <picture class="container_sugged_person_picture">
                                 <img src="{{usuarios_sugerido['avatar']}}" alt="">
                             </picture>
                                 <div class="container_sugged_person_text">
-                                    <p>{{usuarios_sugerido['nombre']}}</p>
+                                    <form id="profileForm{{ usuarios_sugerido.id }}" action="{{ url_for('profile') }}" method="POST">
+                                        <a href="#" onclick="document.getElementById('profileForm{{ usuarios_sugerido.id }}').submit(); return false;">
+                                            {{usuarios_sugerido['nombre']}}
+                                        </a>
+                                        <input type="hidden" name="id_user" value="{{ usuarios_sugerido['id'] }}">
+
+                                    </form>
+                <form  action="{{url_for('seguir')}}"  method="POST">
                                     <input name="id_seguido"id="id_seguido" style="display: none;" value="{{usuarios_sugerido['id']}}">
                                 </div>
                         </div>
                         <button class="btn_follow"><i class="fa-solid fa-plus"></i></button>
                     </div>
-
                 </form>
 
                 <!-- </div> -->

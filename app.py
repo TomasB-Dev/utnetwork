@@ -26,16 +26,20 @@ app.secret_key = FIRMA
 
 #modularizacion vista que no necesitan loguear
 nologued_view(app)
+
 #modularizacion login
 login_route(app)
+
 #modularizacion register
 register_route(app)
+
 #modularizacion vaidations
 validation_route(app,usuarios,db_user)
+
 #modularizacion loged views
 logued_route(app,usuarios, publicaciones,db_user)
 
-
+#manejo de error 404
 @app.errorhandler(404)
 def page_error(error):
     return render_template('error.html'), 404

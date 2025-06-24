@@ -20,7 +20,7 @@ class Usuarios:
         try:
             self.db_user.conectar()
             resultado = self.db_user.consulta(
-                "SELECT *  FROM usuarios WHERE id = %s", (user_id,)
+                "SELECT id, nombre, mail,state,avatar,confirmed,descripcion  FROM usuarios WHERE id = %s", (user_id,)
             )
 
             self.db_user.cerrar()

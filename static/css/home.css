@@ -19,7 +19,10 @@
     
 
 }
-
+a{
+    text-decoration: none;
+    color:inherit;
+}
 
 p {
     margin: 0
@@ -262,7 +265,11 @@ body {
         color: gray;
     }
 }
+.container_info_profile_text a{
+    text-decoration: none;
+    color: inherit;
 
+}
 
 .container_sugged_persons {
     box-shadow: var(--box_shadows);

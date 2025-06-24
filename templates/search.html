@@ -52,19 +52,23 @@
                                 <img src="{{ busca['avatar'] }}" alt="">
                             </picture>
                             <div class="container_info_profile_text">
-                                <p class="txt">{{ busca['nombre'] }}</p>
-                                
+                                <form id="profileForm{{ busca.id }}" action="{{ url_for('profile') }}" method="POST" style="display: inline;">
+                                    <input type="hidden" name="id_user" value="{{ busca.id }}">
+                                    <a href="#" onclick="document.getElementById('profileForm{{ busca.id }}').submit(); return false;">
+                                        {{ busca.nombre }}
+                                    </a>
+                                </form>
                                     
                                     
                                     {%if busca['id'] is not in seguidos %}   
                                     <form action="{{ url_for('seguir') }}" method="POST">
                                     <input name="id_seguido" id="id_seguido" style="display: none;" value="{{ busca['id'] }}">             
-                                    <button class="btn_follow"><i class="fa-solid fa-plus"></i> Seguir</button>
+                                    <button class="btn_follow"><i class="fa-solid fa-user-plus"></i></i> Seguir</button>
                                     </form>
                                     {% else %}
                                     <form action="{{ url_for('unfollow') }}" method="POST">
                                     <input name="id_seguido" id="id_seguido" style="display: none;" value="{{ busca['id'] }}">
-                                    <button class="btn_follow"><i class="fa-solid fa-minus"></i> Dejar de seguir</button>
+                                    <button class="btn_follow"><i class="fa-solid fa-user-minus"></i></i> No Seguir</button>
                                     </form>
                                     {% endif %}
                                 

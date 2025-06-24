@@ -17,6 +17,9 @@ class Publicaciones:
 
 
     def actualizar_publicacion(self, publicacion_id,contenido_nuevo):
+        """
+        Actualiza la publicacion
+        """
         fecha = datetime.datetime.now()
         self.db_user.conectar()
         resultado = self.db_user.consulta(
@@ -34,6 +37,10 @@ class Publicaciones:
 
 
     def publicar(self, user_id, contenido):
+            """
+            Publica (?)
+            """
+            
             fecha = datetime.datetime.now()
             self.db_user.conectar()
             resultado =self.db_user.consulta(
@@ -44,6 +51,9 @@ class Publicaciones:
             return resultado
         
     def ver_publicaciones(self, user_id,limit=10, offset=0):
+        """
+        Trae publicaciones del user id y de los seguidos por el mismo
+        """
         self.db_user.conectar()
         
         publicaciones = self.db_user.consulta(
@@ -72,6 +82,9 @@ class Publicaciones:
         self.db_user.cerrar()
         return publicaciones
     def solo_una_persona(self,id_user):
+        """
+        Trae publicaciones de solo una persona (user_id)
+        """
         self.db_user.conectar()
         publicaciones = self.db_user.consulta(
             'SELECT * FROM publicaciones WHERE id_user = %s',(id_user)
@@ -81,6 +94,9 @@ class Publicaciones:
     #metodo traer publicaciones de amigos
     
     def eliminar_publicacion(self, publicacion_id):
+        """
+        Elimina la publicacion
+        """
         self.db_user.conectar()
         self.db_user.consulta(
             "DELETE FROM publicaciones WHERE id_publicacion = %s", (publicacion_id)
