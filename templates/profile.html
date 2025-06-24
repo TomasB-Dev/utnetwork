@@ -30,6 +30,17 @@
                 {% if info_perfil['descripcion'] %}
                 <p>{{info_perfil['descripcion']}}</p>
                 {% endif %}
+                {%if info_perfil['id'] is not in seguidos %}   
+                                    <form action="{{ url_for('seguir') }}" method="POST">
+                                    <input name="id_seguido" id="id_seguido" style="display: none;" value="{{ info_perfil['id'] }}">             
+                                    <button class="btn_follow"><i class="fa-solid fa-plus"></i> Seguir</button>
+                                    </form>
+                                    {% else %}
+                                    <form action="{{ url_for('unfollow') }}" method="POST">
+                                    <input name="id_seguido" id="id_seguido" style="display: none;" value="{{ info_perfil['id'] }}">
+                                    <button class="btn_follow"><i class="fa-solid fa-minus"></i> Dejar de seguir</button>
+                                    </form>
+                                    {% endif %}
             </div>
         </aside>
         <main>

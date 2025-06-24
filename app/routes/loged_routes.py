@@ -57,7 +57,8 @@ def logued_route(app, usuarios, publicaciones,db_user):
                 info_perfil =  usuarios.get_data_by_id(id_perfil)
                 stats = usuarios.obtener_estadisticas(id_perfil)
                 publica = publicaciones.solo_una_persona(id_perfil)
-                return render_template('profile.html', usuario=info_user[0],stats=stats,publicaciones=publica,info_perfil=info_perfil[0])
+                seguidos = usuarios.obtener_seguidores(id_user)
+                return render_template('profile.html', usuario=info_user[0],stats=stats,publicaciones=publica,info_perfil=info_perfil[0],seguidos=seguidos)
             else:
                 return redirect(url_for('validation'))
         else:
