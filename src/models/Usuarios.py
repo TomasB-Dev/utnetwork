@@ -207,18 +207,17 @@ class Usuarios:
         except Exception as e:
             save_error(e)
 
-    def buscar_usuario(self,like):
+    def buscar_usuario(self,like,user_id):  
         """
         Buscar usuarios atraves de un like en sql y retorna lo encontrado
         """
         self.db_user.conectar()
         busqueda = self.db_user.consulta(
-            "SELECT id,nombre, avatar FROM usuarios WHERE nombre LIKE %s",
-                ('%' + like + '%',)
+            "SELECT id,nombre, avatar FROM usuarios WHERE nombre LIKE %s AND id !=%s",
+                ('%' + like + '%',user_id)
         )
         self.db_user.cerrar()
         return busqueda
-
     #metodo traer publicaciones de amigos
     
     
