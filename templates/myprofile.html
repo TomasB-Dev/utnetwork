@@ -31,7 +31,12 @@
                 {% if usuario['descripcion'] %}
                 <p>{{usuario['descripcion']}}</p>
                 {% else %}
-                <textarea name="" id="" placeholder="agregar comentario"></textarea>
+                <form action="{{ url_for('actualizar_descripcion') }}" method="POST">
+                <input id="id_usuario" name="id_usuario" hidden type="text" value="{{usuario['id']}}">
+                <textarea name="descripcion_contenido" id="descripcion_contenido" placeholder="agregar comentario"></textarea>
+                <button type="submit">Confirmar</button>
+            </form>
+
                 {% endif %}
             </div>
         </aside>

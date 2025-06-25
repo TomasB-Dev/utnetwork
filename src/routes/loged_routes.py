@@ -151,3 +151,9 @@ def logued_route(app, usuarios, publicaciones,db_user):
         else:
             return redirect(url_for('login'))
 
+    @app.route('/actualizar-descripcion', methods=['POST'])
+    def actualizar_descripcion():
+        id_usuario = request.form['id_usuario']
+        nueva_descripcion = request.form['descripcion_contenido']
+        usuarios.actualizar_descripcion(id_usuario, nueva_descripcion)
+        return redirect(request.referrer)

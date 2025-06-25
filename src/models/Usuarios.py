@@ -15,6 +15,25 @@ class Usuarios:
 
         self.db_user = DataBase(HOST, USER, DB_KEY, DB_NAME,PORT)    
 
+
+    def actualizar_descripcion(self, user_id, nueva_descripcion):
+        try:
+            self.db_user.conectar()
+            resutado = self.db_user.consulta(
+                """
+                UPDATE usuarios
+                SET descripcion = %s
+                
+                WHERE id = %s
+                
+                """, (user_id, nueva_descripcion)
+            )
+            self.db_user.cerrar()
+            return resutado
+        except Exception as e:
+            save_error(e)
+            return False
+
     def get_data_by_id(self, user_id):
         """
         Obtiene la data del user_id
