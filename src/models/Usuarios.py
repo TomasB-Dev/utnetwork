@@ -26,7 +26,7 @@ class Usuarios:
                 
                 WHERE id = %s
                 
-                """, (user_id, nueva_descripcion)
+                """, (nueva_descripcion, user_id)
             )
             self.db_user.cerrar()
             return resutado
