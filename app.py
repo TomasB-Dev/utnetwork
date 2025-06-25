@@ -10,7 +10,7 @@ from app.routes.validation_routes import validation_route
 from app.routes.loged_routes import logued_route
 from app.routes.nologed_routes import nologued_view
 
-load_dotenv(dotenv_path='../.env')
+#load_dotenv(dotenv_path='../.env')
 DB_NAME = os.getenv('DB_NAME')
 DB_KEY = os.getenv('DB_KEY')
 HOST = os.getenv('HOST')
@@ -46,4 +46,5 @@ def page_error(error):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    app.run(debug=True, host='0.0.0.0', port=port)
