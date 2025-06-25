@@ -5,7 +5,7 @@ import os
 from src.models.Mail_Send import Send_Mail
 from src.utils.Error_Saver import save_error
 import random
-load_dotenv(dotenv_path='../.env')
+load_dotenv()
 
 
 DB_NAME = os.getenv('DB_NAME')

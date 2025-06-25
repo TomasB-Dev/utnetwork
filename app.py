@@ -10,7 +10,7 @@ from src.routes.validation_routes import validation_route
 from src.routes.loged_routes import logued_route
 from src.routes.nologed_routes import nologued_view
 
-load_dotenv(dotenv_path='../.env')
+load_dotenv()
 DB_NAME = os.getenv('DB_NAME')
 DB_KEY = os.getenv('DB_KEY')
 HOST = os.getenv('HOST')
