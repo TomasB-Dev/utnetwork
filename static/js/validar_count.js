@@ -49,7 +49,7 @@ function enviarCodigo(e) {
             c6: document.getElementById('6c').value,
         };
 
-        fetch('utnetwork-production.up.railway.app/validar-codigo', {
+        fetch('https://utnetwork-production.up.railway.app/validar-codigo', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
