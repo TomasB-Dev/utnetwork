@@ -2,7 +2,7 @@ from app.models.Data_Base import DataBase
 from dotenv import load_dotenv
 import os
 from app.utils.Error_Saver import save_error
-
+from datetime import datetime
 
 class Usuarios:
     def __init__(self):
@@ -14,15 +14,15 @@ class Usuarios:
         self.db_user = DataBase(HOST, USER, DB_KEY, DB_NAME)    
 
     def get_data_by_id(self, user_id):
+        """
+        Obtiene la data del user_id
+        """
         try:
             self.db_user.conectar()
             resultado = self.db_user.consulta(
-                "SELECT *  FROM usuarios WHERE id = %s", (user_id,)
+                "SELECT id, nombre, mail,state,avatar,confirmed,descripcion  FROM usuarios WHERE id = %s", (user_id,)
             )
-            
-        
-        
-        
+
             self.db_user.cerrar()
             if resultado is not None:
                 return resultado
@@ -34,6 +34,9 @@ class Usuarios:
             
         
     def suggest_users(self, user_id):
+        """
+        Recomienda 5 usuarios aletorios que el user_id no siga
+        """
         try:
             self.db_user.conectar()
             resultado = self.db_user.consulta(
@@ -56,6 +59,9 @@ class Usuarios:
             return False
     
     def get_state_by_id(self,user_id):
+        """
+        Obtiene el estado de la cuenta user_id (confirmada o no)
+        """
         try:
             self.db_user.conectar()
             resultado = self.db_user.consulta(
@@ -68,8 +74,22 @@ class Usuarios:
         except Exception as e :
             save_error(e)
             return False
-    
+    def actualizar_conexion(self,user_id):
+        """
+        Actuliza la ultima conexion
+        """
+        actual = datetime.now()
+        self.db_user.conectar()
+        self.db_user.consulta(
+            "UPDATE usuarios SET ultima_conexion = %s WHERE id = %s",(actual,user_id)
+        )
+        self.db_user.cerrar()
+
+
     def seguir_usuario (self, user_id, follow_id):
+        """
+        El user_id sigue a follow_id
+        """
         try:
             self.db_user.conectar()
             self.db_user.consulta(
@@ -82,6 +102,9 @@ class Usuarios:
             return False
     
     def dejar_de_seguir_usuario(self, user_id, follow_id):
+        """
+        Deja de seguir a el usuario follow_id
+        """
         try:
             self.db_user.conectar()
             self.db_user.consulta(
@@ -94,23 +117,29 @@ class Usuarios:
             return False
     
     def obtener_seguidores(self, user_id):
+        """
+        Obtiene los usuarios que siguen a user_id
+        """
         try:
             self.db_user.conectar()
             resultado = self.db_user.consulta(
-                "SELECT id_follow FROM seguidores WHERE id_user = %s", (user_id,)
+                "SELECT seguido_id FROM seguidores WHERE id_user = %s", (user_id,)
             )
             self.db_user.cerrar()
-            resultado_final = [row['id_follow'] for row in resultado]
+            resultado_final = [row['seguido_id'] for row in resultado]
             return resultado_final
         except Exception as e :
             save_error(e)
             return False
     
     def obtener_seguidos(self, user_id):
+        """
+        Obtiene los usuarios seguidos por el user_id
+        """
         try:
             self.db_user.conectar()
             resultado = self.db_user.consulta(
-                'SELECT id_user FROM seguidores WHERE id_follow = %s', (user_id,)
+                'SELECT id_user FROM seguidores WHERE seguido_id = %s', (user_id,)
             )
             resultado_final = [row['id_user'] for row in resultado]
             self.db_user.cerrar()
@@ -120,6 +149,9 @@ class Usuarios:
             return False    
     
     def obtener_estadisticas(self,user_id):
+        """
+        Obtiene estadisticas del usuario en base a distintas consultas y las retorna
+        """
         stats = {}
         try:
             self.db_user.conectar()
@@ -130,15 +162,41 @@ class Usuarios:
             'SELECT COUNT(id_user) FROM seguidores WHERE id_user = %s',(user_id)
             )
             cantidad_followers = self.db_user.consulta(
-                'SELECT COUNT(seguido_id) FROM seguidores WHERE id_user = %s',(user_id)
+                'SELECT COUNT(seguido_id) FROM seguidores WHERE seguido_id = %s',(user_id)
             )
             self.db_user
+            ultima_conexion = self.db_user.consulta(
+                "SELECT ultima_conexion FROM usuarios WHERE id = %s",(user_id)
+            )
+            self.db_user.cerrar()
+            dia_actual = datetime.now()
+            diferencia = dia_actual - ultima_conexion[0]['ultima_conexion']
+            dias = diferencia.days
+            horas= diferencia.total_seconds() / 3600
+            minutos = diferencia.total_seconds() / 60
+            segundos =  diferencia.total_seconds()
             stats['cant_publi'] = cantidad_publi[0]['COUNT(id_publicacion)']
             stats['cant_seguidos'] = cantidad_segui[0]['COUNT(id_user)']
             stats['cant_seguidores'] = cantidad_followers[0]['COUNT(seguido_id)']
+            stats['ultima_conexion_dias'] = round(dias)
+            stats['ultima_conexion_horas'] = round(horas)
+            stats['ultima_conexion_minutos'] = round(minutos)
+            stats['ultima_conexion_segundos'] = round(segundos)
             return stats
         except Exception as e:
             save_error(e)
+
+    def buscar_usuario(self,like):
+        """
+        Buscar usuarios atraves de un like en sql y retorna lo encontrado
+        """
+        self.db_user.conectar()
+        busqueda = self.db_user.consulta(
+            "SELECT id,nombre, avatar FROM usuarios WHERE nombre LIKE %s",
+                ('%' + like + '%',)
+        )
+        self.db_user.cerrar()
+        return busqueda
 
     #metodo traer publicaciones de amigos
     

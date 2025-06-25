@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <link rel="shortcut icon" href="{{url_for('static',filename='images/logo.ico')}}" />
     <meta charset="UTF-8">
@@ -12,12 +12,12 @@
 </head>
 <body id="body">
 
-    {% set user = usuario %}
+    
     {% include 'components/header.html' %}
 
     <div class="container_main">
         <aside class="left">
-            <div class="left_profile_div" >
+            <div class="left_profile_div card_background" >
                 <picture>
                     <img src="{{usuario['avatar']}}" alt="">
                 </picture>
@@ -25,10 +25,11 @@
                     <p>{{usuario['nombre']}}</p>
                     <p>{{usuario['mail']}}</p>
                     
+                    
                 </div>
 
             </div>
-            <nav class="left_profile_nav">
+            <nav class="left_profile_nav card_background">
                     <a href="">
                         Facu Amigos
                     </a>
@@ -44,29 +45,43 @@
             </nav>
         </aside>
         <main>
-            <div class="container_publish">
+            <div class="container_publish card_background">
                 <div>
                     <picture>
                         <img src="{{usuario['avatar']}}" alt="">
                     </picture>
-                    <form action="{{url_for('publicar')}}" method="POST">
+                    <form action="{{url_for('publicar')}}" method="POST" id="form_new_post">
                     <textarea id="input_publish" name='input_publish' type="text" placeholder="{{usuario['nombre']}}, {{pregunta}}"></textarea>
+                    <div id="error_new_post" class="error_message"></div>
                 </div>
                 <button  type="submit">Publicar</button>
                 </form>
             </div>
             <div>
+
+            {% if publicaciones %}
+
             {% for publicacion in publicaciones %}
-                <div class="publish_card">
+                <div class="card_background  publish_card ">
                     <div class="container_profile">
 
-                    <div class="container_info_profile">
+                    <div class="container_info_profile ">
                         
                         <picture>
                             <img src="{{ publicacion['avatar'] }}" alt="">
                         </picture>
                         <div class="container_info_profile_text">
-                            <p>{{publicacion['nombre']}}</p>
+                            {% if publicacion['id_user'] == usuario['id'] %}
+                                <p><a href="{{ url_for('myprofile') }}">{{ publicacion['nombre'] }}</a></p>
+                            {% else %}
+                                <form id="profileForm{{ publicacion.id_publicacion }}" action="{{ url_for('profile') }}" method="POST" style="display: inline;">
+                                    <input type="hidden" name="id_user" value="{{ publicacion.id_user }}">
+                                    <a href="#" onclick="document.getElementById('profileForm{{ publicacion.id_publicacion }}').submit(); return false;">
+                                        {{ publicacion.nombre }}
+                                    </a>
+                                </form>
+
+                            {% endif %}
                             <p>{{publicacion['fecha']}}</p>
                             <input name="id_publi"id="id_publi" style="display: none;" value="{{publicacion['id_publicacion']}}">
 
@@ -74,19 +89,21 @@
                     </div>
 
                         <div class="container_info_profile_buttons" style="display: flex;">
-                             {% if publicacion['id_user'] == usuario['id'] %}
-                            <form method="POST" action="{{ url_for('eliminar_publi') }}" >
+                            {% if publicacion['id_user'] == usuario['id'] %}
+                            <form method="POST" action="{{ url_for('eliminar_publi') }}">
                                 <input type="hidden" name="id_publi" value="{{ publicacion['id_publicacion'] }}">
                                 <button type="submit"><i class="fa-solid fa-xmark"></i></button>
                             </form>
 
                             <button style="margin-left: 10px; font-size: medium;" onclick="activateUpdate(this)"><i class="fa-solid fa-pen-to-square"></i></button>
+
                         {% endif %}
                         </div>
                         </div>
 
                     <div class="container_text">
-                        <form action="{{url_for('actualizar_publi')}}" method="POST">
+
+                        <form action="{{url_for('actualizar_publi')}}" method="POST" id="form_update_text">
                         <input type="hidden" name="id_publi" value="{{ publicacion['id_publicacion'] }}">
 
                         <div class="view_publication" >
@@ -95,27 +112,41 @@
                             
                         <div class="edit_publication" style="display: none;">
                             <textarea name="contenido" id="contenido">{{ publicacion['contenido'] }}</textarea>
-                            <button type="submit"> Guardar</button>
-
+                            <div id="error_update_post" class="error_message"></div>
+                            <button type="submit" id="button_save_post"> Guardar</button>
+                            <button onclick="cancelUpdate(this)">Cancelar</button>  
                         </div>
                         </form>
                     </div>
-                   
                 </div>
+
             {% endfor %}
-                <a href="{{ url_for('home', page=page + 1) }}">Cargar más</a>
+            {%if publicaciones|length > 39 %}
+            <a href="{{ url_for('home', page=page + 1) }}">Cargar más</a>
+            {% else %}
+            
+            <div class="if_not_publication">
+                Misión completada. No hay más contenido por descubrir... por ahora.
+            </div>
+            {% endif %}
+
+        {% else %}
+            
+            <div class="if_not_publication">
+                Ups... no hay nada por aqui
+            </div>
+        {% endif %}
             </div>
         </main>
         <aside class="right">
             
             {% if usuarios_sugeridos %}
 
-            <div class="container_sugged_persons">
+            <div class="container_sugged_persons card_background">
                 
+            <h5>Usuarios Sugeridos</h5>
 
             {% for usuarios_sugerido in usuarios_sugeridos %}
-
-                <form action="{{url_for('seguir')}}"  method="POST">
 
                     <div class="card_sugged_person">
                         <div class="container_sugged_person_info">
@@ -123,13 +154,19 @@
                                 <img src="{{usuarios_sugerido['avatar']}}" alt="">
                             </picture>
                                 <div class="container_sugged_person_text">
-                                    <p>{{usuarios_sugerido['nombre']}}</p>
+                                    <form id="profileForm{{ usuarios_sugerido.id }}" action="{{ url_for('profile') }}" method="POST">
+                                        <a href="#" onclick="document.getElementById('profileForm{{ usuarios_sugerido.id }}').submit(); return false;">
+                                            {{usuarios_sugerido['nombre']}}
+                                        </a>
+                                        <input type="hidden" name="id_user" value="{{ usuarios_sugerido['id'] }}">
+
+                                    </form>
+                <form  action="{{url_for('seguir')}}"  method="POST">
                                     <input name="id_seguido"id="id_seguido" style="display: none;" value="{{usuarios_sugerido['id']}}">
                                 </div>
                         </div>
                         <button class="btn_follow"><i class="fa-solid fa-plus"></i></button>
                     </div>
-
                 </form>
 
                 <!-- </div> -->

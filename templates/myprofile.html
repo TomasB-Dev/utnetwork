@@ -21,26 +21,18 @@
         <aside class="left">
             <div class="container_profile_left card_background">
                 <picture class="picture_profile">
-                    <img src="{{info_perfil['avatar']}}" alt="">
+                    <img src="{{usuario['avatar']}}" alt="">
                 </picture>
                 <div class="container_info_user_left">
-                    <h4>{{info_perfil['nombre']}}</h4>
+                    <h4>{{usuario['nombre']}}</h4>
+                    <p>{{usuario['mail']}}</p>
                 </div>
 
-                {% if info_perfil['descripcion'] %}
-                <p>{{info_perfil['descripcion']}}</p>
+                {% if usuario['descripcion'] %}
+                <p>{{usuario['descripcion']}}</p>
+                {% else %}
+                <textarea name="" id="" placeholder="agregar comentario"></textarea>
                 {% endif %}
-                {%if info_perfil['id'] is not in seguidos %}   
-                                    <form action="{{ url_for('seguir') }}" method="POST">
-                                    <input name="id_seguido" id="id_seguido" style="display: none;" value="{{ info_perfil['id'] }}">             
-                                    <button class="btn_follow"><i class="fa-solid fa-user-plus"></i></i> Seguir</button>
-                                    </form>
-                                    {% else %}
-                                    <form action="{{ url_for('unfollow') }}" method="POST">
-                                    <input name="id_seguido" id="id_seguido" style="display: none;" value="{{ info_perfil['id'] }}">
-                                    <button class="btn_follow"><i class="fa-solid fa-user-minus"></i></i> No Seguir</button>
-                                    </form>
-                                    {% endif %}
             </div>
         </aside>
         <main>
@@ -57,27 +49,23 @@
                 </form>
             </div> -->
             <div>
-            {%if info_perfil['id'] not in seguidos %} 
-            <div class="if_not_publication">
-                Para ver el contenido debes seguir a este usuario.
-            </div>
-            {%elif info_perfil['id'] is in seguidos %}
-                {% if publicaciones %}
+
+            {% if publicaciones %}
             <div class="container_title_publication ">
                 <h2 class="h2_public card_background">Publicaciones</h2>
 
             </div>
-                {% for publicacion in publicaciones %}
+            {% for publicacion in publicaciones %}
                 <div class="publish_card card_background">
                     <div class="container_profile">
 
                     <div class="container_info_profile">
                         
                         <picture>
-                            <img src="{{ info_perfil['avatar'] }}" alt="">
+                            <img src="{{ usuario['avatar'] }}" alt="">
                         </picture>
                         <div class="container_info_profile_text">
-                            <p>{{info_perfil['nombre']}}</p>
+                            <p>{{usuario['nombre']}}</p>
                             <p>{{publicacion['fecha']}}</p>
                             <input name="id_publi"id="id_publi" style="display: none;" value="{{publicacion['id_publicacion']}}">
 
@@ -93,10 +81,10 @@
 
                             <button style="margin-left: 10px; font-size: medium;" onclick="activateUpdate(this)"><i class="fa-solid fa-pen-to-square"></i></button>
 
-                            {% endif %}
+                        {% endif %}
                         </div>
                         </div>
-                    
+
                     <div class="container_text">
 
                         <form action="{{url_for('actualizar_publi')}}" method="POST" id="form_update_text">
@@ -116,9 +104,7 @@
                     </div>
                 </div>
 
-                    {% endfor %}
-                {% endif %}
-            
+            {% endfor %}
             {%if publicaciones|length > 39 %}
             <a href="{{ url_for('home', page=page + 1) }}">Cargar más</a>
             {% else %}
