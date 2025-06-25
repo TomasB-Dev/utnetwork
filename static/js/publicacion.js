@@ -10,7 +10,7 @@ const publicar = (e) => {
   
 
 
-    fetch('utnetwork-production.up.railway.app/app/publicar', {
+    fetch('utnetwork-production.up.railway.app/src/publicar', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
