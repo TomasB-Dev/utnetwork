@@ -1,7 +1,7 @@
 import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
-from app.utils.Error_Saver import save_error
+from src.utils.Error_Saver import save_error
 
 
 class Send_Mail:

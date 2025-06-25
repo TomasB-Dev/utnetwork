@@ -1,14 +1,14 @@
 from flask import Flask, render_template
-from app.models.Usuarios import Usuarios
+from src.models.Usuarios import Usuarios
 import os
-from app.models.Publicaciones import Publicaciones
-from app.models.Data_Base import DataBase
+from src.models.Publicaciones import Publicaciones
+from src.models.Data_Base import DataBase
 from dotenv import load_dotenv
-from app.routes.login_routes import login_route
-from app.routes.register_route import register_route
-from app.routes.validation_routes import validation_route
-from app.routes.loged_routes import logued_route
-from app.routes.nologed_routes import nologued_view
+from src.routes.login_routes import login_route
+from src.routes.register_route import register_route
+from src.routes.validation_routes import validation_route
+from src.routes.loged_routes import logued_route
+from src.routes.nologed_routes import nologued_view
 
 load_dotenv(dotenv_path='../.env')
 DB_NAME = os.getenv('DB_NAME')

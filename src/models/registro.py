@@ -1,9 +1,9 @@
 import hashlib
-from app.models.Data_Base import DataBase
+from src.models.Data_Base import DataBase
 from dotenv import load_dotenv
 import os
-from app.models.Mail_Send import Send_Mail
-from app.utils.Error_Saver import save_error
+from src.models.Mail_Send import Send_Mail
+from src.utils.Error_Saver import save_error
 import random
 load_dotenv(dotenv_path='../.env')
 

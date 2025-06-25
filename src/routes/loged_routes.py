@@ -2,8 +2,8 @@
 CONTIENE LAS RUTAS DE CUANDO EL USUARIO YA ESTA LOGUEADO
 """
 from flask import render_template, url_for, request,  redirect , session
-from app.utils.Error_Saver import save_error
-from app.utils.preguntas import preguntas_graciosas
+from src.utils.Error_Saver import save_error
+from src.utils.preguntas import preguntas_graciosas
 import random
 
 def logued_route(app, usuarios, publicaciones,db_user):

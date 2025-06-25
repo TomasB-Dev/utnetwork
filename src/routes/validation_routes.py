@@ -4,7 +4,7 @@ CONTIENE LAS RUTAS DE VALIDACION DE LA CUENTA
 from flask import render_template, url_for, request,  redirect, jsonify , session
 import random
 import os
-from app.models.Mail_Send import Send_Mail
+from src.models.Mail_Send import Send_Mail
 import hashlib
 
 
