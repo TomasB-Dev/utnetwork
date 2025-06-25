@@ -99,7 +99,7 @@ class Registro:
             <p style="color: #555555; font-size: 16px; line-height: 1.6;">
                 Desde ahora vas a poder acceder a contenido exclusivo, eventos en vivo, foros técnicos y mucho más.
             </p>
-            <a href="https://utnetwork.com/login" style="display: inline-block; background-color: #0066cc; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 5px; margin-top: 20px;">
+            <a href="https://utnetwork-production.up.railway.app/" style="display: inline-block; background-color: #0066cc; color: #ffffff; padding: 12px 24px; text-decoration: none; border-radius: 5px; margin-top: 20px;">
                 Accedé a tu cuenta
             </a>
             <hr style="margin: 40px 0; border: none; border-top: 1px solid #eeeeee;">
