@@ -43,7 +43,6 @@ class DataBase:
         realiza consultas a la base de datos
         """
         if not self.cursor or not self.conexion:
-            print("Error: No hay conexión activa con la base de datos.")
             return None
 
         try:
