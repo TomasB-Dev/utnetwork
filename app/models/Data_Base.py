@@ -4,7 +4,8 @@ from mysql.connector import Error
 
 
 class DataBase:
-    def init(self, host, nombre, key, db, port=46070):
+    def __init__(self, host, nombre, key, db, port=46070):
+
         self.host = host
         self.port = port
         self.nombre = nombre

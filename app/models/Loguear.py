@@ -5,12 +5,13 @@ import os
 import random
 from app.models.Mail_Send import Send_Mail
 import datetime
-load_dotenv(dotenv_path='../.env')
+#load_dotenv(dotenv_path='../.env')
 DB_NAME = os.getenv('DB_NAME')
 DB_KEY = os.getenv('DB_KEY')
 HOST = os.getenv('HOST')
 USER = os.getenv('USER')
-db_user = DataBase(HOST, USER, DB_KEY, DB_NAME)
+PORT  = os.getenv('PORT')
+db_user = DataBase(HOST, USER, DB_KEY, DB_NAME,PORT)
 
 
 class Login:
