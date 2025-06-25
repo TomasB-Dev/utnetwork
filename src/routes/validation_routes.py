@@ -4,7 +4,7 @@ CONTIENE LAS RUTAS DE VALIDACION DE LA CUENTA
 from flask import render_template, url_for, request,  redirect, jsonify , session
 import random
 import os
-from app.models.Mail_Send import Send_Mail
+from src.models.Mail_Send import Send_Mail
 import hashlib
 
 
@@ -40,6 +40,7 @@ def validation_route(app,usuarios,db_user):
                 #obtengo la data de los inputs y los concateno
                 codigo = data.get('c1', '') + data.get('c2', '') + data.get('c3', '') + \
                         data.get('c4', '') + data.get('c5', '') + data.get('c6', '') #el segundo parametro es lo que devuelve si esta vacio
+
                 db_user.conectar()
                 codigo_correcto  = db_user.consulta(
                     'SELECT confirmed FROM usuarios WHERE id = %s',(id_session[0]['id'])
@@ -70,11 +71,11 @@ def validation_route(app,usuarios,db_user):
             
             codigo_nuevo = ''
             for i in range(6):
-                codigo_nuevo += str(random.randrange(0,9,1))
+                codigo += str(random.randrange(0,9,1))
             db_user.conectar()
-            codigo_hash = hashlib.sha256(codigo_nuevo.encode()).hexdigest()
+
             db_user.consulta(
-                "UPDATE usuarios SET confirmed = %s WHERE id = %s", (codigo_hash, user_id) 
+                "UPDATE usuarios SET confirmed = %s WHERE id = %s", (codigo_nuevo, user_id) 
             )
             db_user.cerrar()
             

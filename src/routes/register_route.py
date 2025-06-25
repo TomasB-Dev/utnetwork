@@ -3,7 +3,7 @@ CONTIENE LAS RUTAS DE REGISTRO DE USUARIO
 """
 
 from flask import render_template, url_for, request,  redirect, session
-from app.models.registro import Registro
+from src.models.registro import Registro
 import time
 
 def register_route(app):

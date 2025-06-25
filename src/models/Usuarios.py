@@ -1,7 +1,7 @@
-from app.models.Data_Base import DataBase
+from src.models.Data_Base import DataBase
 from dotenv import load_dotenv
 import os
-from app.utils.Error_Saver import save_error
+from src.utils.Error_Saver import save_error
 from datetime import datetime
 
 class Usuarios:
