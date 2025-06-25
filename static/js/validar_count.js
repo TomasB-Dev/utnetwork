@@ -49,7 +49,7 @@ function enviarCodigo(e) {
             c6: document.getElementById('6c').value,
         };
 
-        fetch('http://127.0.0.1:5000/validar-codigo', {
+        fetch('utnetwork-production.up.railway.app/validar-codigo', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ function reenviarCodigo(e) {
     btn.classList.add('btn_disabled')
     btn.disabled= true;
 
-    fetch('http://127.0.0.1:5000/reenviar-codigo')
+    fetch('utnetwork-production.up.railway.app/reenviar-codigo')
     .then(response => response.json())
     .then(data => {
         if(data.reenviado) {

@@ -10,7 +10,7 @@ const publicar = (e) => {
   
 
 
-    fetch('http://127.0.0.1:5000/app/publicar', {
+    fetch('utnetwork-production.up.railway.app/app/publicar', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

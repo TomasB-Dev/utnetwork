@@ -12,7 +12,8 @@ class Publicaciones:
         DB_KEY = os.getenv('DB_KEY')
         HOST = os.getenv('HOST')
         USER = os.getenv('USER')
-        self.db_user = DataBase(HOST, USER, DB_KEY, DB_NAME)    
+        PORT = os.getenv('PORT')
+        self.db_user = DataBase(HOST, USER, DB_KEY, DB_NAME, PORT)    
 
 
 

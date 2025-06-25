@@ -4,18 +4,22 @@ from mysql.connector import Error
 
 
 class DataBase:
-    def __init__(self, host, nombre, key, db):
+    def __init__(self, host, nombre, key, db, port):
+
         self.host = host
+        self.port = port
         self.nombre = nombre
         self.key = key
         self.db = db
+        self.conexion = None
+        self.cursor = None
         self.conectar()
 
     def conectar(self):
-
         try:
             self.conexion = mysql.connector.connect(
                 host=self.host,
+                port=self.port,
                 user=self.nombre,
                 password=self.key,
                 database=self.db
@@ -38,6 +42,9 @@ class DataBase:
         """
         realiza consultas a la base de datos
         """
+        if not self.cursor or not self.conexion:
+            print("Error: No hay conexión activa con la base de datos.")
+            return None
 
         try:
             if parametros is not None and not isinstance(parametros, tuple):
