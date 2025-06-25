@@ -92,10 +92,6 @@ const validateEmail=()=> {
 
 
 
-
-
-
-
 const validateForm =(e)=> {
     e.preventDefault();
 

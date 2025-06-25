@@ -3,7 +3,6 @@ CONTIENE LAS RUTAS DE LOGIN DEL USUARIO
 """
 from flask import render_template, url_for, request,  redirect, session
 from src.models.Loguear import Login
-import datetime
 
 
 def login_route(app):

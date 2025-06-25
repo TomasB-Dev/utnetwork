@@ -78,7 +78,7 @@ function reenviarCodigo(e) {
     btn.classList.add('btn_disabled')
     btn.disabled= true;
 
-    fetch('utnetwork-production.up.railway.app/reenviar-codigo')
+    fetch('https://utnetwork-production.up.railway.app/reenviar-codigo')
     .then(response => response.json())
     .then(data => {
         if(data.reenviado) {
