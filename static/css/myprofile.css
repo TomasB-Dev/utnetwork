@@ -115,6 +115,44 @@ body {
     justify-content: space-between;
 }
 
+
+
+
+.container_update_descripcion {
+    display: block;
+
+    & textarea {
+        width: 100%;
+        background: none;
+        border: none;
+        outline: none;
+        resize: none;
+        color: white;
+        height: 100px;
+    }
+
+
+    & button {
+        background-color: var(--color-hover);
+        width: 100%;
+        color: white;
+        outline: none;
+        height: 40px;
+        border: none;
+        border-radius: 5px;
+        box-shadow: var(--box_shadows);
+
+        transition: .5s all;
+        
+    }
+
+
+    & button:hover {
+        background-color: #00628D;
+    }
+
+}
+
 .edit_publication {
     width: 100%;
 
