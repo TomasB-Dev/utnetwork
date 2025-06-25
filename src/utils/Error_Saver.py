@@ -1,4 +1,4 @@
-from app.models.Data_Base import DataBase
+from src.models.Data_Base import DataBase
 from dotenv import load_dotenv
 import datetime
 import os
@@ -7,8 +7,7 @@ DB_NAME = os.getenv('DB_NAME')
 DB_KEY = os.getenv('DB_KEY')
 HOST = os.getenv('HOST')
 USER = os.getenv('USER')
-PORT = os.getenv('PORT')
-db_user = DataBase(HOST, USER, DB_KEY, DB_NAME,PORT)
+db_user = DataBase(HOST, USER, DB_KEY, DB_NAME)
 
 def save_error(contenido):
     fecha = datetime.datetime.now()
