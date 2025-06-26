@@ -88,7 +88,7 @@ class Publicaciones:
         """
         self.db_user.conectar()
         publicaciones = self.db_user.consulta(
-            'SELECT * FROM publicaciones WHERE id_user = %s',(id_user)
+            'SELECT * FROM publicaciones WHERE id_user = %s ORDER BY fecha DESC' ,(id_user)
         )
         self.db_user.cerrar()
         return publicaciones

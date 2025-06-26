@@ -136,7 +136,21 @@ class Usuarios:
         except Exception as e :
             save_error(e)
             return False
-    
+    def obtener_informacion_seguidos(self,user_id):
+        """
+        obtiene informacion de los seguidos
+        """
+        self.db_user.conectar()
+        informacion = self.db_user.consulta (
+            """
+            SELECT usuarios.id, usuarios.nombre, usuarios.avatar
+            FROM usuarios
+            INNER JOIN seguidores ON usuarios.id = seguidores.seguido_id
+            WHERE seguidores.id_user = %s;
+            """,(user_id)
+        )
+        self.db_user.cerrar()
+        return informacion
     def obtener_seguidores(self, user_id):
         """
         Obtiene los usuarios que siguen a user_id
@@ -218,6 +232,15 @@ class Usuarios:
         )
         self.db_user.cerrar()
         return busqueda
+    
+    def guardar_mensaje(self,sender_id, recipient_id, message):
+        """
+        GUARDA LOS MENSAJES EN LA BASE DE DATOS
+        """
+        self.db_user.conectar()
+        self.db_user.consulta("INSERT INTO mensajes (emisor,receptor,contenido) VALUES(%s,%s,%s)",(sender_id,recipient_id,message)
+        )
+        self.db_user.cerrar()
     #metodo traer publicaciones de amigos
     
     

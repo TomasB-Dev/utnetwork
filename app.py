@@ -7,8 +7,9 @@ from dotenv import load_dotenv
 from src.routes.login_routes import login_route
 from src.routes.register_route import register_route
 from src.routes.validation_routes import validation_route
-from src.routes.loged_routes import logued_route
+from src.routes.loged_routes import logued_route, socket_events
 from src.routes.nologed_routes import nologued_view
+from flask_socketio import SocketIO
 
 load_dotenv()
 DB_NAME = os.getenv('DB_NAME')
@@ -25,6 +26,8 @@ app = Flask(__name__)
 
 FIRMA = os.getenv('FIRMA')  # firmar la cokiee
 app.secret_key = FIRMA
+
+socketio = SocketIO(app)
 
 #modularizacion vista que no necesitan loguear
 nologued_view(app)
@@ -48,4 +51,5 @@ def page_error(error):
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    socket_events(socketio, usuarios)
+    socketio.run(app, debug=True)

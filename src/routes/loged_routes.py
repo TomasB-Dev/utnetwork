@@ -1,10 +1,11 @@
 """
 CONTIENE LAS RUTAS DE CUANDO EL USUARIO YA ESTA LOGUEADO
 """
-from flask import render_template, url_for, request,  redirect , session
+from flask import render_template, url_for, request,  redirect , session,jsonify
 from src.utils.Error_Saver import save_error
 from src.utils.preguntas import preguntas_graciosas
 import random
+from flask_socketio import emit, join_room
 
 def logued_route(app, usuarios, publicaciones,db_user):
     @app.route('/home')
@@ -157,3 +158,64 @@ def logued_route(app, usuarios, publicaciones,db_user):
         nueva_descripcion = request.form['descripcion_contenido']
         usuarios.actualizar_descripcion(id_usuario, nueva_descripcion)
         return redirect(request.referrer)
+    
+    @app.route('/mis-mensajes')
+    def mensajes():
+        token = session.get('usuario')
+        id_user = token[0]['id']
+        info_user = usuarios.get_data_by_id(id_user)
+        seguidos = usuarios.obtener_informacion_seguidos(id_user)
+        return render_template('mensajes.html',usuario=info_user[0],seguidos=seguidos)
+    
+    @app.route('/mensajes/<int:destinatario_id>')
+    def obtener_mensajes(destinatario_id):
+        token = session.get('usuario')
+        id_user = token[0]['id']
+
+        # para obtener el historial de msj
+        mensajes = db_user.consulta("""
+            SELECT 
+                mensajes.id,
+                emisor.id AS emisor_id,
+                emisor.nombre AS emisor_nombre,
+                receptor.id AS receptor_id,
+                receptor.nombre AS receptor_nombre,
+                mensajes.contenido,
+                mensajes.fecha
+            FROM mensajes
+            JOIN usuarios AS emisor ON mensajes.emisor = emisor.id
+            JOIN usuarios AS receptor ON mensajes.receptor = receptor.id
+            WHERE 
+                (emisor.id = %s AND receptor.id = %s) OR 
+                (emisor.id = %s AND receptor.id = %s)
+            ORDER BY mensajes.fecha ASC
+        """, (id_user, destinatario_id, destinatario_id, id_user))
+        print(mensajes)
+        return jsonify(mensajes)
+    
+def socket_events(socketio, usuarios):
+    
+    @socketio.on('join')
+    def handle_join(data):
+        """
+        se une a una sala ("conversacion")
+        """
+        id_user = data['id_user']
+        join_room(f'user_{id_user}')
+        emit('status', {'msg': f'Usuario {id_user} se unió a su sala.'}, room=f'user_{id_user}')
+
+    @socketio.on('send_message')
+    def handle_message(data):
+        """
+        envia los msj
+        """
+        sender_id = data['sender_id']
+        recipient_id = data['recipient_id']
+        message = data['message']
+        usuarios.guardar_mensaje(sender_id, recipient_id, message)
+
+        # es para el chat en tiempo real
+        emit('receive_message', {
+            'sender_id': sender_id,
+            'message': message
+        }, room=f'user_{recipient_id}')
