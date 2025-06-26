@@ -161,38 +161,44 @@ def logued_route(app, usuarios, publicaciones,db_user):
     
     @app.route('/mis-mensajes')
     def mensajes():
-        token = session.get('usuario')
-        id_user = token[0]['id']
-        info_user = usuarios.get_data_by_id(id_user)
-        seguidos = usuarios.obtener_informacion_seguidos(id_user)
-        return render_template('mensajes.html',usuario=info_user[0],seguidos=seguidos)
+        if session:
+            token = session.get('usuario')
+            id_user = token[0]['id']
+            info_user = usuarios.get_data_by_id(id_user)
+            seguidos = usuarios.obtener_informacion_seguidos(id_user)
+            return render_template('mensajes.html',usuario=info_user[0],seguidos=seguidos)
+        else:
+            return redirect(url_for('login'))
     
     @app.route('/mensajes/<int:destinatario_id>')
     def obtener_mensajes(destinatario_id):
-        token = session.get('usuario')
-        id_user = token[0]['id']
+        if session:
+            token = session.get('usuario')
+            id_user = token[0]['id']
 
-        # para obtener el historial de msj
-        mensajes = db_user.consulta("""
-            SELECT 
-                mensajes.id,
-                emisor.id AS emisor_id,
-                emisor.nombre AS emisor_nombre,
-                receptor.id AS receptor_id,
-                receptor.nombre AS receptor_nombre,
-                mensajes.contenido,
-                mensajes.fecha
-            FROM mensajes
-            JOIN usuarios AS emisor ON mensajes.emisor = emisor.id
-            JOIN usuarios AS receptor ON mensajes.receptor = receptor.id
-            WHERE 
-                (emisor.id = %s AND receptor.id = %s) OR 
-                (emisor.id = %s AND receptor.id = %s)
-            ORDER BY mensajes.fecha ASC
-        """, (id_user, destinatario_id, destinatario_id, id_user))
-        print(mensajes)
-        return jsonify(mensajes)
-    
+            # para obtener el historial de msj
+            mensajes = db_user.consulta("""
+                SELECT 
+                    mensajes.id,
+                    emisor.id AS emisor_id,
+                    emisor.nombre AS emisor_nombre,
+                    receptor.id AS receptor_id,
+                    receptor.nombre AS receptor_nombre,
+                    mensajes.contenido,
+                    mensajes.fecha
+                FROM mensajes
+                JOIN usuarios AS emisor ON mensajes.emisor = emisor.id
+                JOIN usuarios AS receptor ON mensajes.receptor = receptor.id
+                WHERE 
+                    (emisor.id = %s AND receptor.id = %s) OR 
+                    (emisor.id = %s AND receptor.id = %s)
+                ORDER BY mensajes.fecha ASC
+            """, (id_user, destinatario_id, destinatario_id, id_user))
+            print(mensajes)
+            return jsonify(mensajes)
+        else:
+            return redirect(url_for('login'))
+
 def socket_events(socketio, usuarios):
     
     @socketio.on('join')
