@@ -4,7 +4,12 @@ import { BASE_URL } from "./base_url.js";
 
 
 
-function enviarCodigo(e) {
+
+const paste_code_button = document.getElementById('paste_code');
+const re_send_code_button = document.getElementById('resend_code')
+const send_code = document.getElementById('send_code');
+
+const enviarCodigo = (e) => {
     e.preventDefault();
 
         const datos = {
@@ -25,7 +30,6 @@ function enviarCodigo(e) {
         })
         .then(res => res.json())
         .then(respuesta => {
-            console.log(respuesta);
             if (respuesta.correcto) {
                 window.location.href = respuesta.redirect_url; /* diablo loco , reza reza */
             } else {
@@ -90,6 +94,7 @@ function reenviarCodigo(e) {
 
 
 function pegarCodigo() {
+    console.log("ey")
     navigator.clipboard.readText().then(text => {
         const inputs = document.querySelectorAll('.code');
         const character = text.trim().slice(0, inputs.length).split('');
@@ -103,3 +108,10 @@ function pegarCodigo() {
         console.error(err);
     })
 }
+
+
+
+
+send_code.addEventListener('submit', (e)=>enviarCodigo(e))
+re_send_code_button.addEventListener("submit",(e)=> reenviarCodigo(e))
+paste_code_button.addEventListener("click", pegarCodigo)
