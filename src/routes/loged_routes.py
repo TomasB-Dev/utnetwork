@@ -194,7 +194,6 @@ def logued_route(app, usuarios, publicaciones,db_user):
                     (emisor.id = %s AND receptor.id = %s)
                 ORDER BY mensajes.fecha ASC
             """, (id_user, destinatario_id, destinatario_id, id_user))
-            print(mensajes)
             return jsonify(mensajes)
         else:
             return redirect(url_for('login'))
