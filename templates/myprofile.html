@@ -34,9 +34,13 @@
                 <form id="update_description" action="{{ url_for('actualizar_descripcion') }}" method="POST">
                 <div class="container_update_descripcion">
 
-                <input id="id_usuario" name="id_usuario" hidden type="text" value="{{usuario['id']}}">
-                <textarea name="descripcion_contenido" id="descripcion_contenido" placeholder="agregar comentario"></textarea>
-                <button type="submit" onclick="verifyComment(event)">Confirmar</button>
+                <form id="add_description">
+
+                    <input id="id_usuario" name="id_usuario" hidden type="text" value="{{usuario['id']}}">
+                    <textarea name="descripcion_contenido" id="descripcion_contenido" placeholder="agregar comentario"></textarea>
+                    <button type="submit" >Confirmar</button>
+                </form>
+
                 </div>
 
             </form>

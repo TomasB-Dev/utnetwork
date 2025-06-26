@@ -1,5 +1,8 @@
 
 
+const add_description = document.getElementById('add_description')
+
+
 const verifyComment=(e)=> {
     e.preventDefault();
    const id_error = document.getElementById('error_descripcion');
@@ -17,9 +20,12 @@ const verifyComment=(e)=> {
 }
 
 
-
-const update_description_form = document.getElementById('update_description')
-
+add_description.addEventListener('submit', (e)=> verifyComment(e));
 
 
-update_description_form.addEventListener("submit", (e)=> verifyComment(e))
+
+// const update_description_form = document.getElementById('update_description')
+
+
+
+// update_description_form.addEventListener("submit", (e)=> verifyComment(e))
