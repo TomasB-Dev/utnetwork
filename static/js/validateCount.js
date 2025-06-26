@@ -61,6 +61,14 @@ function enviarCodigo(e) {
             console.log(respuesta);
             if (respuesta.correcto) {
                 window.location.href = respuesta.redirect_url; /* diablo loco , reza reza */
+            } else {
+                Toastify({
+                text: "Codigo incorrecto, por favor vuelva a verificar",
+                className: "warn",
+                style: {
+                    background: "red",
+                }
+                }).showToast();
             }
         })
         .catch(error => {
@@ -111,6 +119,7 @@ function reenviarCodigo(e) {
   
 
 }
+
 
 
 
