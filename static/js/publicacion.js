@@ -1,3 +1,5 @@
+import { BASE_URL } from "./base_url.js";
+
 const publicar = (e) => {
     e.preventDefault();
     const value = document.getElementById('input_publish').value;
@@ -10,7 +12,7 @@ const publicar = (e) => {
   
 
 
-    fetch('http://127.0.0.1:5000//app/publicar', {
+    fetch(`${BASE_URL}/app/publicar`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
