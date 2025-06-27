@@ -12,6 +12,14 @@
 </head>
 
 <body id="body">
+    <a href="{{url_for('index')}}" class="return_index_container">
+       volver al inicio
+    </a>
+    
+
+
+
+
     {%if email_used %}
         <div id="id_email_used" class="alert alert-danger position-absolute "  style='top: 10px; left: 10px;' role="alert">
             El email ya esta en uso, vuelva a intentarlo
