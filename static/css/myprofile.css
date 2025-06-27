@@ -292,6 +292,24 @@ body {
     
 }
 
+.description_container {
+    display: flex;
+    align-items: center;
+
+
+    & button {
+        background: none;
+        color: var(--bg--secundary);
+        border: none;
+        margin-left: 10px;
+    }
+}
+
+
+.description {
+    font-size: larger;
+}
+
 
 .publish_card {
     background-color: #252525;

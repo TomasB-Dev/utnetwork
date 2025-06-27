@@ -29,9 +29,27 @@
                 </div>
 
                 {% if usuario['descripcion'] %}
-                <p>{{usuario['descripcion']}}</p>
+                <div class="description_container" id="description_container">
+                <p class="description" id="description">{{usuario['descripcion']}}</p>
+                <button class="button_edit" id="button_edit_description"><i class="fa-solid fa-pen-to-square"></i></button>
+                </div>
+
+                    <form id="add_description " action="{{ url_for('actualizar_descripcion') }}" method="POST">
+                <div class="container_update_descripcion hidden" id="container_update_desc">
+
+                    <input id="id_usuario" name="id_usuario" hidden type="text" value="{{usuario['id']}}">
+                    <textarea name="descripcion_contenido" id="descripcion_contenido" placeholder="agregar comentario"></textarea>
+                    <button type="submit">Confirmar</button>
+
+                </div>
+
+            </form>
+            <div class="error" id="error_descripcion"></div>
+
+
+
                 {% else %}
-                <form id="update_description" action="{{ url_for('actualizar_descripcion') }}" method="POST">
+                <form id="update_description hidden" action="{{ url_for('actualizar_descripcion') }}" method="POST">
                 <div class="container_update_descripcion">
 
                 <form id="add_description">
@@ -44,7 +62,7 @@
                 </div>
 
             </form>
-                            <div class="error" id="error_descripcion"></div>
+            <div class="error" id="error_descripcion"></div>
 
 
                 {% endif %}
@@ -177,7 +195,7 @@
     </div>
 
     <script src="{{url_for('static',filename='js/modo-luz.js')}}"></script>
-    <script src="{{url_for('static', filename='js/myprofile.js')}}"></script>
+    <script type="module" src="{{url_for('static', filename='js/myprofile.js')}}"></script>
     <script src="{{url_for('static', filename='js/publicacion.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 
