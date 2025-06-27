@@ -105,6 +105,11 @@ body {
 }
 
 
+.logout_mobile {
+    display: none;
+}
+
+
 .left_profile_nav {
     display: flex;
     flex-direction: column;
@@ -407,6 +412,10 @@ body.light_mode  .card_background{
     .left {
         display: none;
     }
+.logout_mobile {
+    display: block;
+}
+
 }
 
 

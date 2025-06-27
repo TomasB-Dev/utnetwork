@@ -315,6 +315,10 @@ body.light_mode  .card_background{
 }
 
 
+.hidden {
+    display: none;
+}
+
 
 
 #swap-btn {
