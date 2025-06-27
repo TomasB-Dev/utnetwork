@@ -76,9 +76,6 @@ const activateUpdate =(button)=> {
 
 }
 
-
-
-
 const cancelUpdate =(event,button)=> {
     event.preventDefault?.();
 
@@ -93,3 +90,38 @@ const cancelUpdate =(event,button)=> {
     edit.style.display = 'none'
 
 }
+
+
+const delete_post_button = document.getElementById("delete_post_button");
+const delete_post_form = document.getElementById('delete_post_form');
+
+
+
+const delete_post= (e)=> {
+    e.preventDefault();
+
+    Swal.fire({
+    title: "Estas seguro?",
+    text: "No podra revertir la publicacion",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    cancelButtonText: "Cancelar",
+    confirmButtonText: "Si, eliminar",
+
+}).then((result) => {
+
+  if (result.isConfirmed) {    
+    delete_post_form.submit()
+
+  }
+});
+
+}
+
+
+
+
+delete_post_button.addEventListener("click",(e)=>delete_post(e))
+// delete_post_form.addEventListener('submit', )

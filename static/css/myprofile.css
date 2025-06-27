@@ -320,6 +320,10 @@ body {
 }
 
 
+.container_publish {
+    box-shadow: var(--box_shadows);
+}
+
 
 .card_background {
     background-color: var(--bg-cards);
