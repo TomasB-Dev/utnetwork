@@ -67,7 +67,11 @@
             </div>
         </aside>
         <main>
-            <!-- <div class="container_publish">
+            <div class="container_title_publication ">
+                <h2 class="h2_public card_background">Publicaciones</h2>
+
+            </div>
+            <div class="container_publish">
                 <div>
                     <picture>
                         <img src="{{usuario['avatar']}}" alt="">
@@ -78,14 +82,11 @@
                 </div>
                 <button  type="submit">Publicar</button>
                 </form>
-            </div> -->
+            </div>
             <div>
 
             {% if publicaciones %}
-            <div class="container_title_publication ">
-                <h2 class="h2_public card_background">Publicaciones</h2>
-
-            </div>
+            
             {% for publicacion in publicaciones %}
                 <div class="publish_card card_background">
                     <div class="container_profile">
@@ -177,6 +178,7 @@
 
     <script src="{{url_for('static',filename='js/modo-luz.js')}}"></script>
     <script src="{{url_for('static', filename='js/myprofile.js')}}"></script>
+    <script src="{{url_for('static', filename='js/publicacion.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 
 </body>
