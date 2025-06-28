@@ -146,9 +146,19 @@ body {
         border: none;
         border-radius: 5px;
         box-shadow: var(--box_shadows);
-
+        margin-bottom: 10px;
         transition: .5s all;
         
+    }
+
+
+    & #cancel_description_update {
+        background: rgb(172, 5, 5);
+
+
+        &:hover {
+            background-color: rgb(122, 3, 3);
+        }
     }
 
 
@@ -157,6 +167,10 @@ body {
     }
 
 }
+
+
+
+
 
 .error {
     color: red;

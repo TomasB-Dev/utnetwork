@@ -3,6 +3,7 @@
 const add_description_form = document.getElementById('add_description');
 const add_description_button = document.getElementById('button_description_add');
 
+
 const verifyComment=(e)=> {
     e.preventDefault();
    const id_error = document.getElementById('error_descripcion');
@@ -25,7 +26,12 @@ const verifyComment=(e)=> {
 }
 
 
-add_description_button.addEventListener('submit', (e)=> verifyComment(e))
+add_description_button.addEventListener('click',verifyComment)
+
+
+
+
+
 
 
 
@@ -41,8 +47,28 @@ const edit_description = ()=> {
     
 
 }
+
+
 btn_edit_description.addEventListener("click", edit_description)
 
+
+
+const cancel_button_description = document.getElementById("cancel_description_update");
+
+
+const cancel_description = (e)=> {
+    e.preventDefault()
+    const description = document.getElementById("description_container");
+    const container_edit_description = document.getElementById("container_update_desc");
+
+
+    description.classList.remove('hidden');
+    container_edit_description.classList.add('hidden');
+};
+
+
+
+cancel_button_description.addEventListener('click', cancel_description);
 
 
 

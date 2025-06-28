@@ -47,7 +47,12 @@
 
                     <input id="id_usuario" name="id_usuario" hidden type="text" value="{{usuario['id']}}">
                     <input name="descripcion_contenido" id="descripcion_contenido" value="{{usuario['descripcion']}}" placeholder="Agregar comentario" ></input>
-                    <button id="button_description_add">Confirmar</button>
+                    
+                    <div class="container_button_description">
+                        <button id="button_description_add" type="submit">Confirmar</button>
+                        <button id="cancel_description_update" type="button">Cancelar</button>
+                    </div>
+
 
                 </div>
 
@@ -57,15 +62,13 @@
 
 
                 {% else %}
-                <form id="update_description hidden" action="{{ url_for('actualizar_descripcion') }}" method="POST">
+                <form id="add_description" action="{{ url_for('actualizar_descripcion') }}" method="POST">
                 <div class="container_update_descripcion">
 
-                <form id="add_description">
 
                     <input id="id_usuario" name="id_usuario" hidden type="text" value="{{usuario['id']}}">
                     <input name="descripcion_contenido" id="descripcion_contenido" placeholder="agregar comentario"></input>
                     <button id="button_description_add" type="submit" >Confirmar</button>
-                </form>
 
                 </div>
 
