@@ -7,7 +7,7 @@ import datetime
 
 class Publicaciones:
     def __init__(self):
-        #load_dotenv(dotenv_path='../.env')
+        load_dotenv()
         DB_NAME = os.getenv('DB_NAME')
         DB_KEY = os.getenv('DB_KEY')
         HOST = os.getenv('HOST')
@@ -88,7 +88,7 @@ class Publicaciones:
         """
         self.db_user.conectar()
         publicaciones = self.db_user.consulta(
-            'SELECT * FROM publicaciones WHERE id_user = %s',(id_user)
+            'SELECT * FROM publicaciones WHERE id_user = %s ORDER BY fecha DESC' ,(id_user)
         )
         self.db_user.cerrar()
         return publicaciones

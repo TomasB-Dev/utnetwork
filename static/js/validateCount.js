@@ -1,43 +1,15 @@
-// document.addEventListener('DOMContentLoaded', function () {
-//     const formulario = document.getElementById('form-codigo');
-
-//     formulario.addEventListener('submit', function (e) {
-//         e.preventDefault();
-
-//         const datos = {
-//             c1: document.getElementById('1c').value,
-//             c2: document.getElementById('2c').value,
-//             c3: document.getElementById('3c').value,
-//             c4: document.getElementById('4c').value,
-//             c5: document.getElementById('5c').value,
-//             c6: document.getElementById('6c').value,
-//         };
-
-//         fetch('http://127.0.0.1:5000/validar-codigo', {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//             },
-//             body: JSON.stringify(datos),
-//         })
-//         .then(res => res.json())
-//         .then(respuesta => {
-//             const mensaje = document.getElementById('mensaje-respuesta');
-//             if (respuesta.correcto) {
-//                 window.location.href = respuesta.redirect_url; /* diablo loco , reza reza */
-//             } else {
-//                 mensaje.textContent = 'Codigo incorrecto';
-//                 mensaje.style.color = 'red';
-//             }
-//         })
-//         .catch(error => {
-//             console.error('Error:', error);
-//         });
-//     });
-// });
 
 
-function enviarCodigo(e) {
+import { BASE_URL } from "./base_url.js";
+
+
+
+
+const paste_code_button = document.getElementById('paste_code');
+const re_send_code_button = document.getElementById('resend_code')
+const send_code = document.getElementById('send_code');
+
+const enviarCodigo = (e) => {
     e.preventDefault();
 
         const datos = {
@@ -49,7 +21,7 @@ function enviarCodigo(e) {
             c6: document.getElementById('6c').value,
         };
 
-        fetch('https://utnetwork-production.up.railway.app/validar-codigo', {
+        fetch(`${BASE_URL}/validar-codigo`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -58,16 +30,22 @@ function enviarCodigo(e) {
         })
         .then(res => res.json())
         .then(respuesta => {
-            console.log(respuesta);
             if (respuesta.correcto) {
                 window.location.href = respuesta.redirect_url; /* diablo loco , reza reza */
+            } else {
+                Toastify({
+                text: "Codigo incorrecto, por favor vuelva a verificar",
+                className: "warn",
+                style: {
+                    background: "red",
+                }
+                }).showToast();
             }
         })
         .catch(error => {
             console.error('Error:', error);
         });
 }
-
 
 
 function reenviarCodigo(e) {
@@ -78,7 +56,7 @@ function reenviarCodigo(e) {
     btn.classList.add('btn_disabled')
     btn.disabled= true;
 
-    fetch('https://utnetwork-production.up.railway.app/reenviar-codigo')
+    fetch(`${BASE_URL}/reenviar-codigo`)
     .then(response => response.json())
     .then(data => {
         if(data.reenviado) {
@@ -114,7 +92,9 @@ function reenviarCodigo(e) {
 
 
 
+
 function pegarCodigo() {
+    console.log("ey")
     navigator.clipboard.readText().then(text => {
         const inputs = document.querySelectorAll('.code');
         const character = text.trim().slice(0, inputs.length).split('');
@@ -128,3 +108,10 @@ function pegarCodigo() {
         console.error(err);
     })
 }
+
+
+
+
+send_code.addEventListener('submit', (e)=>enviarCodigo(e))
+re_send_code_button.addEventListener("submit",(e)=> reenviarCodigo(e))
+paste_code_button.addEventListener("click", pegarCodigo)

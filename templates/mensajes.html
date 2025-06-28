@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/logo.ico') }}" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensajes | UTNetwork</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mensajes.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}">
+</head>
+<body>
+
+{% include 'components/header.html' %}
+
+<div class="container mt-4">
+    <div class="row chat-container">
+
+        <!-- lista de los chats -->
+        <div class="col-md-4 chat-users-container p-0" id="listaUsuarios">
+            <div class="list-group list-group-flush chat-users">
+                {% for user in seguidos %}
+                <button 
+                    class="list-group-item list-group-item-action d-flex align-items-center text-white bg-dark border-0" 
+                    data-nombre="{{ user['nombre'] }}" 
+                    data-id="{{ user['id'] }}"
+                    onclick="abrirChat(this)">
+                    <img src="{{ user['avatar'] }}" class="rounded-circle me-2" width="40" height="40">
+                    {{ user['nombre'] }}
+                </button>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- chatt -->
+        <div class="col-md-8 chat-main d-flex flex-column p-0 chat-messages" id="ventanaChat">
+            <div class="chat-header bg-dark text-white p-2 d-flex align-items-center">
+                <button class="btn btn-outline-light d-md-none me-2" onclick="volverLista()">Volver</button>
+                <h5 class="m-0" id="nombreChat">MENSAJES</h5>
+            </div>
+            <div class="messages flex-grow-1 p-3" id="mensajes">
+                🔒 Por tu seguridad, recordá que tus contraseñas son personales e intransferibles. Nunca las compartas con nadie, ni siquiera con personas de confianza. Cuidarlas es el primer paso para proteger tu información y tu cuenta.
+            </div>
+            <div class="message-input p-2">
+                <textarea class="form-control me-2" id="mensajeInput" rows="1" placeholder="Escribe un mensaje..." disabled></textarea>
+                <button class="btn btn-primary" onclick="enviarMensaje()" disabled id="btnEnviar">Enviar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+<script src="{{url_for('static',filename='js/modo-luz.js')}}"></script>
+<script>
+    const socket = io();
+    // nos e como solucionar ese error diablo loco
+    const userId = {{ usuario.id | tojson }};
+    let destinatarioId = null; 
+    //unirse a la sala de chat
+    socket.emit('join', { id_user: userId });
+
+    // recibir msj tiempo real
+    socket.on('receive_message', function(data) {
+        
+        if (data.sender_id == destinatarioId) {
+            const mensajes = document.getElementById('mensajes');
+            mensajes.innerHTML +=mensajes.innerHTML += `
+                                                        <div class="text-start mb-2">
+                                                            <div class="mensaje-burbuja">
+                                                                <div class="mensaje-nombre">${destinatarioNombre}</div>
+                                                                <div>${data.message}</div>
+                                                            </div>
+                                                        </div>
+                                                    `;
+            mensajes.scrollTop = mensajes.scrollHeight;
+        }
+    });
+let destinatarioNombre = "";
+    function abrirChat(boton) {
+        const nombre = boton.getAttribute('data-nombre');
+        destinatarioNombre = boton.getAttribute('data-nombre');
+        destinatarioId = boton.getAttribute('data-id');
+
+        document.getElementById('nombreChat').innerText = nombre;
+        document.getElementById('mensajes').innerHTML = '';
+        document.getElementById('mensajeInput').disabled = false;
+        document.getElementById('btnEnviar').disabled = false;
+
+        if (window.innerWidth <= 768) {
+            document.getElementById('listaUsuarios').style.display = 'none';
+            document.getElementById('ventanaChat').style.display = 'block';
+        }
+        // trae el historial de mensajes
+    fetch(`/mensajes/${destinatarioId}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            const mensajes = document.getElementById('mensajes');
+            mensajes.innerHTML = '';
+
+            data.forEach(mensaje => {
+                const alineacion = mensaje.emisor_id == userId ? 'text-end' : 'text-start';
+                const nombre = mensaje.emisor_id == userId ? 'Tú' : mensaje.emisor_nombre;
+
+                mensajes.innerHTML += `
+                                        <div class="${alineacion} mb-2">
+                                            <div class="mensaje-burbuja">
+                                                <div class="mensaje-nombre">${nombre}</div>
+                                                <div>${mensaje.contenido}</div>
+                                            </div>
+                                        </div>
+                                    `;
+            });
+
+            mensajes.scrollTop = mensajes.scrollHeight;
+        })
+        .catch(err => {
+            console.error('Error al cargar los mensajes:', err);
+        });
+    }
+    
+
+    // para volver a elegir el chat vista cel
+    function volverLista() {
+        document.getElementById('listaUsuarios').style.display = 'block';
+        document.getElementById('ventanaChat').style.display = 'none';
+    }
+
+    
+
+    // envio de msj
+    function enviarMensaje() {
+        const input = document.getElementById('mensajeInput');
+        const texto = input.value.trim();
+        if (texto === "" || !destinatarioId) return;
+
+        const mensajes = document.getElementById('mensajes');
+        mensajes.innerHTML += `
+                            <div class="text-end mb-2">
+                                <div class="mensaje-burbuja">
+                                    <div class="mensaje-nombre">Tú</div>
+                                    <div>${texto}</div>
+                                </div>
+                            </div>
+                        `;
+        mensajes.scrollTop = mensajes.scrollHeight;
+
+        socket.emit('send_message', {
+            sender_id: userId,
+            recipient_id: destinatarioId,
+            message: texto
+        });
+
+        input.value = "";
+    }
+</script>
+
+</body>
+</html>

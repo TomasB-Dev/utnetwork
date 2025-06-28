@@ -2,7 +2,11 @@ from src.models.Data_Base import DataBase
 from dotenv import load_dotenv
 import datetime
 import os
+<<<<<<< HEAD
 #load_dotenv(dotenv_path='../.env')
+=======
+load_dotenv()
+>>>>>>> backend-testing
 DB_NAME = os.getenv('DB_NAME')
 DB_KEY = os.getenv('DB_KEY')
 HOST = os.getenv('HOST')

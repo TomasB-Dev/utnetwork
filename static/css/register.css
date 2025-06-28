@@ -213,6 +213,19 @@ body {
 }
 
 
+.return_index_container {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 100;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    background-color: var(--bg--secundary);
+    text-decoration: none;
+    cursor: pointer;
+}
+
 
 .container_check {
     display: block;

@@ -29,14 +29,78 @@
                 </div>
 
                 {% if usuario['descripcion'] %}
-                <p>{{usuario['descripcion']}}</p>
+                <div class="description_container" id="description_container">
+                <p class="description" id="description">{{usuario['descripcion']}}</p>
+                <button class="button_edit" id="button_edit_description"><i class="fa-solid fa-pen-to-square"></i></button>
+
+
+                <form action="{{url_for('eliminar_descripcion')}}" id="form_delete_description " method="POST">
+                    <input type="text" id="id_usuario" name="id_usuario" value="{{usuario['id']}}" hidden>
+                    <button id="button_delete_description" ><i class="fa-solid fa-xmark"></i></button>
+                </form>
+
+
+                </div>
+
+                    <form id="add_description " action="{{ url_for('actualizar_descripcion') }}" method="POST">
+                    <div class="container_update_descripcion hidden" id="container_update_desc">
+
+                    <input id="id_usuario" name="id_usuario" hidden type="text" value="{{usuario['id']}}">
+                    <input name="descripcion_contenido" id="descripcion_contenido" value="{{usuario['descripcion']}}" placeholder="Agregar comentario" ></input>
+                    
+                    <div class="container_button_description">
+                        <button id="button_description_add" type="submit">Confirmar</button>
+                        <button id="cancel_description_update" type="button">Cancelar</button>
+                    </div>
+
+
+                </div>
+
+            </form>
+            <div class="error" id="error_descripcion"></div>
+
+
+
                 {% else %}
-                <textarea name="" id="" placeholder="agregar comentario"></textarea>
+                <form id="add_description" action="{{ url_for('actualizar_descripcion') }}" method="POST">
+                <div class="container_update_descripcion">
+
+
+                    <input id="id_usuario" name="id_usuario" hidden type="text" value="{{usuario['id']}}">
+                    <input name="descripcion_contenido" id="descripcion_contenido" placeholder="agregar comentario"></input>
+                    <button id="button_description_add" type="submit" >Confirmar</button>
+
+                </div>
+
+            </form>
+            <div class="error" id="error_descripcion"></div>
+
+
                 {% endif %}
+            </div>
+            <div class="container_stats card_background">
+                <h5>Estadisticas</h5>
+                <p>Publicaciones <span>{{stats['cant_publi']}}</span></p>
+                <p>Seguidores <span>{{stats['cant_seguidores']}}</span></p>
+                <p>Siguiendo <span>{{stats['cant_seguidos']}}</span></p>
+                {% if stats['ultima_conexion_dias'] >= 1 %}
+                <p>Ultima Conexion <span>{{stats['ultima_conexion_dias']}} Dias</span></p>
+                {% elif stats['ultima_conexion_horas'] >= 1 %}
+                <p>Ultima Conexion <span>{{stats['ultima_conexion_horas']}} Horas</span></p>
+                {%elif stats['ultima_conexion_minutos'] > 0 %}
+                <p>Ultima Conexion <span>{{stats['ultima_conexion_minutos']}} Minutos</span></p>
+                {%else%}
+                <p>Ultima Conexion <span>{{stats['ultima_conexion_segundos']}} Segundos</span></p>
+                {%endif%}
+
             </div>
         </aside>
         <main>
-            <!-- <div class="container_publish">
+            <div class="container_title_publication ">
+                <h2 class="h2_public card_background">Publicaciones</h2>
+
+            </div>
+            <div class="container_publish card_background">
                 <div>
                     <picture>
                         <img src="{{usuario['avatar']}}" alt="">
@@ -47,14 +111,11 @@
                 </div>
                 <button  type="submit">Publicar</button>
                 </form>
-            </div> -->
+            </div>
             <div>
 
             {% if publicaciones %}
-            <div class="container_title_publication ">
-                <h2 class="h2_public card_background">Publicaciones</h2>
-
-            </div>
+            
             {% for publicacion in publicaciones %}
                 <div class="publish_card card_background">
                     <div class="container_profile">
@@ -74,9 +135,9 @@
 
                         <div class="container_info_profile_buttons" style="display: flex;">
                             {% if publicacion['id_user'] == usuario['id'] %}
-                            <form method="POST" action="{{ url_for('eliminar_publi') }}">
+                            <form method="POST" action="{{ url_for('eliminar_publi') }}" id="delete_post_form">
                                 <input type="hidden" name="id_publi" value="{{ publicacion['id_publicacion'] }}">
-                                <button type="submit"><i class="fa-solid fa-xmark"></i></button>
+                                <button id="delete_post_button" type="submit"><i class="fa-solid fa-xmark"></i></button>
                             </form>
 
                             <button style="margin-left: 10px; font-size: medium;" onclick="activateUpdate(this)"><i class="fa-solid fa-pen-to-square"></i></button>
@@ -122,7 +183,7 @@
         {% endif %}
             </div>
         </main>
-        <aside class="right">
+        <!-- <aside class="right">
             <div class="container_stats card_background">
                 <h5>Estadisticas</h5>
                 <p>Publicaciones <span>{{stats['cant_publi']}}</span></p>
@@ -141,11 +202,13 @@
             </div>
             
 
-        </aside>
+        </aside> -->
     </div>
 
     <script src="{{url_for('static',filename='js/modo-luz.js')}}"></script>
-
+    <script src="{{url_for('static', filename='js/publicacion.js')}}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="{{url_for('static', filename='js/myprofile.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 
 </body>

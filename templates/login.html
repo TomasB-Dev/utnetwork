@@ -12,7 +12,10 @@
 </head>
 
 <body id="body">
-    <main>
+
+    <a href="{{url_for('index')}}" class="return_index_container">
+        volver al inicio
+    </a>
 
         {%if incorrect_credential %}
             <div id="id_error_credential" class="alert alert-danger position-absolute "  style='top: 10px; left: 10px; z-index: 20;' role="alert">
@@ -60,7 +63,6 @@
         </div>
     </section>
 
-    </main>
     <script src="{{url_for('static',filename='js/loginAuth.js')}}"></script>
     <script src="{{url_for('static',filename='js/modo-luz.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>    

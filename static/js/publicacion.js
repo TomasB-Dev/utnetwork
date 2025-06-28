@@ -1,34 +1,34 @@
-const publicar = (e) => {
-    e.preventDefault();
-    const value = document.getElementById('input_publish').value;
-    if (value.trim() === '') {
-        alert('El campo de publicación no puede estar vacío.');
-        return;
-    }
+// const publicar = (e) => {
+//     e.preventDefault();
+//     const value = document.getElementById('input_publish').value;
+//     if (value.trim() === '') {
+//         alert('El campo de publicación no puede estar vacío.');
+//         return;
+//     }
 
 
   
 
 
-    fetch('https://utnetwork-production.up.railway.app/app/publicar', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ contenido: value }),
+//     fetch('http://127.0.0.1:5000/app/publicar', {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({ contenido: value }),
         
 
-    }).then(res => res.json())
-    .then(respuesta => {
-        if (respuesta.correcto) {
-            alert('Publicación exitosa');
-            console.log('Publicación exitosa:', respuesta);
-            document.getElementById('input_publish').value = ''; // Limpiar el campo de entrada
-        } else {
-            alert('Error al publicar: ' + respuesta.error);
-        }
-    })
-}
+//     }).then(res => res.json())
+//     .then(respuesta => {
+//         if (respuesta.correcto) {
+//             alert('Publicación exitosa');
+//             console.log('Publicación exitosa:', respuesta);
+//             document.getElementById('input_publish').value = ''; // Limpiar el campo de entrada
+//         } else {
+//             alert('Error al publicar: ' + respuesta.error);
+//         }
+//     })
+// }
 
    
 
@@ -76,10 +76,7 @@ const activateUpdate =(button)=> {
 
 }
 
-
-
-
-const cancelUpdate =(button)=> {
+const cancelUpdate =(event,button)=> {
     event.preventDefault?.();
 
     const container = button.closest('.publish_card');
@@ -93,3 +90,38 @@ const cancelUpdate =(button)=> {
     edit.style.display = 'none'
 
 }
+
+
+const delete_post_button = document.getElementById("delete_post_button");
+const delete_post_form = document.getElementById('delete_post_form');
+
+
+
+const delete_post= (e)=> {
+    e.preventDefault();
+
+    Swal.fire({
+    title: "Estas seguro?",
+    text: "No podra revertir la publicacion",
+    icon: "warning",
+    showCancelButton: true,
+    confirmButtonColor: "#3085d6",
+    cancelButtonColor: "#d33",
+    cancelButtonText: "Cancelar",
+    confirmButtonText: "Si, eliminar",
+
+}).then((result) => {
+
+  if (result.isConfirmed) {    
+    delete_post_form.submit()
+
+  }
+});
+
+}
+
+
+
+
+delete_post_button.addEventListener("click",(e)=>delete_post(e))
+// delete_post_form.addEventListener('submit', )
