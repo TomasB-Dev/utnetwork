@@ -32,14 +32,22 @@
                 <div class="description_container" id="description_container">
                 <p class="description" id="description">{{usuario['descripcion']}}</p>
                 <button class="button_edit" id="button_edit_description"><i class="fa-solid fa-pen-to-square"></i></button>
+
+
+                <form action="{{url_for('eliminar_descripcion')}}" id="form_delete_description " method="POST">
+                    <input type="text" id="id_usuario" name="id_usuario" value="{{usuario['id']}}" hidden>
+                    <button id="button_delete_description" ><i class="fa-solid fa-xmark"></i></button>
+                </form>
+
+
                 </div>
 
                     <form id="add_description " action="{{ url_for('actualizar_descripcion') }}" method="POST">
-                <div class="container_update_descripcion hidden" id="container_update_desc">
+                    <div class="container_update_descripcion hidden" id="container_update_desc">
 
                     <input id="id_usuario" name="id_usuario" hidden type="text" value="{{usuario['id']}}">
-                    <textarea name="descripcion_contenido" id="descripcion_contenido" placeholder="agregar comentario"></textarea>
-                    <button type="submit">Confirmar</button>
+                    <input name="descripcion_contenido" id="descripcion_contenido" value="{{usuario['descripcion']}}" placeholder="Agregar comentario" ></input>
+                    <button id="button_description_add">Confirmar</button>
 
                 </div>
 
@@ -55,8 +63,8 @@
                 <form id="add_description">
 
                     <input id="id_usuario" name="id_usuario" hidden type="text" value="{{usuario['id']}}">
-                    <textarea name="descripcion_contenido" id="descripcion_contenido" placeholder="agregar comentario"></textarea>
-                    <button type="submit" >Confirmar</button>
+                    <input name="descripcion_contenido" id="descripcion_contenido" placeholder="agregar comentario"></input>
+                    <button id="button_description_add" type="submit" >Confirmar</button>
                 </form>
 
                 </div>
@@ -195,9 +203,9 @@
     </div>
 
     <script src="{{url_for('static',filename='js/modo-luz.js')}}"></script>
-    <script type="module" src="{{url_for('static', filename='js/myprofile.js')}}"></script>
     <script src="{{url_for('static', filename='js/publicacion.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="{{url_for('static', filename='js/myprofile.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 
 </body>

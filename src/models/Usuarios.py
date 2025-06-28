@@ -16,6 +16,25 @@ class Usuarios:
         self.db_user = DataBase(HOST, USER, DB_KEY, DB_NAME,PORT)    
 
 
+    def eliminar_descripcion(self, user_id):
+        try:
+            self.db_user.conectar()
+            self.db_user.consulta(
+                """
+                UPDATE usuarios
+                SET descripcion = ''
+                WHERE id = %s;
+                
+                
+                """, (user_id)
+                
+            )
+            self.db_user.cerrar()
+        except Exception as e :
+            save_error(e)
+            return False
+        # end try
+
     def actualizar_descripcion(self, user_id, nueva_descripcion):
         try:
             self.db_user.conectar()

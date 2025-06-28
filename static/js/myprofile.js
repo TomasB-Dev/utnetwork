@@ -1,7 +1,7 @@
 
 
-const add_description = document.getElementById('add_description')
-
+const add_description_form = document.getElementById('add_description');
+const add_description_button = document.getElementById('button_description_add');
 
 const verifyComment=(e)=> {
     e.preventDefault();
@@ -12,14 +12,24 @@ const verifyComment=(e)=> {
         id_error.style.display= 'block'
         id_error.textContent='Debe ingresar contenido'
     } else  {
-        id_error.style.display='none'
-        update_description_form.submit()
+
+        if(value.trim().length > 100 ) {
+            id_error.style.display= 'block';
+            id_error.textContent = 'Pasaste el limite de caracteres'
+        } else  {
+            id_error.style.display='none'
+            add_description_form.submit()
+        }
+       
     }
 }
 
 
-const btn_edit_description = document.getElementById('button_edit_description')
+add_description_button.addEventListener('submit', (e)=> verifyComment(e))
 
+
+
+const btn_edit_description = document.getElementById('button_edit_description')
 
 const edit_description = ()=> {
     const description = document.getElementById('description_container');
@@ -31,9 +41,6 @@ const edit_description = ()=> {
     
 
 }
-
-
-
 btn_edit_description.addEventListener("click", edit_description)
 
 
@@ -42,7 +49,9 @@ btn_edit_description.addEventListener("click", edit_description)
 
 
 
-add_description.addEventListener('submit', (e)=> verifyComment(e));
+
+
+
 
 
 

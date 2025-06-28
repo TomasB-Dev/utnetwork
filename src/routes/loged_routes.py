@@ -159,6 +159,16 @@ def logued_route(app, usuarios, publicaciones,db_user):
         usuarios.actualizar_descripcion(id_usuario, nueva_descripcion)
         return redirect(request.referrer)
     
+    @app.route("/eliminar-descripcion", methods=['POST'])
+    def eliminar_descripcion():
+        id_usuario = request.form['id_usuario']
+        print("id_user", id_usuario)
+
+        usuarios.eliminar_descripcion(id_usuario)
+        return redirect(request.referrer)
+    
+
+    
     @app.route('/mis-mensajes')
     def mensajes():
         if session:
