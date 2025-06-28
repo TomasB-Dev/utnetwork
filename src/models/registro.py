@@ -44,10 +44,15 @@ class Registro:
         )
         db_user.cerrar()
 
-        if len(check_mail) < 1:
+        # if len(check_mail) < 1:
+        #     return False
+        # else:
+        #     return True
+        if not check_mail:
             return False
         else:
             return True
+
 
     def registrar(self):
         """
