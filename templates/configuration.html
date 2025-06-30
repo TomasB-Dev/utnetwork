@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/configuration.css')}}">
+    <title>Configuracion</title>
+</head>
+<body>
+    <section>
+        <h1>Configuracion</h1>
+
+        <div class="container_forms">
+            <form action="">
+                <input type="text" value="{{usuario['id']}}">
+                <input type="text" value="{{usuario['nombre']}}">
+                <button>Editar</button>
+            </form>
+            
+            <form action="">
+                <input type="text" value="{{usuario['id']}}">
+                <input type="text" value="{{usuario['mail']}}">
+                <button>Editar</button>
+            </form>
+
+
+            <form action="">
+                <input type="text" value="{{usuario['id']}}">
+                <input type="text" value="{{usuario['key']}}">
+                <button>Editar</button>
+            </form>
+
+
+        </div>
+    </section>
+    
+</body>
+</html>

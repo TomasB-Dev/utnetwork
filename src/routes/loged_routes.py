@@ -66,7 +66,17 @@ def logued_route(app, usuarios, publicaciones,db_user):
                 return redirect(url_for('validation'))
         else:
             return redirect(url_for('login'))
-
+    @app.route("/configuracion")
+    def config():
+        token = session.get('usuario')
+        if session:
+            id_user = token[0]['id']
+            info_user = usuarios.get_data_by_id(id_user)
+            user_state = usuarios.get_state_by_id(id_user)
+            if user_state == True:
+                return render_template('configuration.html', usuario=info_user[0])
+            else:
+                return render_template('error.html')
     @app.route('/app/publicar',methods=['POST'])
     def publicar():
         try:
