@@ -22,16 +22,12 @@
                 <div>
                     <p>{{usuario['nombre']}}</p>
                     <p>{{usuario['mail']}}</p>
-                    
                 </div>
-
             </div>
             <nav class="left_profile_nav">
-              
                     <a href="">
                         Mensajes
                     </a>
-                 
                     <a href="{{url_for('logout')}}">
                         Cerrar Sesion
                     </a>
@@ -40,7 +36,7 @@
         <main>
             
             <div>
-                        {% for busca in busqueda %}
+                {% for busca in busqueda %}
                 <div class="publish_card">
                     <div class="container_profile">
                         <div class="container_info_profile">
