@@ -16,39 +16,41 @@ class Usuarios:
         self.db_user = DataBase(HOST, USER, DB_KEY, DB_NAME,PORT)    
 
 
-    def actualizar_nombre(self,  new_name, user_id):
+    def actualizar_datos(self,  new_name, new_email, new_password,user_id):
         try:
             self.db_user.conectar()
-            self.db_user.consulta(
+            resultado =  self.db_user.consulta(
                 """
                 UPDATE usuarios
-                SET nombre = %s
+                SET nombre = %s, mail = %s, contrasena = %s
                 WHERE id = %s
-                """, (new_name, user_id)
+                """, (new_name, new_email, new_password, user_id)
             )
-        except Exception as e:
-            save_error(e)
-            raise e
-        # end try
-
-
-    def actualizar_email(self, new_email, user_id):
-        try:
-            self.db_user.conectar()
-            self.db_user.consulta(
-                """
-                UPDATE usuarios
-                SET mail = %s
-                WHERE id = %s
-                
-                """, (new_email, user_id) 
-            )
-            
             self.db_user.cerrar()
+            return resultado
         except Exception as e:
             save_error(e)
-            return e
+            return False
         # end try
+
+
+    # def actualizar_email(self, new_email, user_id):
+    #     try:
+    #         self.db_user.conectar()
+    #         self.db_user.consulta(
+    #             """
+    #             UPDATE usuarios
+    #             SET mail = %s
+    #             WHERE id = %s
+                
+    #             """, (new_email, user_id) 
+    #         )
+            
+    #         self.db_user.cerrar()
+    #     except Exception as e:
+    #         save_error(e)
+    #         return e
+    #     # end try
 
 
     def eliminar_descripcion(self, user_id):

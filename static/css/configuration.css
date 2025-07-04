@@ -25,22 +25,118 @@
  }
 
 section {
-    height: 80vh;
-    /* display: flex;
+    display: flex;
     justify-content: center;
-    align-items: center; */
-    box-shadow: var(--box_shadows);
+    flex-direction: column;
+    /* position: relative; */
+    color: white;
+    align-items: center;
+    /* box-shadow: var(--box_shadows); */
     
-    background-color: var(--bg-cards);
+    /* background-color: var(--bg-cards); */
     margin: 50px;
 
     & h1 {
         color: white;
+        font-size: 40px;
+        margin-bottom: 10px;
+    }
+
+
+& picture {
+    width: 150px;
+    height: 150px;
+    overflow: hidden;
+    border-radius: 50%;
+    box-shadow: var(--box_shadows);
+    & img {
+        width: 100%;
+        object-fit: cover;
+
     }
 }
+
+}
+
+
+.container_form {
+    margin-top: 20px;
+
+    & h3 {
+        font-size: x-large;
+        margin: 10px 0;
+    }
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: white;
+
+    & label {
+        margin: 10px 0;
+    }
+
+    & input {
+        width: 300px;
+        height: 50px;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        padding: 6px 10px;
+        font-size: medium;
+        
+    }
+
+    & button {
+        margin-top: 10px;
+        background-color: var(--bg--secundary);
+        padding: 15px;
+        color: white;
+        font-size: medium;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: .5s all;
+    
+    
+    &:hover {
+        background-color: var(--color-hover);
+    }
+    }
+
+
+}
  
-.container {
+
+a {
+    text-decoration: none;
+    color: white;
+    background-color: var(--bg--secundary);
+    padding: 10px;
+    /* margin: 10px; */
+    position: absolute;
+    font-size: large;
+    border-radius: 4px;
+    top: 10px;
+    left: 10px;
+    transition: .5s all;
+
+
+    &:hover {
+        background-color: var(--color-hover);
+    }
+}
+
+
+.error {
+    color: red;
+    display: none;
     
 }
 
 
+.input_error {
+    border: 0.5px rgb(150, 6, 6) solid;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static',filename='css/configuration.css')}}">
+
+    <title>Configuracion</title>
+</head>
+<body>
+    <section>
+        <a href="{{url_for('home')}}">Volver</a>
+
+        <h1>Tu cuenta</h1>
+        <picture>
+            <img src="{{usuario['avatar']}}" alt="">
+        </picture>
+        <div class="container_form">
+            <h3>Datos</h3>
+
+            <form action="{{url_for('actualizar_datos_usuario')}}" method="POST" id="form">
+                <input type="text" name="id_usuario" value="{{usuario['id']}}" id="id_usuario" hidden>
+                
+                <label for="mail">Email</label>
+                <input type="email" value="{{usuario['mail']}}" name="mail" id="mail">
+                <div class="error" id="error_mail"></div>
+
+                <label for="nombre_usaurio">Nombre</label>
+                <input type="text" name="nombre_usuario" id="nombre_usuario" value="{{usuario['nombre']}}">
+                <div class="error" id="error_name"></div>
+
+
+                <label for="key">Contraseña</label>
+                <input type="password" name="key" id="key" value="{{usuario['contrasena']}}">
+                <div class="error" id="error_key"></div>
+
+
+                <button>Actualizar</button>
+            </form>    
+
+        </div>
+    </section>
+    <script src="{{url_for('static',filename='js/config.js')}}"></script>
+</body>
+</html>
