@@ -16,6 +16,43 @@ class Usuarios:
         self.db_user = DataBase(HOST, USER, DB_KEY, DB_NAME,PORT)    
 
 
+    def actualizar_datos(self,  new_name, new_email, new_password,user_id):
+        try:
+            self.db_user.conectar()
+            resultado =  self.db_user.consulta(
+                """
+                UPDATE usuarios
+                SET nombre = %s, mail = %s, contrasena = %s
+                WHERE id = %s
+                """, (new_name, new_email, new_password, user_id)
+            )
+            self.db_user.cerrar()
+            return resultado
+        except Exception as e:
+            save_error(e)
+            return False
+        # end try
+
+
+    # def actualizar_email(self, new_email, user_id):
+    #     try:
+    #         self.db_user.conectar()
+    #         self.db_user.consulta(
+    #             """
+    #             UPDATE usuarios
+    #             SET mail = %s
+    #             WHERE id = %s
+                
+    #             """, (new_email, user_id) 
+    #         )
+            
+    #         self.db_user.cerrar()
+    #     except Exception as e:
+    #         save_error(e)
+    #         return e
+    #     # end try
+
+
     def eliminar_descripcion(self, user_id):
         try:
             self.db_user.conectar()
@@ -35,7 +72,7 @@ class Usuarios:
             return False
         # end try
 
-    def actualizar_descripcion(self, user_id, nueva_descripcion):
+    def actualizar_descripcion(self, user_id, new_description):
         try:
             self.db_user.conectar()
             resutado = self.db_user.consulta(
@@ -45,7 +82,7 @@ class Usuarios:
                 
                 WHERE id = %s
                 
-                """, (nueva_descripcion, user_id)
+                """, (new_description, user_id)
             )
             self.db_user.cerrar()
             return resutado

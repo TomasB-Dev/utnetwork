@@ -2,6 +2,7 @@
 CONTIENE LAS RUTAS DE CUANDO EL USUARIO YA ESTA LOGUEADO
 """
 from flask import render_template, url_for, request,  redirect , session,jsonify
+import hashlib
 from src.utils.Error_Saver import save_error
 from src.utils.preguntas import preguntas_graciosas
 import random
@@ -66,7 +67,17 @@ def logued_route(app, usuarios, publicaciones,db_user):
                 return redirect(url_for('validation'))
         else:
             return redirect(url_for('login'))
-
+    @app.route("/configuracion")
+    def config():
+        token = session.get('usuario')
+        if session:
+            id_user = token[0]['id']
+            info_user = usuarios.get_data_by_id(id_user)
+            user_state = usuarios.get_state_by_id(id_user)
+            if user_state == True:
+                return render_template('configuration.html', usuario=info_user[0])
+            else:
+                return render_template('error.html')
     @app.route('/app/publicar',methods=['POST'])
     def publicar():
         try:
@@ -162,11 +173,19 @@ def logued_route(app, usuarios, publicaciones,db_user):
     @app.route("/eliminar-descripcion", methods=['POST'])
     def eliminar_descripcion():
         id_usuario = request.form['id_usuario']
-        print("id_user", id_usuario)
 
         usuarios.eliminar_descripcion(id_usuario)
         return redirect(request.referrer)
     
+    @app.route('/actualizar_datos', methods=['POST'])
+    def actualizar_datos_usuario():
+        id_usuario = request.form['id_usuario']
+        nuevo_email = request.form['mail']
+        nuevo_nombre = request.form['nombre_usuario']
+        nueva_contrasena = request.form['key']
+        nueva_contrasena = hashlib.sha256(nueva_contrasena.encode()).hexdigest()
+        usuarios.actualizar_datos(nuevo_nombre, nuevo_email, nueva_contrasena, id_usuario)
+        return redirect(request.referrer)
 
     
     @app.route('/mis-mensajes')
