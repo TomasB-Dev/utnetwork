@@ -34,23 +34,7 @@ class Usuarios:
         # end try
 
 
-    # def actualizar_email(self, new_email, user_id):
-    #     try:
-    #         self.db_user.conectar()
-    #         self.db_user.consulta(
-    #             """
-    #             UPDATE usuarios
-    #             SET mail = %s
-    #             WHERE id = %s
-                
-    #             """, (new_email, user_id) 
-    #         )
-            
-    #         self.db_user.cerrar()
-    #     except Exception as e:
-    #         save_error(e)
-    #         return e
-    #     # end try
+
 
 
     def eliminar_descripcion(self, user_id):

@@ -1,37 +1,5 @@
 
 
-const add_description_form = document.getElementById('add_description');
-const add_description_button = document.getElementById('button_description_add');
-
-
-const verifyComment=(e)=> {
-    e.preventDefault();
-   const id_error = document.getElementById('error_descripcion');
-   const value = document.getElementById('descripcion_contenido').value;
-
-    if(value.trim() === '') {
-        id_error.style.display= 'block'
-        id_error.textContent='Debe ingresar contenido'
-    } else  {
-
-        if(value.trim().length > 100 ) {
-            id_error.style.display= 'block';
-            id_error.textContent = 'Pasaste el limite de caracteres'
-        } else  {
-            id_error.style.display='none'
-            add_description_form.submit()
-        }
-       
-    }
-}
-
-
-add_description_button.addEventListener('click',verifyComment)
-
-
-
-
-
 
 
 
@@ -73,10 +41,55 @@ cancel_button_description.addEventListener('click', cancel_description);
 
 
 
+const add_description_form = document.getElementById('add_description');
+// const add_description_button = document.getElementById('button_description_add');
 
 
 
 
+
+const verifyComment=()=> {
+   const id_error = document.getElementById('error_descripcion');
+   const value = document.getElementById('descripcion_contenido').value;
+
+    if(value.trim() === '') {
+        id_error.style.display= 'block'
+        id_error.textContent='Debe ingresar contenido'
+        return false;
+    } else  {
+
+        if(value.trim().length > 100 ) {
+            id_error.style.display= 'block';
+            id_error.textContent = 'Pasaste el limite de caracteres'
+            return false
+        } else  {
+            id_error.style.display='none'
+            // add_description_form.submit()
+            return true;
+        }
+       
+    }
+}
+
+
+
+const validate_form= (e) => {
+    e.preventDefault();
+
+
+    const verify_validate = verifyComment();
+
+
+
+    if(!verify_validate)  {
+        return false;
+    }else {
+        add_description_form.submit();
+    }
+
+}
+
+add_description_form.addEventListener('submit',validate_form )
 
 
 
