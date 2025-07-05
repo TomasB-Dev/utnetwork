@@ -28,12 +28,8 @@ section {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    /* position: relative; */
     color: white;
     align-items: center;
-    /* box-shadow: var(--box_shadows); */
-    
-    /* background-color: var(--bg-cards); */
     margin: 50px;
 
     & h1 {
@@ -86,7 +82,9 @@ form {
         outline: none;
         padding: 6px 10px;
         font-size: medium;
-        
+        background-color: var(--bg-cards);
+        color: white;
+        box-shadow: var(--box_shadows);
     }
 
     & button {

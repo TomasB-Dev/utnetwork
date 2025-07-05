@@ -15,7 +15,7 @@
 
     <div class="container_main">
         <aside class="left">
-            <div class="left_profile_div">
+            <div class="left_profile_div card_background">
                 <picture>
                     <img src="{{usuario['avatar']}}" alt="">
                 </picture>
@@ -24,7 +24,7 @@
                     <p>{{usuario['mail']}}</p>
                 </div>
             </div>
-            <nav class="left_profile_nav">
+            <nav class="left_profile_nav card_background">
                     <a href="">
                         Mensajes
                     </a>
@@ -37,7 +37,7 @@
             
             <div>
                 {% for busca in busqueda %}
-                <div class="publish_card">
+                <div class="publish_card card_background">
                     <div class="container_profile">
                         <div class="container_info_profile">
                             <picture>
@@ -81,30 +81,7 @@
         <aside class="right">
             
 
-            <div class="container_sugged_persons">
-                
-            {% for usuarios_sugerido in usuarios_sugeridos %}
-
-                <form action="{{url_for('seguir')}}"  method="POST">
-
-                    <div class="card_sugged_person">
-                        <div class="container_sugged_person_info">
-                            <picture class="container_sugged_person_picture">
-                                <img src="{{usuarios_sugerido['avatar']}}" alt="">
-                            </picture>
-                                <div class="container_sugged_person_text">
-                                    <p>{{usuarios_sugerido['nombre']}}</p>
-                                    <input name="id_seguido"id="id_seguido" style="display: none;" value="{{usuarios_sugerido['id']}}">
-                                </div>
-                        </div>
-                        <button class="btn_follow"><i class="fa-solid fa-plus"></i></button>
-                    </div>
-
-                </form>
-
-                <!-- </div> -->
-                {%endfor%}
-        </div>
+            
 
         </aside>
     </div>
