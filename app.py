@@ -30,7 +30,7 @@ app.secret_key = FIRMA
 socketio = SocketIO(app)
 
 #modularizacion vista que no necesitan loguear
-nologued_view(app)
+nologued_view(app, usuarios)
 
 #modularizacion login
 login_route(app)

@@ -16,6 +16,27 @@ class Usuarios:
         self.db_user = DataBase(HOST, USER, DB_KEY, DB_NAME,PORT)    
 
 
+
+
+
+    def reestablecer_contrasena(self, new_password, user_email):
+        try:
+            self.db_user.conectar()
+            resultado = self.db_user.consulta(
+                """
+                UPDATE usuarios
+                SET contrasena = %s
+                WHERE mail = %s
+                """, (new_password, user_email)
+            )
+            self.db_user.cerrar()
+            return resultado
+        except Exception as e:
+            save_error(e)
+            return False
+        # end try
+
+
     def actualizar_datos(self,  new_name, new_email, new_password,user_id):
         try:
             self.db_user.conectar()

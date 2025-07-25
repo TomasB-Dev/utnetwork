@@ -13,7 +13,7 @@ def logued_route(app, usuarios, publicaciones,db_user):
     def home():
         
         token = session.get('usuario')
-        if session:
+        if token and isinstance(token, list) and len(token) > 0:
             id_user = token[0]['id']
             info_user = usuarios.get_data_by_id(id_user)
             user_state = usuarios.get_state_by_id(id_user)
@@ -29,7 +29,8 @@ def logued_route(app, usuarios, publicaciones,db_user):
             else:
                 return redirect(url_for('validation'))
         else:
-            return render_template('error.html')
+            session.clear()
+            return redirect(url_for('login'))
         
     @app.route('/miperfil')
     def myprofile():

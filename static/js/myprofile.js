@@ -1,4 +1,5 @@
 
+document.addEventListener('DOMContentLoaded', ()=> {
 
 
 
@@ -82,7 +83,7 @@ const validate_form= (e) => {
 
 
     if(!verify_validate)  {
-        return false;
+        return;
     }else {
         add_description_form.submit();
     }
@@ -92,6 +93,7 @@ const validate_form= (e) => {
 add_description_form.addEventListener('submit',validate_form )
 
 
+});
 
 
 // const update_description_form = document.getElementById('update_description')
