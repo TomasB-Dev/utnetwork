@@ -12,7 +12,7 @@
 </head>
 <body>
 
-{% include 'components/header.html' %}
+    {% include 'components/header.html' %}
 
 <div class="container mt-4">
     <div class="row chat-container">
@@ -43,7 +43,7 @@
                 🔒 Por tu seguridad, recordá que tus contraseñas son personales e intransferibles. Nunca las compartas con nadie, ni siquiera con personas de confianza. Cuidarlas es el primer paso para proteger tu información y tu cuenta.
             </div>
             <div class="message-input p-2">
-                <textarea class="form-control me-2" id="mensajeInput" rows="1" placeholder="Escribe un mensaje..." disabled></textarea>
+                <textarea class="form-control me-2" id="mensajeInput" rows="1" placeholder="Escribe un mensaje..." style="background-color: white;" disabled></textarea>
                 <button class="btn btn-primary" onclick="enviarMensaje()" disabled id="btnEnviar">Enviar</button>
             </div>
         </div>
