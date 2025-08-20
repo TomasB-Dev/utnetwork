@@ -57,13 +57,13 @@ pip install -r requirements.txt
 - ✅ Publicacion en tiempo real.
 - ✅ Modo oscuro / claro.
 - ✅ Responsive.
+- ✅ Chat en tiempo real.
 
 ---
 
 ## 📌 Funcionalidades previstas
 
 - [ ] Laboratorio.
-- [ ] Chat en tiempo real.
 - [ ] Juegos.
 - [ ] Retos.
 - [ ] otros.
